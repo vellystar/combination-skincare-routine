@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Skincare & Beauty Routine</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f4f0fa;
+    --bg2: #ece5f5;
+    --bg3: #ffffff;
+    --surface: rgba(255,255,255,0.75);
+    --surface2: rgba(255,255,255,0.5);
+    --border: rgba(108,62,168,0.15);
+    --border2: rgba(108,62,168,0.25);
+    --text: #1a0a2e;
+    --text2: #4a3466;
+    --text3: #7a5fa3;
+    --accent1: #6B21A8;
+    --accent2: #2563EB;
+    --accent3: #8B5CF6;
+    --accent4: #3B82F6;
+    --gradient: linear-gradient(135deg, #6B21A8 0%, #2563EB 100%);
+    --gradient2: linear-gradient(135deg, #8B5CF6 0%, #60A5FA 100%);
+    --gradient-soft: linear-gradient(135deg, rgba(107,33,168,0.1) 0%, rgba(37,99,235,0.1) 100%);
+    --glow: 0 0 30px rgba(107,33,168,0.18), 0 4px 24px rgba(37,99,235,0.12);
+    --shadow: 0 2px 20px rgba(107,33,168,0.08);
+    --shadow2: 0 8px 40px rgba(107,33,168,0.12);
+    --pill-am: linear-gradient(135deg,#f9a8d4,#c4b5fd);
+    --pill-pm: linear-gradient(135deg,#818cf8,#6B21A8);
+    --pill-mid: linear-gradient(135deg,#60A5FA,#2563EB);
+    --pill-prod: linear-gradient(135deg,#a78bfa,#3B82F6);
+    --step-am: #fce7f3;
+    --step-pm: #ede9fe;
+    --step-mid: #dbeafe;
+    --morning-tag: #be185d;
+    --evening-tag: #5b21b6;
+    --mid-tag: #1d4ed8;
+    --tag-bg-am: #fdf2f8;
+    --tag-bg-pm: #f5f3ff;
+    --tag-bg-mid: #eff6ff;
+    --tag-bg-prod: #f0fdf4;
+    --orb1: rgba(107,33,168,0.12);
+    --orb2: rgba(37,99,235,0.10);
+  }
+  [data-theme="dark"] {
+    --bg: #0d0818;
+    --bg2: #150d26;
+    --bg3: #1e1435;
+    --surface: rgba(30,20,53,0.85);
+    --surface2: rgba(30,20,53,0.6);
+    --border: rgba(139,92,246,0.18);
+    --border2: rgba(139,92,246,0.3);
+    --text: #f0e8ff;
+    --text2: #c4b5fd;
+    --text3: #a78bfa;
+    --accent1: #a855f7;
+    --accent2: #60a5fa;
+    --accent3: #c084fc;
+    --accent4: #93c5fd;
+    --gradient: linear-gradient(135deg,#9333ea 0%,#3b82f6 100%);
+    --gradient2: linear-gradient(135deg,#c084fc 0%,#93c5fd 100%);
+    --gradient-soft: linear-gradient(135deg,rgba(147,51,234,0.15) 0%,rgba(59,130,246,0.15) 100%);
+    --glow: 0 0 40px rgba(147,51,234,0.25), 0 4px 24px rgba(59,130,246,0.18);
+    --shadow: 0 2px 20px rgba(0,0,0,0.3);
+    --shadow2: 0 8px 40px rgba(0,0,0,0.4);
+    --pill-am: linear-gradient(135deg,#db2777,#7c3aed);
+    --pill-pm: linear-gradient(135deg,#7c3aed,#4c1d95);
+    --pill-mid: linear-gradient(135deg,#2563eb,#1d4ed8);
+    --pill-prod: linear-gradient(135deg,#7c3aed,#2563eb);
+    --step-am: #2d0f2a;
+    --step-pm: #1e1060;
+    --step-mid: #0c1f4a;
+    --morning-tag: #f9a8d4;
+    --evening-tag: #c4b5fd;
+    --mid-tag: #93c5fd;
+    --tag-bg-am: #2d1040;
+    --tag-bg-pm: #1e1060;
+    --tag-bg-mid: #0c204a;
+    --tag-bg-prod: #0d2d1a;
+    --orb1: rgba(147,51,234,0.18);
+    --orb2: rgba(59,130,246,0.14);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.5s ease, color 0.4s ease;
+    overflow-x: hidden;
+  }
+
+  /* ── Noise texture overlay ───────────────────────── */
+  body::before {
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    opacity:0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+
+  /* ── Orb Background ─────────────────────────────── */
+  .orb-container {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .orb {
+    position: absolute; border-radius: 50%; filter: blur(100px);
+    animation: floatOrb 16s ease-in-out infinite;
+  }
+  .orb1 { width:600px; height:600px; background:var(--orb1); top:-180px; right:-120px; animation-delay:0s; }
+  .orb2 { width:480px; height:480px; background:var(--orb2); bottom:-100px; left:-100px; animation-delay:-6s; }
+  .orb3 { width:300px; height:300px; background:var(--orb1); top:50%; left:38%; animation-delay:-11s; opacity:0.5; }
+  @keyframes floatOrb {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(28px,-22px) scale(1.04); }
+    66% { transform: translate(-18px,22px) scale(0.97); }
+  }
+
+  /* ── Header ─────────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(20px,4vw,52px);
+  }
+  .header-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+  }
+  .logo-mark {
+    width: 32px; height: 32px; border-radius: 10px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; box-shadow: 0 4px 14px rgba(107,33,168,0.35);
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(15px,2vw,19px);
+    font-weight:400; letter-spacing:0.05em; color:var(--text);
+    white-space:nowrap;
+  }
+  .logo-text em {
+    font-style:italic; font-weight:600;
+    background: var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+
+  /* Dark mode toggle */
+  .toggle-wrap {
+    display:flex; align-items:center; gap:10px; flex-shrink:0;
+  }
+  .toggle-wrap .moon { font-size:13px; color:var(--text3); }
+  .toggle {
+    position:relative; width:44px; height:24px; cursor:pointer;
+    background: var(--bg2); border-radius:12px;
+    border:1px solid var(--border2);
+    transition: background 0.4s; flex-shrink:0;
+  }
+  .toggle::after {
+    content:''; position:absolute; top:3px; left:3px;
+    width:18px; height:18px; border-radius:50%;
+    background: var(--gradient);
+    transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 2px 8px rgba(107,33,168,0.4);
+  }
+  [data-theme="dark"] .toggle::after { transform:translateX(20px); }
+
+  /* ── Floating Nav Bar ───────────────────────────── */
+  .nav-wrap {
+    position: sticky; top: 68px; z-index: 99;
+    display: flex; justify-content: center;
+    padding: 14px clamp(16px,4vw,48px) 10px;
+    pointer-events: none;
+  }
+  .nav-track {
+    position: relative;
+    display: inline-flex; align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 999px;
+    padding: 5px;
+    gap: 2px;
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    box-shadow: 0 8px 32px rgba(107,33,168,0.12), 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.15);
+    pointer-events: all;
+    overflow-x: auto; scrollbar-width: none;
+    max-width: calc(100vw - clamp(32px,8vw,96px));
+  }
+  .nav-track::-webkit-scrollbar { display:none; }
+
+  /* Gliding pill */
+  .nav-glider {
+    position: absolute;
+    top: 5px; left: 5px;
+    height: calc(100% - 10px);
+    background: var(--gradient);
+    border-radius: 999px;
+    transition: left 0.4s cubic-bezier(.65,0,.35,1), width 0.4s cubic-bezier(.65,0,.35,1);
+    box-shadow: 0 4px 16px rgba(107,33,168,0.3);
+    pointer-events: none;
+    will-change: left, width;
+  }
+
+  .nav-btn {
+    position: relative; z-index: 1;
+    border: none; background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(11px,1.3vw,13px); font-weight: 500;
+    color: var(--text3);
+    padding: 8px clamp(10px,1.5vw,18px);
+    border-radius: 999px; cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.3s;
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0;
+  }
+  .nav-btn .nav-icon { font-size: 13px; transition: transform 0.3s; }
+  .nav-btn.active { color: #fff; }
+  .nav-btn.active .nav-icon { transform: scale(1.15); }
+  .nav-btn:not(.active):hover { color: var(--accent3); }
+
+  /* ── Main Layout ────────────────────────────────── */
+  main {
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto;
+    padding: clamp(20px,4vw,48px) clamp(16px,4vw,48px) clamp(40px,6vw,72px);
+  }
+
+  /* ── Section ────────────────────────────────────── */
+  .section { display:none; animation:fadeSlide 0.5s cubic-bezier(.22,.68,0,1.15) both; }
+  .section.active { display:block; }
+  @keyframes fadeSlide {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── Page Title ─────────────────────────────────── */
+  .page-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,54px);
+    font-weight:300; letter-spacing:0.01em; line-height:1.1;
+    margin-bottom:8px;
+  }
+  .page-title span { font-style:italic; font-weight:600;
+    background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .page-subtitle { color:var(--text3); font-size:clamp(13px,1.5vw,15px); margin-bottom:40px; font-weight:300; letter-spacing:0.01em; }
+
+  /* ── Skin Type Badge ─────────────────────────────── */
+  .skin-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 16px; border-radius:999px;
+    background: var(--gradient-soft); border:1.5px solid var(--border2);
+    font-size:13px; color:var(--accent1); font-weight:500; margin-bottom:32px;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow:0 0 0 0 rgba(107,33,168,0.15); }
+    50%  { box-shadow:0 0 0 8px rgba(107,33,168,0); }
+  }
+
+  /* ── Routine Steps ───────────────────────────────── */
+  .steps-grid { display:flex; flex-direction:column; gap:12px; }
+  .step-card {
+    background: var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    transition:transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s, border-color 0.35s;
+    cursor:pointer;
+    box-shadow: var(--shadow);
+  }
+  .step-card:hover {
+    transform:translateY(-3px);
+    box-shadow:var(--shadow2), var(--glow);
+    border-color:var(--border2);
+  }
+  .step-header {
+    display:flex; align-items:center; gap:16px;
+    padding:20px 24px; user-select:none;
+  }
+  .step-num {
+    width:34px; height:34px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:600; font-style:italic;
+    color:#fff; background:var(--gradient); box-shadow:0 3px 12px rgba(107,33,168,0.28);
+  }
+  .step-info { flex:1; min-width:0; }
+  .step-name { font-size:14px; font-weight:500; margin-bottom:3px; letter-spacing:0.01em; }
+  .step-product { font-size:12px; color:var(--text3); font-weight:300;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .step-arrow {
+    width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--bg2); border:1px solid var(--border);
+    font-size:14px; color:var(--text3); transition:transform 0.35s, background 0.3s;
+    flex-shrink:0;
+  }
+  .step-card.open .step-arrow { transform:rotate(90deg); background:var(--gradient-soft); }
+  .step-card:hover .step-arrow { border-color:var(--border2); }
+
+  .step-body {
+    max-height:0; overflow:hidden;
+    transition:max-height 0.5s cubic-bezier(.22,.68,0,1.05), padding 0.3s;
+    padding:0 24px;
+  }
+  .step-card.open .step-body { max-height:600px; padding:0 24px 22px; }
+  .step-tip {
+    font-size:13.5px; color:var(--text2); line-height:1.75;
+    border-top:1px solid var(--border); padding-top:18px;
+  }
+  .step-tip strong { color:var(--accent1); font-weight:600; }
+  .step-tip .how { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
+  .step-tip .how span { display:flex; gap:10px; align-items:flex-start; }
+  .step-tip .how span::before { content:'✦'; color:var(--accent3); font-size:9px; margin-top:6px; flex-shrink:0; }
+
+  /* ── Product Tag ─────────────────────────────────── */
+  .ptag {
+    display:inline-block; padding:3px 10px; border-radius:999px;
+    font-size:11px; font-weight:500; margin-top:6px;
+    background: var(--gradient-soft); color:var(--accent1);
+    border:1px solid var(--border2);
+  }
+
+  /* ── Section Divider ─────────────────────────────── */
+  .divider {
+    display:flex; align-items:center; gap:16px; margin:36px 0;
+  }
+  .divider::before, .divider::after {
+    content:''; flex:1; height:1px;
+    background: linear-gradient(90deg, transparent, var(--border2), transparent);
+  }
+  .divider-label {
+    font-family:'Cormorant Garamond',serif; font-size:12px; font-style:italic; letter-spacing:0.14em;
+    color:var(--text3); white-space:nowrap; padding:5px 16px;
+    border:1px solid var(--border2); border-radius:999px;
+    background:var(--surface2);
+  }
+
+  /* ── Tips Banner ─────────────────────────────────── */
+  .tip-banner {
+    background:var(--gradient-soft); border:1px solid var(--border2);
+    border-radius:18px; padding:20px 24px; margin-bottom:28px;
+    display:flex; gap:14px; align-items:flex-start;
+    position:relative; overflow:hidden;
+  }
+  .tip-banner::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:1px;
+    background: var(--gradient); opacity:0.5;
+  }
+  .tip-banner .icon { font-size:20px; flex-shrink:0; margin-top:1px; }
+  .tip-banner p { font-size:13.5px; color:var(--text2); line-height:1.75; }
+  .tip-banner p strong { color:var(--accent1); }
+
+  /* ── Products Grid ───────────────────────────────── */
+  .products-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(min(100%,300px),1fr));
+    gap:18px;
+  }
+  .prod-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:22px; padding:24px;
+    transition:transform 0.38s cubic-bezier(.34,1.56,.64,1), box-shadow 0.38s, border-color 0.3s;
+    box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:13px;
+    position:relative; overflow:hidden;
+  }
+  .prod-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background: var(--gradient); opacity:0; transition:opacity 0.3s;
+  }
+  .prod-card:hover {
+    transform:translateY(-5px);
+    box-shadow:var(--shadow2), var(--glow);
+    border-color:var(--border2);
+  }
+  .prod-card:hover::before { opacity:1; }
+  .prod-cat {
+    font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    padding:4px 11px; border-radius:999px; display:inline-block;
+    background:var(--gradient); color:#fff; width:fit-content;
+  }
+  .prod-name {
+    font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600;
+    line-height:1.25; color:var(--text); letter-spacing:0.01em;
+  }
+  .prod-shade {
+    font-size:12px; color:var(--text3); font-style:italic;
+    display:flex; align-items:center; gap:7px;
+  }
+  .shade-dot {
+    width:13px; height:13px; border-radius:50%;
+    border:1.5px solid var(--border2); flex-shrink:0;
+  }
+  .prod-desc { font-size:13px; color:var(--text2); line-height:1.78; }
+  .prod-benefits { display:flex; flex-wrap:wrap; gap:6px; margin-top:2px; }
+  .benefit-chip {
+    padding:4px 10px; border-radius:999px; font-size:11px; font-weight:500;
+    background:var(--bg2); color:var(--accent3); border:1px solid var(--border);
+    transition:background 0.25s, border-color 0.25s;
+  }
+  .prod-card:hover .benefit-chip { background:var(--gradient-soft); border-color:var(--border2); }
+  .prod-ings { font-size:12px; color:var(--text3); line-height:1.65; border-top:1px solid var(--border); padding-top:12px; margin-top:auto; }
+  .prod-ings strong { color:var(--text2); font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; }
+
+  /* ── Mid-day ─────────────────────────────────────── */
+  .midday-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr)); gap:18px; }
+  .midday-card {
+    background:var(--surface); border:1.5px solid var(--border2);
+    border-radius:20px; padding:24px; box-shadow:var(--shadow);
+    transition:transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+  }
+  .midday-card:hover { transform:translateY(-4px); box-shadow:var(--shadow2), var(--glow); }
+  .midday-card h3 {
+    font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600;
+    margin-bottom:10px; display:flex; align-items:center; gap:10px;
+  }
+  .midday-card h3 .emoji { font-size:22px; }
+  .midday-card p { font-size:13px; color:var(--text2); line-height:1.75; }
+  .midday-steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .midday-step {
+    display:flex; gap:12px; align-items:flex-start;
+    background:var(--gradient-soft); border-radius:12px; padding:12px 14px;
+    border:1px solid var(--border);
+  }
+  .midday-step-num {
+    width:22px; height:22px; flex-shrink:0; border-radius:50%;
+    background:var(--gradient); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:700; margin-top:1px;
+  }
+  .midday-step-text { font-size:13px; color:var(--text2); line-height:1.6; }
+  .midday-step-text strong { color:var(--accent1); }
+
+  /* ── Time Badge ──────────────────────────────────── */
+  .time-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:5px 12px; border-radius:999px; font-size:11px; font-weight:600;
+    letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;
+  }
+  .time-badge.am { background:var(--pill-am); color:#fff; box-shadow:0 3px 14px rgba(219,39,119,0.25); }
+  .time-badge.pm { background:var(--pill-pm); color:#fff; box-shadow:0 3px 14px rgba(91,33,182,0.3); }
+  .time-badge.mid { background:var(--pill-mid); color:#fff; box-shadow:0 3px 14px rgba(37,99,235,0.3); }
+
+  /* ── Makeup Section header ─────────────────────── */
+  .makeup-header {
+    display:flex; align-items:center; gap:12px; margin:10px 0 22px;
+  }
+  .makeup-header h2 {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3.5vw,30px);
+    font-weight:600; font-style:italic;
+  }
+
+  /* ── Filter Pills ────────────────────────────────── */
+  .filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+  .filter-btn {
+    padding:6px 14px; border-radius:999px; font-size:12px; font-weight:500;
+    border:1.5px solid var(--border2); background:transparent; color:var(--text3);
+    cursor:pointer; transition:all 0.25s; font-family:'DM Sans',sans-serif;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background:var(--gradient); color:#fff; border-color:transparent;
+    box-shadow:0 3px 12px rgba(107,33,168,0.25);
+  }
+
+  /* ── Skin Type Section ───────────────────────────── */
+  .skintype-hero {
+    background: var(--gradient);
+    border-radius: 24px;
+    padding: clamp(28px,5vw,48px) clamp(24px,5vw,48px);
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow2), var(--glow);
+  }
+  .skintype-hero::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .skintype-hero h2 {
+    font-family:'Cinzel',serif; font-size:clamp(11px,1.6vw,13px);
+    letter-spacing:0.18em; color:rgba(255,255,255,0.7);
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .skintype-hero h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(32px,5.5vw,56px); font-weight:300;
+    color:#fff; line-height:1.1; margin-bottom:16px;
+  }
+  .skintype-hero h1 em { font-style:italic; font-weight:600; }
+  .skintype-hero p {
+    color:rgba(255,255,255,0.85); font-size:clamp(13px,1.8vw,15px);
+    line-height:1.8; max-width:620px; font-weight:300;
+  }
+  .skintype-hero .hero-chips {
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;
+  }
+  .skintype-hero .hero-chip {
+    padding:6px 14px; border-radius:999px;
+    background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3);
+    color:#fff; font-size:12px; font-weight:500; backdrop-filter:blur(4px);
+  }
+
+  .st-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%,320px),1fr));
+    gap:18px; margin-bottom:24px;
+  }
+  .st-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:20px; padding:24px; box-shadow:var(--shadow);
+    transition:transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+  }
+  .st-card:hover { transform:translateY(-4px); box-shadow:var(--shadow2), var(--glow); }
+  .st-card-icon { font-size:28px; margin-bottom:12px; display:block; }
+  .st-card h3 {
+    font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600;
+    margin-bottom:10px; color:var(--text);
+  }
+  .st-card p { font-size:13px; color:var(--text2); line-height:1.75; }
+  .st-card ul { list-style:none; margin-top:12px; display:flex; flex-direction:column; gap:7px; }
+  .st-card ul li {
+    font-size:13px; color:var(--text2); line-height:1.6;
+    display:flex; gap:8px; align-items:flex-start;
+  }
+  .st-card ul li::before { content:'✦'; color:var(--accent3); font-size:9px; margin-top:5px; flex-shrink:0; }
+
+  .zone-diagram {
+    background:var(--surface); border:1.5px solid var(--border2);
+    border-radius:20px; padding:28px; margin-bottom:24px;
+    box-shadow:var(--shadow); text-align:center;
+  }
+  .zone-diagram h3 {
+    font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600;
+    margin-bottom:6px;
+  }
+  .zone-diagram .subtitle { font-size:13px; color:var(--text3); margin-bottom:24px; }
+  .face-map {
+    display:flex; flex-direction:column; align-items:center; gap:0;
+    margin: 0 auto 24px; max-width:300px;
+  }
+  .face-row { display:flex; gap:6px; justify-content:center; }
+  .zone-block {
+    border-radius:10px; padding:10px 14px; font-size:11.5px; font-weight:600;
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    transition: transform 0.25s;
+  }
+  .zone-block:hover { transform:scale(1.04); }
+  .zone-block .zone-name { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+  .zone-block .zone-type { font-size:11px; font-weight:400; }
+  .zone-oily { background:linear-gradient(135deg,rgba(251,191,36,0.25),rgba(249,115,22,0.18)); color:#92400e; border:1.5px solid rgba(249,115,22,0.25); }
+  .zone-normal { background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(59,130,246,0.15)); color:var(--accent1); border:1.5px solid var(--border2); }
+  .zone-dry { background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.15)); color:#065f46; border:1.5px solid rgba(16,185,129,0.2); }
+  [data-theme="dark"] .zone-oily { color:#fcd34d; border-color:rgba(249,115,22,0.4); }
+  [data-theme="dark"] .zone-normal { color:var(--accent3); }
+  [data-theme="dark"] .zone-dry { color:#6ee7b7; border-color:rgba(16,185,129,0.35); }
+
+  .zone-legend {
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:8px;
+  }
+  .legend-item {
+    display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text2);
+  }
+  .legend-dot { width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+
+  .dos-donts {
+    display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;
+  }
+  @media(max-width:560px){ .dos-donts { grid-template-columns:1fr; } }
+  .do-card, .dont-card {
+    border-radius:18px; padding:22px; box-shadow:var(--shadow);
+  }
+  .do-card {
+    background:linear-gradient(135deg,rgba(107,33,168,0.07),rgba(37,99,235,0.07));
+    border:1.5px solid var(--border2);
+  }
+  .dont-card {
+    background:linear-gradient(135deg,rgba(239,68,68,0.05),rgba(249,115,22,0.05));
+    border:1.5px solid rgba(239,68,68,0.15);
+  }
+  .do-card h4, .dont-card h4 {
+    font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.1em;
+    margin-bottom:14px; display:flex; align-items:center; gap:8px;
+  }
+  .do-card h4 { color:var(--accent1); }
+  .dont-card h4 { color:#ef4444; }
+  [data-theme="dark"] .dont-card h4 { color:#f87171; }
+  .do-card ul, .dont-card ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .do-card ul li, .dont-card ul li {
+    font-size:13px; color:var(--text2); line-height:1.6;
+    display:flex; gap:8px; align-items:flex-start;
+  }
+  .do-card ul li::before { content:'✓'; color:var(--accent1); font-weight:700; flex-shrink:0; }
+  .dont-card ul li::before { content:'✗'; color:#ef4444; font-weight:700; flex-shrink:0; }
+  [data-theme="dark"] .dont-card ul li::before { color:#f87171; }
+
+  /* ── Footer ──────────────────────────────────────── */
+  footer {
+    position:relative; z-index:1; text-align:center;
+    padding:40px clamp(16px,4vw,48px) 32px;
+    color:var(--text3); font-size:13px;
+    max-width:1200px; margin:0 auto;
+  }
+  footer::before {
+    content:''; display:block; height:1px; margin-bottom:32px;
+    background: linear-gradient(90deg, transparent, var(--border2), transparent);
+  }
+  footer .footer-mark {
+    font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; font-style:italic;
+    background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    letter-spacing:0.04em; display:block; margin-bottom:12px;
+  }
+  footer p { line-height:1.8; }
+  footer span { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:500; }
+
+  /* ── Sparkle animation ───────────────────────────── */
+  @keyframes sparkle {
+    0%,100% { opacity:0; transform:scale(0) rotate(0deg); }
+    50%      { opacity:1; transform:scale(1) rotate(180deg); }
+  }
+  .sparkle {
+    display:inline-block; animation:sparkle 2s ease-in-out infinite;
+  }
+  .sparkle:nth-child(2){ animation-delay:.4s; }
+  .sparkle:nth-child(3){ animation-delay:.8s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media(max-width:768px) {
+    .header-inner { height:58px; }
+    .nav-wrap { top: 58px; padding: 10px 12px 8px; }
+    .nav-btn { padding: 7px clamp(8px,2vw,14px); font-size:11px; gap:4px; }
+    .nav-btn .nav-icon { font-size:12px; }
+  }
+  @media(max-width:480px) {
+    .logo-text { font-size:14px; }
+    .step-header { gap:10px; padding:14px 16px; }
+    .step-body { padding:0 16px; }
+    .step-card.open .step-body { padding:0 16px 16px; }
+    .prod-card { padding:18px; }
+    .midday-card { padding:18px; }
+    .tip-banner { padding:14px 16px; }
+  }
+
+  /* ── Scrollbar ───────────────────────────────────── */
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--accent3); border-radius:3px; }
+
+  /* ── Category Filter for Products ─────────────────── */
+  .prod-card { transition: opacity 0.3s, transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s; }
+  .prod-card.hidden { display:none; }
+</style>
+</head>
+<body>
+
+<div class="orb-container">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-mark">✦</div>
+      <div class="logo-text">My <em>Beauty</em> Ritual</div>
+    </div>
+    <div class="toggle-wrap">
+      <span class="moon" id="themeIcon">☀️</span>
+      <div class="toggle" id="themeToggle" role="button" aria-label="Toggle dark mode" tabindex="0"></div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-wrap">
+  <div class="nav-track" id="navTrack">
+    <div class="nav-glider" id="navGlider"></div>
+    <button class="nav-btn active" data-section="skintype"><span class="nav-icon">🫧</span>Skin Type</button>
+    <button class="nav-btn" data-section="morning"><span class="nav-icon">☀️</span>Morning</button>
+    <button class="nav-btn" data-section="evening"><span class="nav-icon">🌙</span>Evening</button>
+    <button class="nav-btn" data-section="midday"><span class="nav-icon">✨</span>Mid-Day</button>
+    <button class="nav-btn" data-section="products"><span class="nav-icon">🧴</span>Products</button>
+    <button class="nav-btn" data-section="makeup"><span class="nav-icon">💄</span>Makeup</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- ══════════════ SKIN TYPE SECTION ══════════════ -->
+  <section class="section active" id="skintype">
+
+    <div class="skintype-hero">
+      <h2>Your Skin Profile</h2>
+      <h1>You Have <em>Combination</em> Skin</h1>
+      <p>Combination skin is one of the most common — and most misunderstood — skin types. It means different zones of your face have genuinely different needs, and the key to glowing skin is learning to treat each zone appropriately rather than applying a one-size-fits-all approach.</p>
+      <div class="hero-chips">
+        <span class="hero-chip">🛢️ Oily T-Zone</span>
+        <span class="hero-chip">💧 Normal-to-Dry Cheeks</span>
+        <span class="hero-chip">🔄 Zone-Based Care</span>
+        <span class="hero-chip">🌿 Balanced Routine</span>
+        <span class="hero-chip">✨ Achievably Radiant</span>
+      </div>
+    </div>
+
+    <!-- Zone Diagram -->
+    <div class="zone-diagram">
+      <h3>Your Face Zone Map</h3>
+      <div class="subtitle">Tap each zone to understand what your skin is doing there ✦</div>
+      <div class="face-map">
+        <!-- Forehead -->
+        <div class="face-row" style="margin-bottom:6px;">
+          <div class="zone-block zone-oily" style="width:200px;">
+            <span>🛢️</span>
+            <span class="zone-name">Forehead</span>
+            <span class="zone-type">Oily — T-Zone</span>
+          </div>
+        </div>
+        <!-- Upper mid -->
+        <div class="face-row" style="margin-bottom:6px;">
+          <div class="zone-block zone-normal" style="width:80px;">
+            <span>✦</span>
+            <span class="zone-name">Temple</span>
+            <span class="zone-type">Normal</span>
+          </div>
+          <div class="zone-block zone-oily" style="width:80px;">
+            <span>🛢️</span>
+            <span class="zone-name">Nose</span>
+            <span class="zone-type">Oiliest</span>
+          </div>
+          <div class="zone-block zone-normal" style="width:80px;">
+            <span>✦</span>
+            <span class="zone-name">Temple</span>
+            <span class="zone-type">Normal</span>
+          </div>
+        </div>
+        <!-- Cheeks & Chin -->
+        <div class="face-row" style="margin-bottom:6px;">
+          <div class="zone-block zone-dry" style="width:88px;">
+            <span>💧</span>
+            <span class="zone-name">Left Cheek</span>
+            <span class="zone-type">Normal–Dry</span>
+          </div>
+          <div class="zone-block zone-oily" style="width:68px;">
+            <span>🛢️</span>
+            <span class="zone-name">Chin</span>
+            <span class="zone-type">Oily</span>
+          </div>
+          <div class="zone-block zone-dry" style="width:88px;">
+            <span>💧</span>
+            <span class="zone-name">Right Cheek</span>
+            <span class="zone-type">Normal–Dry</span>
+          </div>
+        </div>
+      </div>
+      <div class="zone-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(249,115,22,0.5)"></div> T-Zone (Oily) — Forehead, Nose, Chin</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--accent3);opacity:0.6"></div> Normal — Temples</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(16,185,129,0.5)"></div> Normal-to-Dry — Cheeks</div>
+      </div>
+    </div>
+
+    <!-- What is combination skin -->
+    <div class="divider"><div class="divider-label">✦ UNDERSTANDING YOUR SKIN ✦</div></div>
+    <div class="st-grid">
+
+      <div class="st-card">
+        <span class="st-card-icon">🔬</span>
+        <h3>What Is Combination Skin?</h3>
+        <p>Combination skin is defined by having two or more different skin types coexisting on the face at the same time. Unlike oily skin (oily everywhere) or dry skin (dry everywhere), combination skin is characterised by:</p>
+        <ul>
+          <li>An <strong>oily T-zone</strong> (forehead, nose, and chin) caused by a higher density of sebaceous (oil) glands in that area producing excess sebum.</li>
+          <li><strong>Normal to dry cheeks</strong> that may feel tight, flaky, or rough — especially after cleansing or in cool weather.</li>
+          <li>Pores that appear <strong>visibly enlarged</strong> on the nose and central forehead, but fine or invisible on the cheeks.</li>
+          <li>A tendency toward <strong>shine</strong> in the T-zone by midday while cheeks remain matte or even feel uncomfortable.</li>
+        </ul>
+      </div>
+
+      <div class="st-card">
+        <span class="st-card-icon">🧬</span>
+        <h3>Why Do You Have Combination Skin?</h3>
+        <p>Combination skin is largely genetic — it's the skin type you were born with. However, several factors influence how pronounced the differences between zones are:</p>
+        <ul>
+          <li><strong>Genetics & hormones:</strong> Androgens stimulate sebum production, and the T-zone simply has more sebaceous glands — this is biological.</li>
+          <li><strong>Climate & humidity:</strong> Hot, humid weather amplifies T-zone oiliness; dry, cold air can worsen cheek dryness.</li>
+          <li><strong>Over-cleansing:</strong> Using harsh cleansers strips the entire face, causing the T-zone to overcompensate with even more oil.</li>
+          <li><strong>Skincare mismatch:</strong> Products too rich for the T-zone or too lightweight for the cheeks can exaggerate the imbalance.</li>
+          <li><strong>Diet & stress:</strong> High glycaemic index foods and stress hormones can amplify oiliness in the T-zone.</li>
+        </ul>
+      </div>
+
+      <div class="st-card">
+        <span class="st-card-icon">✨</span>
+        <h3>Signs You Have Combination Skin</h3>
+        <p>You likely have combination skin if you recognise these experiences:</p>
+        <ul>
+          <li>Your T-zone looks <strong>shiny or greasy</strong> by midday but your cheeks do not.</li>
+          <li>You get <strong>blackheads or clogged pores</strong> mainly on and around the nose.</li>
+          <li>Your cheeks feel <strong>tight, slightly rough, or flaky</strong> in cold weather or after cleansing.</li>
+          <li>Finding moisturisers is hard — lighter ones feel insufficient on cheeks; richer ones feel greasy on the T-zone.</li>
+          <li>Breakouts appear mainly on the forehead, nose, and chin — rarely on the cheeks.</li>
+          <li>Makeup tends to <strong>slide off</strong> the nose and forehead but clings or looks patchy on the cheeks.</li>
+        </ul>
+      </div>
+
+      <div class="st-card">
+        <span class="st-card-icon">💜</span>
+        <h3>The Core Skincare Philosophy</h3>
+        <p>The golden rule for combination skin is <strong>balance without extremes</strong>. Your routine should:</p>
+        <ul>
+          <li><strong>Cleanse gently</strong> — never strip. A low-pH, gentle cleanser preserves the acid mantle across all zones.</li>
+          <li><strong>Hydrate everywhere</strong> — even oily skin is dehydrated. When the T-zone is dehydrated, it produces even more oil to compensate. Lightweight hydration is essential for the whole face.</li>
+          <li><strong>Multi-mask or spot-treat</strong> where possible — use mattifying treatments on the T-zone and richer ingredients on the cheeks when needed.</li>
+          <li><strong>Protect with SPF daily</strong> — UV damage worsens sebum production and speeds up skin ageing across all zones equally.</li>
+          <li><strong>Use non-comedogenic products</strong> — ingredients that won't clog pores are key, especially for the T-zone.</li>
+        </ul>
+      </div>
+
+      <div class="st-card">
+        <span class="st-card-icon">🌤️</span>
+        <h3>How Your Skin Changes Seasonally</h3>
+        <p>Combination skin is especially sensitive to seasonal shifts — adapt your routine accordingly:</p>
+        <ul>
+          <li><strong>Hot & humid (wet season):</strong> T-zone oiliness intensifies. Use gel moisturisers, blotting papers, and lightweight layers. Double-cleanse more diligently.</li>
+          <li><strong>Hot & dry (dry season / AC-heavy environments):</strong> Cheeks may become dehydrated and flaky while the T-zone remains oily. Add a hydrating serum or toner layer for the cheeks.</li>
+          <li><strong>Cold weather:</strong> Sebum production may decrease slightly overall, but cheeks can become very dry. You may need a richer moisturiser seasonally.</li>
+          <li><strong>Indoors with air conditioning:</strong> AC strips moisture from the air and from your skin — misting and extra hydration layers help maintain comfort.</li>
+        </ul>
+      </div>
+
+      <div class="st-card">
+        <span class="st-card-icon">🎯</span>
+        <h3>Key Ingredients for Combination Skin</h3>
+        <p>These hero ingredients are ideal for combination skin and are present across your current routine:</p>
+        <ul>
+          <li><strong>Niacinamide</strong> — regulates sebum in the T-zone, minimises pores, and brightens tone everywhere.</li>
+          <li><strong>Hyaluronic Acid</strong> — provides lightweight hydration that doesn't trigger oil production.</li>
+          <li><strong>Centella Asiatica</strong> — soothes redness and repairs the barrier without adding heaviness.</li>
+          <li><strong>Ceramides</strong> — rebuild the skin barrier on dry cheek areas while being non-comedogenic for oily zones.</li>
+          <li><strong>Low-pH cleansers</strong> — preserve the skin's natural acid mantle and microbiome across all zones.</li>
+          <li><strong>Snail Secretion Filtrate</strong> — repairs micro-damage, hydrates, and balances without greasiness.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Do's & Don'ts -->
+    <div class="divider"><div class="divider-label">✦ DO'S & DON'TS ✦</div></div>
+    <div class="dos-donts">
+      <div class="do-card">
+        <h4>✓ &nbsp; DO These</h4>
+        <ul>
+          <li>Use a <strong>gentle, pH-balanced cleanser</strong> — no stripping formulas.</li>
+          <li>Apply <strong>lightweight hydration</strong> all over — including the T-zone.</li>
+          <li>Use <strong>gel or water-cream textures</strong> in the morning for the whole face.</li>
+          <li>Blot excess oil mid-day instead of skipping moisturiser.</li>
+          <li>Apply SPF <strong>every single day</strong>, year-round.</li>
+          <li>Focus richer, more nourishing products on the <strong>cheeks specifically</strong> in the PM.</li>
+          <li>Use <strong>non-comedogenic</strong> products to avoid clogging T-zone pores.</li>
+          <li>Stay <strong>consistent</strong> — combination skin responds best to routine stability.</li>
+          <li>Hydrate from the inside — drink adequate water daily.</li>
+        </ul>
+      </div>
+      <div class="dont-card">
+        <h4>✗ &nbsp; AVOID These</h4>
+        <ul>
+          <li><strong>Over-cleansing</strong> or using harsh foaming cleansers — worsens T-zone oiliness.</li>
+          <li>Skipping moisturiser on the T-zone because it's "already oily."</li>
+          <li>Using <strong>heavy, occlusive creams</strong> all over — clogs pores in the T-zone.</li>
+          <li>Applying toners with <strong>alcohol</strong> — strips the barrier and triggers rebound oiliness.</li>
+          <li>Touching your face throughout the day — transfers bacteria and oil.</li>
+          <li>Using <strong>physical exfoliants</strong> too aggressively — causes micro-tears and irritation.</li>
+          <li>Skipping sunscreen on cloudy days or when indoors — UV still penetrates.</li>
+          <li>Trying to <strong>"dry out"</strong> the T-zone — this backfires and increases oil production.</li>
+          <li>Switching products too frequently — give each product <strong>4–6 weeks</strong> to show results.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip-banner">
+      <span class="icon">💡</span>
+      <p><strong>Remember:</strong> Combination skin is not a problem to fix — it's a skin type to <em>understand and work with</em>. Your current routine is already perfectly curated for combination skin, with gentle cleansers, centella-based soothing, ceramide barrier support, lightweight hydration, and daily SPF. You're already doing it right! ✦</p>
+    </div>
+
+  </section>
+
+  <!-- ══════════════ MORNING SECTION ══════════════ -->
+  <section class="section" id="morning">
+    <div class="skin-badge">✦ Combination Skin &nbsp;|&nbsp; Oily T-Zone · Normal-Dry Cheeks</div>
+    <h1 class="page-title">Morning <span>Skincare</span> Ritual</h1>
+    <p class="page-subtitle">Prepare, protect & prime your skin for the day ahead ✦</p>
+    <div class="time-badge am">☀️ &nbsp; A.M. Routine · ~10 min</div>
+
+    <div class="tip-banner">
+      <span class="icon">💜</span>
+      <p><strong>Combination skin tip:</strong> In the morning, keep it light — focus on hydration without overloading the skin. Save heavier treatments for the evening. Always finish with SPF — rain or shine, indoors or out!</p>
+    </div>
+
+    <div class="steps-grid">
+
+      <!-- Step 1 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-info">
+            <div class="step-name">Gentle Cleanse</div>
+            <div class="step-product">Somethinc Low PH Gentle Cleanser  <em>or</em>  Pond's Biome Gel Cera-Hyamino</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> Morning cleansing removes overnight sebum, sweat, and product residue without stripping your moisture barrier — especially important for combination skin.
+            <div class="how">
+              <span>Wet face with <em>lukewarm</em> water — hot water disrupts your skin barrier.</span>
+              <span>Take a pea-sized amount and gently massage in small circular motions for <strong>60 seconds</strong>, focusing on the T-zone (forehead, nose, chin).</span>
+              <span>Rinse thoroughly and gently <em>pat dry</em> with a clean towel — never rub.</span>
+              <span><strong>Choose Pond's Biome</strong> on days when skin feels tight or sensitive; <strong>Choose Somethinc</strong> on days when skin feels oilier.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-info">
+            <div class="step-name">Hydrating Toner</div>
+            <div class="step-product">SOME BY MI Snail Truecica Miracle Repair Toner</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> This toner hydrates, soothes, and preps the skin to absorb subsequent steps better. The snail secretion filtrate and tea tree help keep breakouts at bay.
+            <div class="how">
+              <span>Pour a small amount (5–7 drops) onto your palms or a <em>reusable cotton pad</em>.</span>
+              <span>If using palms: gently <strong>press and pat</strong> into skin — do not rub. Press into cheeks, forehead, chin.</span>
+              <span>Focus extra attention on dry cheek areas by pressing repeatedly until absorbed.</span>
+              <span>Let absorb for <strong>30–60 seconds</strong> before moving on.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-info">
+            <div class="step-name">Centella Ampoule</div>
+            <div class="step-product">SKIN1004 Madagascar Centella Ampoule</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> A lightweight, soothing serum that calms redness, soothes any inflammation, and reinforces your skin barrier — perfect for combination skin prone to occasional sensitivity.
+            <div class="how">
+              <span>Dispense <strong>3–4 drops</strong> onto fingertips.</span>
+              <span>Warm between palms for a second, then <em>press gently</em> all over the face.</span>
+              <span>Don't forget the <strong>neck and jawline</strong>.</span>
+              <span>Tap lightly to aid absorption. Wait <strong>1–2 minutes</strong> before next step.</span>
+              <span>⚡ <em>Optional in AM if short on time</em> — prioritize this step in the evening.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div class="step-info">
+            <div class="step-name">Lightweight Moisturizer</div>
+            <div class="step-product">Somethinc Ceramic Skin Moisturizer Gel  <em>(first choice)</em>  or The Originote Hyalucera</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> Locking in hydration before SPF is essential. A gel formula is ideal in the morning because it's lightweight, absorbs fast, and won't pill under sunscreen or makeup.
+            <div class="how">
+              <span><strong>Somethinc Ceramic Gel</strong> is the #1 morning pick — its gel texture sits perfectly under sunscreen and makeup without heaviness.</span>
+              <span><strong>The Originote Hyalucera</strong> is great on dry days or when cheeks feel parched — slightly richer.</span>
+              <span>Take a <em>pea-to-almond</em> sized amount, warm between fingers, and press evenly over face and neck.</span>
+              <span>Allow to absorb for <strong>1–2 minutes</strong>.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">5</div>
+          <div class="step-info">
+            <div class="step-name">Sunscreen — Final Step!</div>
+            <div class="step-product">YOU Physical Sunscreen Sunbrella</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> SPF is the single most important anti-aging and skin-protecting step you can take. A physical (mineral) sunscreen like this one sits on top of the skin and deflects UV rays — gentler on sensitive skin and less likely to clog pores.
+            <div class="how">
+              <span>Apply <strong>generously</strong> — the <em>"2 finger rule"</em>: squeeze sunscreen across two fingers from base to tip for face and neck coverage.</span>
+              <span>Apply as the <strong>very last skincare step</strong>, at least 1 minute after moisturizer.</span>
+              <span>Don't forget <strong>ears, neck, and tops of hands</strong>.</span>
+              <span>Wait <strong>3–5 minutes</strong> before applying makeup to let it set properly.</span>
+              <span>Reapply every <strong>2 hours</strong> when outdoors. See the Mid-Day tab for reapplication tips!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 Makeup Optional -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">6</div>
+          <div class="step-info">
+            <div class="step-name">Makeup (Optional)</div>
+            <div class="step-product">Serum Skin Tint → Cushion Foundation → Blush → Loose Powder</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Makeup order for a flawless base:</strong>
+            <div class="how">
+              <span><strong>Option A — Light Day:</strong> ESQA Serum Skin Tint (patted on fingers for a natural look) → Second Date Loose Powder on T-zone only.</span>
+              <span><strong>Option B — Full Day:</strong> ESQA Serum Skin Tint as base → TIRTIR or SKINTIFIC Cushion Foundation (pressed onto skin, not rubbed) → Second Date Loose Powder on T-zone and under-eye.</span>
+              <span>For cushion: press the puff, don't drag. <em>Build up</em> in thin layers for a more natural, less cakey result.</span>
+              <span>The loose powder is your secret weapon for longevity — a light dusting on the T-zone reduces shine and helps everything last all day.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"><div class="divider-label">✦ ROUTINE COMPLETE ✦</div></div>
+    <div class="tip-banner" style="margin-top:0">
+      <span class="icon">⏱️</span>
+      <p><strong>Pro order recap:</strong> Cleanser → Toner → Ampoule → Moisturizer → SPF → (Makeup). Always apply from thinnest to thickest texture. Let each layer absorb before the next!</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ EVENING SECTION ══════════════ -->
+  <section class="section" id="evening">
+    <h1 class="page-title">Evening <span>Recovery</span> Ritual</h1>
+    <p class="page-subtitle">Repair, renew & restore while you sleep ✦</p>
+    <div class="time-badge pm">🌙 &nbsp; P.M. Routine · ~15 min</div>
+
+    <div class="tip-banner">
+      <span class="icon">💙</span>
+      <p><strong>Evening philosophy:</strong> Nighttime is when your skin does its heaviest repair work. This is the time for your richer, more active products. Don't rush — take your time with each step so your skin can fully absorb and benefit. Double cleansing is a must if you wore makeup or sunscreen.</p>
+    </div>
+
+    <div class="steps-grid">
+
+      <!-- Step 1 Double Cleanse -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-info">
+            <div class="step-name">Double Cleanse</div>
+            <div class="step-product">First Cleanse (Micellar/Oil) → Somethinc Low PH  or  Pond's Biome</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why Double Cleanse?</strong> Sunscreen and makeup are oil-based and won't fully dissolve with a water-based cleanser alone. A two-step cleanse ensures a truly clean canvas for your actives.
+            <div class="how">
+              <span><strong>First Cleanse:</strong> Use a micellar water, cleansing balm, or oil cleanser. Apply to <em>dry skin</em>, massage gently to dissolve SPF and makeup. Rinse with warm water.</span>
+              <span><strong>Second Cleanse (Somethinc Low pH):</strong> Now use your water-based cleanser on damp skin to remove any remaining residue. Massage 60 seconds, rinse thoroughly.</span>
+              <span><strong>No makeup day?</strong> Skip to single cleanse with Pond's Biome Gel — its ceramide and hyaluronic acid formula is extra gentle for bare skin.</span>
+              <span>Pat dry with a <em>fresh, clean</em> towel. Your skin should feel clean but not tight.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-info">
+            <div class="step-name">Repair Toner</div>
+            <div class="step-product">SOME BY MI Snail Truecica Miracle Repair Toner</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> After cleansing, your skin is slightly dehydrated. This toner instantly replenishes hydration, soothes any post-cleanse sensitivity, and preps your skin to absorb the ampoule and cream more effectively.
+            <div class="how">
+              <span>Apply a <em>slightly more generous</em> amount than in the morning — evening skin can be slightly more receptive.</span>
+              <span>Use the <strong>7-skin method</strong> on especially dry nights: apply 3–5 thin layers one by one, letting each absorb before the next.</span>
+              <span>Gently pat — the snail secretion and truecica begin working to repair micro-damage from the day.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-info">
+            <div class="step-name">Centella Ampoule (Essential!)</div>
+            <div class="step-product">SKIN1004 Madagascar Centella Ampoule</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> This is your key treatment step. Centella Asiatica is packed with asiaticoside, madecassoside, and asiatic acid — powerful wound-healing compounds that repair the skin barrier, fade post-acne marks, and reduce inflammation overnight.
+            <div class="how">
+              <span>Apply <strong>4–5 drops</strong> — a little more generously than the morning.</span>
+              <span>Focus on any <em>redness, blemishes, or hyperpigmentation</em> areas by tapping with your ring finger.</span>
+              <span>Allow to <em>fully absorb</em> — wait <strong>2 minutes</strong>.</span>
+              <span>This step is non-negotiable in the PM — it does its best barrier-repairing work overnight.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div class="step-info">
+            <div class="step-name">Brightening Capsule Cream</div>
+            <div class="step-product">Skin1004 Madagascar Centella Tone Brightening Capsule Cream</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> This concentrated capsule cream delivers a potent boost of brightening actives while the skin undergoes its natural overnight renewal cycle. The centella base soothes while the brightening complex works on uneven tone and dullness.
+            <div class="how">
+              <span>Twist open or press the capsule — apply the entire capsule or <em>half</em> depending on your skin's needs that evening.</span>
+              <span>Press and pat onto skin — layering on top of the ampoule while it's still slightly tacky enhances absorption.</span>
+              <span>Focus on cheeks and any hyperpigmentation areas — where brightening benefits are most needed.</span>
+              <span>⚡ <em>This is your PM-only treatment step</em> — no need to use in the morning.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step-card" onclick="toggleStep(this)">
+        <div class="step-header">
+          <div class="step-num">5</div>
+          <div class="step-info">
+            <div class="step-name">Nourishing Moisturizer</div>
+            <div class="step-product">Glad2Glow Ceramide Moisturizer (PM pick)  or  The Originote Hyalucera</div>
+          </div>
+          <div class="step-arrow">›</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tip">
+            <strong>Why?</strong> Sealing everything in with a richer moisturizer at night locks in your treatments and prevents transepidermal water loss (TEWL) while you sleep — so you wake up with plump, soft skin.
+            <div class="how">
+              <span><strong>Glad2Glow Ceramide</strong> is the top PM pick — ceramides actively rebuild your skin barrier overnight, exactly when skin does its most intensive repair.</span>
+              <span><strong>The Originote Hyalucera</strong> is great for mixing things up — the ceramide + hyaluronic acid duo gives both barrier support and deep hydration.</span>
+              <span>Use a <em>slightly more generous</em> amount than morning — a thin layer all over, pressing gently into skin.</span>
+              <span>Extend down to the <strong>neck and décolletage</strong> — skincare shouldn't stop at the jaw!</span>
+              <span>No SPF needed at night — this is the last step! 🌙</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"><div class="divider-label">✦ SLEEP & REPAIR ✦</div></div>
+    <div class="tip-banner" style="margin-top:0">
+      <span class="icon">🌙</span>
+      <p><strong>Sleep hygiene for better skin:</strong> Sleep on a <strong>clean, silk or satin pillowcase</strong> to reduce friction. Aim for <strong>7–8 hours</strong> — growth hormone peaks during deep sleep, which is prime skin repair time. Keep a <strong>humidifier</strong> nearby for overnight hydration boost!</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ MID-DAY SECTION ══════════════ -->
+  <section class="section" id="midday">
+    <h1 class="page-title">Mid-Day <span>Refresh</span> & Reapply</h1>
+    <p class="page-subtitle">Keep your skin protected and your look fresh throughout the day ✦</p>
+    <div class="time-badge mid">✨ &nbsp; Reapply every 2 hrs outdoors</div>
+
+    <div class="tip-banner">
+      <span class="icon">☀️</span>
+      <p><strong>Why reapply?</strong> Sunscreen breaks down from UV exposure, sweat, sebum, and rubbing. For proper protection, reapply every <strong>2 hours outdoors</strong> and after <strong>swimming or sweating</strong>. When wearing makeup, cushion foundations with SPF can double as convenient reapplication tools!</p>
+    </div>
+
+    <div class="midday-grid">
+
+      <div class="midday-card">
+        <h3><span class="emoji">🌞</span> SPF Reapplication</h3>
+        <p>Maintaining SPF protection throughout the day is just as important as the initial application. Here's how to reapply over bare skin or makeup:</p>
+        <div class="midday-steps">
+          <div class="midday-step">
+            <div class="midday-step-num">1</div>
+            <div class="midday-step-text"><strong>Bare skin day:</strong> Simply reapply YOU Physical Sunscreen Sunbrella directly — use the 2-finger rule amount, press gently into skin.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">2</div>
+            <div class="midday-step-text"><strong>Over makeup:</strong> The cleanest method is to use a <em>cushion foundation with SPF</em> (TIRTIR or SKINTIFIC) — gently press, don't drag, for a top-up that refreshes coverage and adds SPF.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">3</div>
+            <div class="midday-step-text">Alternatively, use a <em>setting spray with SPF</em> or a <em>mineral powder SPF</em> over makeup for the least disruptive reapplication.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">4</div>
+            <div class="midday-step-text">If spending extended time indoors (office, WFH), reapply every <strong>4 hours</strong> minimum — UV rays still penetrate windows.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="midday-card">
+        <h3><span class="emoji">💄</span> Makeup Touch-Up</h3>
+        <p>Refresh your look without disturbing your base by following this smart touch-up sequence:</p>
+        <div class="midday-steps">
+          <div class="midday-step">
+            <div class="midday-step-num">1</div>
+            <div class="midday-step-text"><strong>Blot first:</strong> Use oil blotting paper on the T-zone (forehead, nose, chin) to remove excess sebum before adding any product.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">2</div>
+            <div class="midday-step-text"><strong>Cushion touch-up:</strong> Use TIRTIR Mask Fit Red Cushion or SKINTIFIC Cushion — <em>press lightly</em> only where coverage has faded (typically center of face, around nose).</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">3</div>
+            <div class="midday-step-text"><strong>Set with powder:</strong> A <em>light dusting</em> of Second Date Translucent Loose Powder on T-zone absorbs any lingering shine and sets your touch-up for hours.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">4</div>
+            <div class="midday-step-text"><strong>Blusher refresh:</strong> A light dab of blush on the cheekbones instantly revives a tired-looking face — keep your blush compact in your bag!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="midday-card">
+        <h3><span class="emoji">💧</span> Skin Refresh Spritz</h3>
+        <p>Spraying hydrating mist mid-day gives your skin a moisture boost and makes makeup look fresh again — without disturbing it.</p>
+        <div class="midday-steps">
+          <div class="midday-step">
+            <div class="midday-step-num">1</div>
+            <div class="midday-step-text">Hold a <strong>facial mist</strong> (centella water, rosewater, or hyaluronic acid mist) at arm's length from your face.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">2</div>
+            <div class="midday-step-text">Mist in a <em>figure-8 motion</em> across the face, eyes closed. Let it absorb — don't rub. This refreshes both skin and makeup.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">3</div>
+            <div class="midday-step-text">The SKIN1004 Centella Water is an excellent choice to pair with your existing routine — consistent with your centella skincare system.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="midday-card">
+        <h3><span class="emoji">🎒</span> Touch-Up Kit Essentials</h3>
+        <p>What to keep in your bag for a perfect mid-day refresh on the go:</p>
+        <div class="midday-steps">
+          <div class="midday-step">
+            <div class="midday-step-num">1</div>
+            <div class="midday-step-text"><strong>YOU Sunbrella SPF</strong> — for bare-skin reapplication.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">2</div>
+            <div class="midday-step-text"><strong>TIRTIR or SKINTIFIC Cushion</strong> — for SPF + coverage touch-up in one step.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">3</div>
+            <div class="midday-step-text"><strong>Second Date Loose Powder</strong> — for T-zone shine control and setting.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">4</div>
+            <div class="midday-step-text"><strong>Oil blotting sheets</strong> — prep the canvas before any reapplication for cleaner results.</div>
+          </div>
+          <div class="midday-step">
+            <div class="midday-step-num">5</div>
+            <div class="midday-step-text"><strong>Centella facial mist</strong> — hydration refresher that doubles as a makeup setting spray.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ PRODUCTS SECTION ══════════════ -->
+  <section class="section" id="products">
+    <h1 class="page-title">Skincare <span>Product</span> Library</h1>
+    <p class="page-subtitle">Full ingredient details & benefits for each product ✦</p>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterProds(this,'all')">All Products</button>
+      <button class="filter-btn" onclick="filterProds(this,'cleanse')">Cleansers</button>
+      <button class="filter-btn" onclick="filterProds(this,'toner')">Toner</button>
+      <button class="filter-btn" onclick="filterProds(this,'serum')">Serum / Ampoule</button>
+      <button class="filter-btn" onclick="filterProds(this,'cream')">Creams</button>
+      <button class="filter-btn" onclick="filterProds(this,'moisturizer')">Moisturizers</button>
+      <button class="filter-btn" onclick="filterProds(this,'spf')">Sunscreen</button>
+    </div>
+
+    <div class="products-grid" id="skincareGrid">
+
+      <!-- SOME BY MI Toner -->
+      <div class="prod-card" data-cat="toner">
+        <div class="prod-cat">Toner</div>
+        <div class="prod-name">SOME BY MI Snail Truecica Miracle Repair Toner</div>
+        <div class="prod-desc">A milky, alcohol-free toner formulated with Snail Secretion Filtrate and the brand's proprietary Truecica complex (tea tree + centella). Designed to hydrate, repair, and calm blemish-prone and sensitive skin while refining pores and improving overall texture.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🐌 Skin Repair</span>
+          <span class="benefit-chip">💧 Deep Hydration</span>
+          <span class="benefit-chip">🌿 Pore Minimizing</span>
+          <span class="benefit-chip">🔥 Anti-Inflammatory</span>
+          <span class="benefit-chip">✨ Brightening</span>
+          <span class="benefit-chip">🛡️ Barrier Support</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Snail Secretion Filtrate (regeneration, anti-aging), Tea Tree Extract (antibacterial, anti-acne), Centella Asiatica (soothing, healing), Niacinamide (brightening, pore-tightening), Beta-Glucan (deep hydration), Hyaluronic Acid (moisture retention), Allantoin (soothing, cell renewal).
+        </div>
+      </div>
+
+      <!-- Skin1004 Capsule Cream -->
+      <div class="prod-card" data-cat="cream">
+        <div class="prod-cat">Brightening Cream</div>
+        <div class="prod-name">Skin1004 Madagascar Centella Tone Brightening Capsule Cream</div>
+        <div class="prod-desc">An innovative encapsulated cream where brightening actives are preserved in micro-capsules until the moment of application. When applied, the capsules burst to release potent centella extract and vitamin C derivatives, working together to even skin tone, reduce hyperpigmentation, and deliver radiance. Lightweight but intensely effective.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">☀️ Tone Brightening</span>
+          <span class="benefit-chip">💜 Hyperpigmentation</span>
+          <span class="benefit-chip">🌿 Centella Soothing</span>
+          <span class="benefit-chip">✨ Radiance Boost</span>
+          <span class="benefit-chip">🛡️ Antioxidant</span>
+          <span class="benefit-chip">💧 Moisture Lock</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Centella Asiatica Extract (Madagascar-sourced, high purity), Niacinamide (brightening, barrier-strengthening), Ascorbic Acid / Vitamin C Derivatives (antioxidant, collagen-stimulating), Madecassoside (skin repair), Hyaluronic Acid (plumping), Encapsulated brightening complex (concentrated, time-released actives).
+        </div>
+      </div>
+
+      <!-- SKIN1004 Ampoule -->
+      <div class="prod-card" data-cat="serum">
+        <div class="prod-cat">Ampoule / Serum</div>
+        <div class="prod-name">SKIN1004 Madagascar Centella Ampoule</div>
+        <div class="prod-desc">One of the most iconic centella products in K-beauty. This near-100% Centella Asiatica water-based ampoule is sourced from the pristine volcanic soils of Madagascar, ensuring exceptional purity and potency. A true cult-favorite for all skin types — especially sensitive, acne-prone, or irritated skin. Lightweight, instantly absorbing, and incredibly soothing.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🌿 100% Centella</span>
+          <span class="benefit-chip">🔥 Anti-Redness</span>
+          <span class="benefit-chip">🛡️ Barrier Repair</span>
+          <span class="benefit-chip">💧 Intense Soothing</span>
+          <span class="benefit-chip">🌸 Post-Acne Healing</span>
+          <span class="benefit-chip">⚡ Anti-Inflammatory</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Centella Asiatica Extract ~100% (primary base), Asiaticoside (wound-healing, anti-inflammatory), Madecassoside (skin barrier repair), Asiatic Acid (collagen synthesis), Madecassic Acid (antioxidant protection). Notably free of fragrance, alcohol, essential oils, and irritants.
+        </div>
+      </div>
+
+      <!-- Somethinc Low pH -->
+      <div class="prod-card" data-cat="cleanse">
+        <div class="prod-cat">Cleanser</div>
+        <div class="prod-name">Somethinc Low PH Gentle Cleanser</div>
+        <div class="prod-desc">A pH-balanced (around 5.0–6.0) water-based facial cleanser that mirrors the skin's natural pH, preserving the acid mantle and microbiome. Free of sulfates, parabens, and alcohol — it cleanses effectively without stripping moisture, making it ideal as a second cleanse for combination skin.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🧪 Low pH Balanced</span>
+          <span class="benefit-chip">🛡️ Acid Mantle Safe</span>
+          <span class="benefit-chip">💧 Non-Stripping</span>
+          <span class="benefit-chip">🌸 Gentle Formula</span>
+          <span class="benefit-chip">🔒 Barrier Friendly</span>
+          <span class="benefit-chip">🧬 Microbiome Safe</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Amino Acid-based surfactants (gentle cleansing agents), Allantoin (soothing), Panthenol / Vitamin B5 (healing, hydrating), Glycerin (humectant, moisture-drawing), Citric Acid (pH adjustment, mild AHA), free of: SLS, SLES, alcohol, parabens, fragrance.
+        </div>
+      </div>
+
+      <!-- Pond's Biome -->
+      <div class="prod-card" data-cat="cleanse">
+        <div class="prod-cat">Cleanser</div>
+        <div class="prod-name">Pond's Biome Gel Cera-Hyamino Gentle Cleanser</div>
+        <div class="prod-desc">A next-generation gel cleanser that goes beyond cleansing to actively nourish the skin. Formulated with ceramides, hyaluronic acid, and amino acids, this cleanser supports the skin's biome (natural microbiome) while cleansing away impurities. The gel texture transforms to a lightweight foam, leaving skin clean, hydrated, and balanced.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🧬 Biome Support</span>
+          <span class="benefit-chip">💧 Hyaluronic Acid</span>
+          <span class="benefit-chip">🧱 Ceramide Infused</span>
+          <span class="benefit-chip">🌿 Amino Acids</span>
+          <span class="benefit-chip">💦 Gel-to-Foam</span>
+          <span class="benefit-chip">🛡️ Barrier Protect</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Ceramide NP + AP + EOP (barrier repair trinity), Hyaluronic Acid (intense hydration), Amino Acids (skin-identical cleansing), Niacinamide (pore-minimizing, brightening), Glycerin (moisture-binding), Prebiotics/Probiotic ferment (microbiome balancing).
+        </div>
+      </div>
+
+      <!-- Glad2Glow -->
+      <div class="prod-card" data-cat="moisturizer">
+        <div class="prod-cat">Moisturizer</div>
+        <div class="prod-name">Glad2Glow Ceramide Moisturizer</div>
+        <div class="prod-desc">A barrier-first moisturizer centered around ceramides — the lipids that naturally make up ~50% of the skin's barrier. This formula replenishes ceramide levels that deplete with age, environmental stress, and cleansing, helping to rebuild the protective skin barrier, reduce sensitivity, and lock in moisture. Ideal for evening use or on days when skin feels compromised.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🧱 Barrier Rebuild</span>
+          <span class="benefit-chip">💧 Moisture Lock</span>
+          <span class="benefit-chip">🛡️ Ceramide Rich</span>
+          <span class="benefit-chip">🌸 Sensitivity Reduce</span>
+          <span class="benefit-chip">🌙 PM Repair</span>
+          <span class="benefit-chip">✨ Plumping</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Ceramide Complex (NP, AP, EOP — restores lipid barrier), Hyaluronic Acid (hydration layers), Niacinamide (brightening + barrier strengthening), Panthenol (soothing, healing), Glycerin (humectant), Cholesterol + Fatty Acids (barrier lipid replenishment).
+        </div>
+      </div>
+
+      <!-- The Originote Hyalucera -->
+      <div class="prod-card" data-cat="moisturizer">
+        <div class="prod-cat">Moisturizer</div>
+        <div class="prod-name">The Originote Hyalucera Moisturizer</div>
+        <div class="prod-desc">A dual-action moisturizer combining the hydrating power of hyaluronic acid with the barrier-sealing properties of ceramides. "Hyalucera" — Hyaluron + Ceramide — delivers both immediate surface hydration and deep structural barrier repair. Suitable for both morning and evening, with a texture that works for combination skin without feeling heavy on the T-zone.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">💧 Multi-Level Hydration</span>
+          <span class="benefit-chip">🧱 Ceramide Barrier</span>
+          <span class="benefit-chip">🌿 Dual-Action</span>
+          <span class="benefit-chip">🌸 AM/PM Use</span>
+          <span class="benefit-chip">✨ Plump + Glow</span>
+          <span class="benefit-chip">🛡️ Long-Lasting</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Hyaluronic Acid (multi-molecular weight — surface + deep hydration), Ceramide (barrier lipid restoration), Niacinamide (pore-refining, brightening), Panthenol B5 (soothing, healing), Glycerin (moisture-binding), Adenosine (anti-wrinkle, firming).
+        </div>
+      </div>
+
+      <!-- Somethinc Ceramic Gel -->
+      <div class="prod-card" data-cat="moisturizer">
+        <div class="prod-cat">Gel Moisturizer</div>
+        <div class="prod-name">Somethinc Ceramic Skin Moisturizer Gel</div>
+        <div class="prod-desc">A lightweight, water-gel moisturizer formulated with ceramides for combination skin types that need hydration without heaviness. The gel texture melts into skin instantly, delivering ceramic skin protection and smooth, matte-finish hydration. Perfect as a morning moisturizer under SPF and makeup due to its non-greasy, fast-absorbing formula.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">💧 Lightweight Gel</span>
+          <span class="benefit-chip">🧱 Ceramide Care</span>
+          <span class="benefit-chip">✨ Non-Greasy</span>
+          <span class="benefit-chip">🌿 Fast Absorbing</span>
+          <span class="benefit-chip">🎨 Makeup Friendly</span>
+          <span class="benefit-chip">🧬 Combo Skin Ideal</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Ceramide Complex (barrier support), Centella Asiatica (soothing), Hyaluronic Acid (surface hydration), Niacinamide (pore-minimizing), Allantoin (calming), Water-gel base (lightweight, non-comedogenic delivery system).
+        </div>
+      </div>
+
+      <!-- YOU Sunscreen -->
+      <div class="prod-card" data-cat="spf">
+        <div class="prod-cat">Sunscreen SPF</div>
+        <div class="prod-name">YOU Physical Sunscreen Sunbrella</div>
+        <div class="prod-desc">A mineral (physical) sunscreen that uses zinc oxide and/or titanium dioxide as its UV filters — sitting on top of the skin to physically reflect and scatter UV rays, rather than absorbing them chemically. This makes it ideal for sensitive and combination skin types. Physical sunscreens provide immediate protection upon application and are less likely to cause breakouts or irritation compared to chemical filters.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">☀️ Physical UV Reflect</span>
+          <span class="benefit-chip">🛡️ Broad Spectrum</span>
+          <span class="benefit-chip">🌸 Sensitive-Safe</span>
+          <span class="benefit-chip">💆 No Irritation</span>
+          <span class="benefit-chip">⚡ Instant Protection</span>
+          <span class="benefit-chip">🧬 Non-Comedogenic</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients:</strong><br>
+          Zinc Oxide and/or Titanium Dioxide (physical UV filters — UVA + UVB broad spectrum), Niacinamide (additional skin benefits), Hyaluronic Acid (hydration under SPF), Centella Asiatica (soothing), Silica (smoothing, reduces white cast). Apply 2 fingers worth; reapply every 2 hours.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ MAKEUP SECTION ══════════════ -->
+  <section class="section" id="makeup">
+    <div class="makeup-header">
+      <h1 class="page-title">My <span>Makeup</span> Collection</h1>
+    </div>
+    <p class="page-subtitle">Full details, shades & tips for every makeup product ✦</p>
+
+    <div class="tip-banner">
+      <span class="icon">💄</span>
+      <p><strong>Makeup philosophy for combination skin:</strong> Always apply a light moisturizer + SPF before makeup. Use the cushion applicator with a <em>pressing motion</em>, never rubbing — this builds coverage without removing layers underneath. Set the T-zone with loose powder to control shine throughout the day.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- SKINTIFIC Cushion -->
+      <div class="prod-card" style="--c1:#f9a8d4;--c2:#c4b5fd;">
+        <div class="prod-cat" style="background:linear-gradient(135deg,#db2777,#7c3aed)">Cushion Foundation</div>
+        <div class="prod-name">SKINTIFIC Cover Glow Perfect Cushion Foundation</div>
+        <div class="prod-shade">
+          <div class="shade-dot" style="background:#f5d9c5;"></div>
+          Shade: Vanilla
+        </div>
+        <div class="prod-desc">A full-coverage cushion foundation that combines skincare benefits with flawless makeup coverage. Features a "Cover Glow" formula that delivers a luminous, skin-like finish while infusing the skin with hydration and barrier-care actives. The cushion applicator allows for buildable coverage — sheer to full — with a natural glow finish that looks like skin, not makeup.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">✨ Full Coverage</span>
+          <span class="benefit-chip">💧 Hydrating Formula</span>
+          <span class="benefit-chip">🌟 Luminous Finish</span>
+          <span class="benefit-chip">🧬 Skincare Infused</span>
+          <span class="benefit-chip">🎨 Buildable</span>
+          <span class="benefit-chip">☀️ SPF Protection</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients & Notes:</strong><br>
+          Hyaluronic Acid (hydrating wear), Niacinamide (skin-evening), SPF (UV protection during wear), Squalane (comfort + glow), Micro-coverage pigments. <br><br>
+          <strong>Shade Vanilla:</strong> A warm neutral with light-medium coverage. Best for NC15–NC20 undertones. Can be sheered out for everyday or built up for events. Pairs beautifully with ESQA Skin Tint as a base.
+        </div>
+      </div>
+
+      <!-- TIRTIR -->
+      <div class="prod-card">
+        <div class="prod-cat" style="background:linear-gradient(135deg,#dc2626,#7c3aed)">Cushion Foundation</div>
+        <div class="prod-name">TIRTIR Mask Fit Red Cushion</div>
+        <div class="prod-shade">
+          <div class="shade-dot" style="background:#f7e8de;"></div>
+          Shade: 17C Porcelain
+        </div>
+        <div class="prod-desc">The cult-favorite K-beauty cushion known for its "Mask Fit" technology — formulated to adhere to the skin like a second skin, ensuring the foundation stays in place through movement, humidity, and sweat. The iconic red cushion case contains a high-pigment, long-wearing formula that delivers a natural satin-matte finish. Beloved for its exceptional longevity and skin-flattering coverage.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🔒 Long-Wearing</span>
+          <span class="benefit-chip">💧 Mask Fit Tech</span>
+          <span class="benefit-chip">🌟 Satin-Matte</span>
+          <span class="benefit-chip">✨ High Pigment</span>
+          <span class="benefit-chip">💆 Smooth Finish</span>
+          <span class="benefit-chip">☀️ SPF 40+ PA+++</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients & Notes:</strong><br>
+          Filmogenic polymers (Mask Fit long-wear), Hyaluronic Acid, Ceramide (skincare cushion), SPF 40 PA+++ (excellent UV protection). <br><br>
+          <strong>Shade 17C Porcelain:</strong> The lightest cool-toned shade — fair with cool/pink undertones. Ideal for very fair complexions. Pairs with the ESQA Skin Tint vanilla shade for a seamless, skin-like base.
+        </div>
+      </div>
+
+      <!-- ESQA Skin Tint -->
+      <div class="prod-card">
+        <div class="prod-cat" style="background:linear-gradient(135deg,#d97706,#7c3aed)">Serum Skin Tint</div>
+        <div class="prod-name">ESQA Minimalist Blurring Serum Skin Tint</div>
+        <div class="prod-shade">
+          <div class="shade-dot" style="background:#f2d5b8;"></div>
+          Shade: Vanilla
+        </div>
+        <div class="prod-desc">A hybrid serum-foundation that blurs imperfections and provides a natural, "your skin but better" finish. Lighter than traditional foundation, the skin tint can be worn alone for a minimalist, fresh look or used as a first layer underneath cushion foundation to extend wear, even out texture, and create a more natural appearance. Contains blurring and serum actives for a skincare-meets-makeup experience.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🌸 Skin Tint Sheer</span>
+          <span class="benefit-chip">✨ Blurring Effect</span>
+          <span class="benefit-chip">💧 Serum-Infused</span>
+          <span class="benefit-chip">🎨 Light Coverage</span>
+          <span class="benefit-chip">🌟 Natural Finish</span>
+          <span class="benefit-chip">🧬 Skincare Hybrid</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients & Notes:</strong><br>
+          Serum actives (Hyaluronic Acid, skin-brightening), Silica (blurring pores, smoothing skin texture), Lightweight pigment dispersion (buildable sheer tint). <br><br>
+          <strong>Shade Vanilla:</strong> A warm, light neutral — perfect for light-medium skin with warm or neutral undertones. Looks incredibly natural solo. As a base under SKINTIFIC or TIRTIR cushion, it diffuses the line between "makeup" and skin.
+        </div>
+      </div>
+
+      <!-- Second Date Powder -->
+      <div class="prod-card">
+        <div class="prod-cat" style="background:linear-gradient(135deg,#6b7280,#374151)">Loose Powder</div>
+        <div class="prod-name">Second Date Loose Powder</div>
+        <div class="prod-shade">
+          <div class="shade-dot" style="background:rgba(245,240,235,0.7); border:1.5px solid var(--border2);"></div>
+          Shade: Translucent
+        </div>
+        <div class="prod-desc">A finely-milled translucent loose powder that sets foundation and concealer without adding extra coverage or altering shade. Acts as the final sealing step for makeup — locking in your base, controlling oil production, minimizing the appearance of pores, and extending the wear of everything underneath. The translucent formula is universally flattering and especially effective for combination skin's T-zone.</div>
+        <div class="prod-benefits">
+          <span class="benefit-chip">🔒 Sets Makeup</span>
+          <span class="benefit-chip">✨ Translucent</span>
+          <span class="benefit-chip">💆 Oil Control</span>
+          <span class="benefit-chip">🌸 Pore Blurring</span>
+          <span class="benefit-chip">🌟 Universal Shade</span>
+          <span class="benefit-chip">⏰ Extends Wear</span>
+        </div>
+        <div class="prod-ings">
+          <strong>Key Ingredients & Notes:</strong><br>
+          Silica (oil absorption, pore blurring), Talc / Mica (setting, silky texture), Dimethicone (smooth application), Titanium Dioxide trace (brightening, slight photo finish). <br><br>
+          <strong>Application tip:</strong> Use a fluffy brush for a light dusting over the entire face, or a small dense brush pressed into T-zone only. For baking (full hold): apply generously under eyes and on T-zone, wait 5 minutes, then dust away for ultra-longevity.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"><div class="divider-label">✦ LOOK COMBINATIONS ✦</div></div>
+
+    <div class="midday-grid" style="margin-top:0">
+      <div class="midday-card">
+        <h3><span class="emoji">🌸</span> Everyday Natural Look</h3>
+        <div class="midday-steps">
+          <div class="midday-step"><div class="midday-step-num">1</div><div class="midday-step-text"><strong>ESQA Skin Tint (Vanilla)</strong> — patted with fingers all over for a sheer, skin-like base</div></div>
+          <div class="midday-step"><div class="midday-step-num">2</div><div class="midday-step-text"><strong>TIRTIR Red Cushion (17C)</strong> — only on areas needing extra coverage (blemishes, redness)</div></div>
+          <div class="midday-step"><div class="midday-step-num">3</div><div class="midday-step-text"><strong>Second Date Loose Powder</strong> — T-zone only, light dusting with fluffy brush</div></div>
+        </div>
+      </div>
+      <div class="midday-card">
+        <h3><span class="emoji">💜</span> Full-Glam Covered Look</h3>
+        <div class="midday-steps">
+          <div class="midday-step"><div class="midday-step-num">1</div><div class="midday-step-text"><strong>ESQA Skin Tint (Vanilla)</strong> — applied all over as a primer/base layer first</div></div>
+          <div class="midday-step"><div class="midday-step-num">2</div><div class="midday-step-text"><strong>SKINTIFIC Cover Glow Cushion (Vanilla)</strong> — built up in thin layers pressing over skin tint</div></div>
+          <div class="midday-step"><div class="midday-step-num">3</div><div class="midday-step-text"><strong>Second Date Loose Powder</strong> — full-face set, "baking" under eyes for longevity</div></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <em class="footer-mark">My Beauty Ritual</em>
+  <p>Crafted with 💜 for <span>combination skin</span> · Your personal beauty ritual guide</p>
+  <p style="margin-top:6px; opacity:0.55; font-size:12px;">Consistency is the secret ingredient to glowing skin ✦</p>
+</footer>
+
+<script>
+  // ── Theme Toggle ───────────────────────────────────
+  const html   = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const icon   = document.getElementById('themeIcon');
+
+  function setTheme(dark) {
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    icon.textContent = dark ? '🌙' : '☀️';
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (!saved && prefersDark)) setTheme(true);
+
+  toggle.addEventListener('click', () => {
+    setTheme(html.getAttribute('data-theme') !== 'dark');
+  });
+  toggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+  });
+
+  // ── Gliding Nav ────────────────────────────────────
+  const navBtns  = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('.section');
+  const glider   = document.getElementById('navGlider');
+  const track    = document.getElementById('navTrack');
+
+  function moveGlider(btn) {
+    const trackRect = track.getBoundingClientRect();
+    const btnRect   = btn.getBoundingClientRect();
+    const scrollLeft = track.scrollLeft;
+    glider.style.left  = (btnRect.left - trackRect.left + scrollLeft) + 'px';
+    glider.style.width = btnRect.width + 'px';
+  }
+
+  function switchSection(target) {
+    navBtns.forEach(b => b.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    const activeBtn = document.querySelector(`.nav-btn[data-section="${target}"]`);
+    const activeSection = document.getElementById(target);
+    if (activeBtn) { activeBtn.classList.add('active'); moveGlider(activeBtn); }
+    if (activeSection) activeSection.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => animateIn(activeSection), 50);
+  }
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => switchSection(btn.dataset.section));
+  });
+
+  // Initial glider position (after fonts load)
+  function initGlider() {
+    const activeBtn = document.querySelector('.nav-btn.active');
+    if (activeBtn) moveGlider(activeBtn);
+  }
+  // Run after layout paint
+  requestAnimationFrame(() => requestAnimationFrame(initGlider));
+  window.addEventListener('resize', initGlider);
+
+  // ── Step Accordion ─────────────────────────────────
+  function toggleStep(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.step-card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+
+  // ── Product Filter ─────────────────────────────────
+  function filterProds(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#skincareGrid .prod-card').forEach(card => {
+      card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
+    });
+  }
+
+  // ── Entrance Animation Stagger ─────────────────────
+  function animateIn(section) {
+    if (!section) return;
+    const cards = section.querySelectorAll('.prod-card, .step-card, .midday-card, .st-card, .skintype-hero, .zone-diagram, .do-card, .dont-card');
+    cards.forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(22px)';
+      setTimeout(() => {
+        card.style.transition = 'opacity 0.45s ease, transform 0.45s cubic-bezier(.22,.68,0,1.2)';
+        card.style.opacity = '';
+        card.style.transform = '';
+      }, i * 55 + 60);
+    });
+  }
+
+  setTimeout(() => animateIn(document.getElementById('skintype')), 120);
+</script>
+</body>
+</html>
