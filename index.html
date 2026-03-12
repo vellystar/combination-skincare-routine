@@ -915,7 +915,7 @@
           <div class="step-num">1</div>
           <div class="step-info">
             <div class="step-name">Gentle Cleanse</div>
-            <div class="step-product">Somethinc Low PH Gentle Cleanser  <em>or</em>  Pond's Biome Gel Cera-Hyamino</div>
+            <div class="step-product">SOME BY MI Snail Truecica Low pH Gel  <em>or</em>  Somethinc Low PH  <em>or</em>  Pond's Biome</div>
           </div>
           <div class="step-arrow">›</div>
         </div>
@@ -926,7 +926,9 @@
               <span>Wet face with <em>lukewarm</em> water — hot water disrupts your skin barrier.</span>
               <span>Take a pea-sized amount and gently massage in small circular motions for <strong>60 seconds</strong>, focusing on the T-zone (forehead, nose, chin).</span>
               <span>Rinse thoroughly and gently <em>pat dry</em> with a clean towel — never rub.</span>
-              <span><strong>Choose Pond's Biome</strong> on days when skin feels tight or sensitive; <strong>Choose Somethinc</strong> on days when skin feels oilier.</span>
+              <span><strong>Choose SOME BY MI Snail Truecica Low pH Gel Cleanser</strong> on most days — the Truecica complex soothes while cleansing, making it ideal for a gentle morning refresh that also repairs your barrier.</span>
+              <span><strong>Choose Somethinc Low pH</strong> on days when the T-zone feels extra oily and you want a slightly deeper clean.</span>
+              <span><strong>Choose Pond's Biome</strong> on days when skin feels tight, sensitive, or reactive — its ceramide-rich formula is the most nourishing of the three.</span>
             </div>
           </div>
         </div>
@@ -1077,7 +1079,7 @@
           <div class="step-num">1</div>
           <div class="step-info">
             <div class="step-name">Double Cleanse</div>
-            <div class="step-product">First Cleanse (Micellar/Oil) → Somethinc Low PH  or  Pond's Biome</div>
+            <div class="step-product">First Cleanse (Micellar/Oil) → SOME BY MI Snail Low pH  <em>or</em>  Somethinc  <em>or</em>  Pond's Biome</div>
           </div>
           <div class="step-arrow">›</div>
         </div>
@@ -1086,9 +1088,9 @@
             <strong>Why Double Cleanse?</strong> Sunscreen and makeup are oil-based and won't fully dissolve with a water-based cleanser alone. A two-step cleanse ensures a truly clean canvas for your actives.
             <div class="how">
               <span><strong>First Cleanse:</strong> Use a micellar water, cleansing balm, or oil cleanser. Apply to <em>dry skin</em>, massage gently to dissolve SPF and makeup. Rinse with warm water.</span>
-              <span><strong>Second Cleanse (Somethinc Low pH):</strong> Now use your water-based cleanser on damp skin to remove any remaining residue. Massage 60 seconds, rinse thoroughly.</span>
-              <span><strong>No makeup day?</strong> Skip to single cleanse with Pond's Biome Gel — its ceramide and hyaluronic acid formula is extra gentle for bare skin.</span>
-              <span>Pat dry with a <em>fresh, clean</em> towel. Your skin should feel clean but not tight.</span>
+              <span><strong>Second Cleanse — Best pick: SOME BY MI Snail Truecica Miracle Repair Low pH Gel Cleanser.</strong> Its low pH ~5.5 and Truecica complex makes it the ideal second cleanse — it removes remaining residue while simultaneously soothing and repairing the skin after cleansing. Massage on damp skin for 60 seconds, rinse thoroughly.</span>
+              <span><strong>Alternative second cleanse:</strong> Somethinc Low pH on oilier evenings for a slightly deeper cleanse, or Pond's Biome on no-makeup, sensitive-skin days for its extra ceramide nourishment.</span>
+              <span>Pat dry with a <em>fresh, clean</em> towel. Your skin should feel clean but never tight or stripped.</span>
             </div>
           </div>
         </div>
@@ -1703,6 +1705,15 @@
     const activeSection = document.getElementById(target);
     if (activeBtn) { activeBtn.classList.add('active'); moveGlider(activeBtn); }
     if (activeSection) activeSection.classList.add('active');
+
+    // Always reset product filter to "All" when entering Products tab
+    if (target === 'products') {
+      document.querySelectorAll('#skincareGrid .prod-card').forEach(c => c.classList.remove('hidden'));
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      const allBtn = document.querySelector('.filter-btn[onclick*="all"]');
+      if (allBtn) allBtn.classList.add('active');
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => animateIn(activeSection), 50);
   }
@@ -1750,6 +1761,9 @@
       }, i * 55 + 60);
     });
   }
+
+  // Ensure all product cards visible on load
+  document.querySelectorAll('#skincareGrid .prod-card').forEach(c => c.classList.remove('hidden'));
 
   setTimeout(() => animateIn(document.getElementById('skintype')), 120);
 </script>
