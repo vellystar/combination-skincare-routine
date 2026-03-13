@@ -259,6 +259,7 @@
   .tag-sunscreen{ background: rgba(159,211,245,0.2); color: #3090c0; }
   .tag-foundation{background: rgba(247,197,222,0.2); color: #c060a0; }
   .tag-concealer{ background: rgba(220,200,255,0.2); color: #8050c0; }
+  .tag-mist     { background: rgba(159,211,245,0.2); color: #2888b8; }
   .tag-blush    { background: rgba(255,180,180,0.2); color: #c06060; }
   .tag-powder   { background: rgba(220,210,200,0.2); color: #908070; }
 
@@ -475,6 +476,7 @@
       <button class="nav-btn" onclick="showSection('morning')">☀️ Morning</button>
       <button class="nav-btn" onclick="showSection('evening')">🌙 Evening</button>
       <button class="nav-btn" onclick="showSection('midday')">🌤 Mid-day</button>
+      <button class="nav-btn" onclick="showSection('makeuproutine')">💋 Makeup Routine</button>
     </nav>
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
   </div>
@@ -1015,6 +1017,59 @@
       </div>
     </div><!-- /setting -->
 
+    <div class="category-label">💨 Setting Mists</div>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-header">
+          <span class="product-tag tag-mist">Setting Mist · Matte</span>
+          <h3>Aqua-Beauty Protecting Mist Matte-Finish</h3>
+          <div class="product-brand">PIXY</div>
+        </div>
+        <div class="product-body">
+          <p>A setting mist with a matte-finish formula designed to lock makeup in place while controlling shine throughout the day. Infused with aqua beauty actives that keep skin feeling fresh and hydrated even as it mats down excess oil — a dream product for combination skin's oily T-zone. Spritz after finishing your makeup for a long-lasting, shine-free look.</p>
+          <ul class="benefits-list">
+            <li>Matte-finish formula controls shine and sebum on T-zone</li>
+            <li>Locks makeup in place for extended wear</li>
+            <li>Aqua-infused — keeps skin feeling refreshed, not dry</li>
+            <li>Helps blur the look of pores for a smooth, airbrushed finish</li>
+            <li>Lightweight mist — doesn't disturb or move the makeup beneath</li>
+            <li>Great for humid climates where makeup tends to slide</li>
+            <li>Can replace or reduce the need for excess loose powder</li>
+          </ul>
+          <div class="how-to">
+            <div class="how-to-title">✦ How to Use</div>
+            <p>Hold 20–25cm from face after completing your full makeup look. Close eyes and spray in a sweeping motion (left to right, then up to down) to cover evenly. Let it dry naturally — do NOT touch your face while it sets. Use as the final step of your makeup routine for best longevity.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header">
+          <span class="product-tag tag-mist">Setting Mist · Longwear</span>
+          <h3>Infallible 3-Second Setting Mist</h3>
+          <div class="product-brand">L'ORÉAL Paris</div>
+        </div>
+        <div class="product-body">
+          <p>A professional-grade setting mist that locks makeup in place in just 3 seconds. L'ORÉAL's Infallible formula is a fan favourite globally — it fixes all types of makeup (foundation, powder, concealer) while giving a fresh, skin-like finish. Unlike the PIXY matte mist, this one leans more natural/satin, making it perfect for the cheeks and as a mid-day refresh.</p>
+          <ul class="benefits-list">
+            <li>Sets makeup in as little as 3 seconds — fast and efficient</li>
+            <li>Infallible formula extends makeup wear throughout the day</li>
+            <li>Natural-satin finish — makes makeup look melted into skin</li>
+            <li>Refreshes and hydrates skin mid-day without disrupting makeup</li>
+            <li>Prevents makeup from looking cakey, powdery, or flakey</li>
+            <li>Works on all skin types — versatile and universally flattering</li>
+            <li>Great for a dewy skin effect on dry cheek areas</li>
+          </ul>
+          <div class="how-to">
+            <div class="how-to-title">✦ How to Use</div>
+            <p>After finishing makeup, hold 25–30cm from the face and mist evenly in an X and T motion (across and down). Allow to dry completely — about 3–5 seconds. Can be used alone for a dewy refresh, or layered over the PIXY matte mist on combination skin (matte on T-zone first, then L'ORÉAL overall for glow on cheeks).</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /mists -->
+
     <div class="tips-box">
       <h4>✨ Makeup Tips for Combination Skin</h4>
       <ul>
@@ -1023,7 +1078,8 @@
         <li>Apply loose powder ONLY on the T-zone — leaving the cheeks untouched maintains a fresh, natural glow.</li>
         <li>The ONLYOU BB Concealer can be used alone on minimal makeup days for a quick, put-together look.</li>
         <li>Bounce and press your cushion — never drag — to avoid moving your skincare layers underneath.</li>
-        <li>For the longest-lasting look: Skincare → SPF → BB Concealer → Cushion Foundation → Loose Powder on T-zone.</li>
+        <li>Setting mist combo trick: spray PIXY Matte Mist first on the T-zone area, then follow with L'ORÉAL Setting Mist overall for a balanced matte-T-zone + glowy-cheeks finish.</li>
+        <li>For the longest-lasting look: Skincare → SPF → BB Concealer → Cushion Foundation → Loose Powder on T-zone → PIXY Matte Mist → L'ORÉAL Setting Mist.</li>
       </ul>
     </div>
   </div><!-- /makeup -->
@@ -1093,10 +1149,10 @@
       <div class="step-card morning">
         <div class="step-num">6</div>
         <div class="step-content">
-          <h4>Makeup (Optional)</h4>
-          <span class="step-product-name">ONLYOU BB Concealer → ESQA Skin Tint or Cushion Foundation → Second Date Loose Powder (T-zone)</span>
-          <p>Wait 5 minutes after sunscreen before applying makeup to prevent pilling. Start with the ONLYOU BB Concealer where needed (under eyes, blemishes). Then apply your base — use the ESQA Skin Tint for natural days, SKINTIFIC Cushion for a glowy look, or TIRTIR Cushion for more coverage. Finish by setting just the T-zone with a light dusting of Second Date Loose Powder.</p>
-          <div class="step-tip"><strong>✨ Order:</strong> BB Concealer → Foundation/Cushion → Loose Powder on T-zone only. Press, don't drag!</div>
+          <h4>Makeup (Optional) — See Makeup Routine tab for full detail</h4>
+          <span class="step-product-name">ONLYOU BB Concealer → ESQA Skin Tint or Cushion Foundation → Loose Powder (T-zone) → PIXY Matte Mist → L'ORÉAL Setting Mist</span>
+          <p>Wait 5 minutes after sunscreen before applying makeup. Start with the ONLYOU BB Concealer on needed areas, then your chosen base. Set T-zone with Second Date Loose Powder. Finish with the setting mist combo: PIXY Aqua Matte Mist first (for oil control), then L'ORÉAL Infallible Mist overall (for a skin-like locked finish). This duo is the secret to all-day wear.</p>
+          <div class="step-tip"><strong>✨ Mist combo:</strong> PIXY matte mist first → let dry 5 sec → L'ORÉAL setting mist overall. Hold each 20–25cm away, keep eyes closed, let dry naturally. Don't touch your face after!</div>
         </div>
       </div>
 
@@ -1243,8 +1299,18 @@
         <div class="step-content">
           <h4>Set (T-Zone Only)</h4>
           <span class="step-product-name">Second Date Loose Powder — Translucent</span>
-          <p>If your T-zone is showing shine even after blotting and touching up, a light dusting of the translucent loose powder finishes and sets everything. Focus solely on the T-zone — forehead, nose bridge, and chin. Leave the cheeks untouched or very lightly powdered to keep them looking natural and glowy rather than flat and dry.</p>
+          <p>If your T-zone is showing shine even after blotting and touching up, a light dusting of the translucent loose powder finishes and resets everything. Focus solely on the T-zone — forehead, nose bridge, and chin. Leave the cheeks untouched or very lightly powdered to keep them looking natural and glowy rather than flat and dry.</p>
           <div class="step-tip"><strong>💡 Tip:</strong> Use a small travel brush or the powder's lid applicator. Tap off excess, then apply with a very light hand. Mid-day powder touch-ups should be almost invisible when done correctly.</div>
+        </div>
+      </div>
+
+      <div class="step-card midday">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Re-Set with Setting Mist</h4>
+          <span class="step-product-name">PIXY Aqua-Beauty Protecting Mist Matte-Finish — and/or — L'ORÉAL Infallible 3-Second Setting Mist</span>
+          <p>Finish your mid-day refresh with a setting mist to lock everything back in place and give skin a fresh, just-done appearance. For combination skin mid-day, you have two options: use the PIXY Matte Mist if your T-zone is oily and you want to control shine; use the L'ORÉAL Setting Mist for a more overall refresh and a natural glowy finish; or layer both (PIXY first, then L'ORÉAL) for the best of both worlds.</p>
+          <div class="step-tip"><strong>✨ Spray technique:</strong> Hold 20–25cm away from face, close eyes, mist in a sweeping X-and-T motion. Let dry completely — do not blot or touch. The mist does its job in seconds and will leave your makeup looking freshly applied.</div>
         </div>
       </div>
 
@@ -1254,14 +1320,161 @@
       <h4>🌤 Mid-Day Routine Tips</h4>
       <ul>
         <li>Set an alarm or reminder at noon and again at 2–3pm to reapply your sunscreen spray — SPF degrades fast in tropical heat.</li>
-        <li>Keep your mid-day bag stocked: blotting papers, sunscreen spray, cushion foundation, and a small travel powder brush.</li>
-        <li>Don't skip the SPF spray step even if you feel your makeup still looks fine — UV damage is invisible but cumulative.</li>
+        <li>Keep your mid-day bag stocked: blotting papers, Bening's SPF spray, cushion foundation, a small travel powder brush, and at least one setting mist.</li>
+        <li>Don't skip the SPF spray step even if your makeup still looks fine — UV damage is invisible but cumulative.</li>
         <li>If you've been sweating heavily (workout, outdoor activity), you may need to do a more thorough refresh — remove and reapply.</li>
+        <li>The PIXY + L'ORÉAL mist layering trick works great at mid-day too: matte control on the T-zone + fresh glow on the cheeks.</li>
         <li>Stay hydrated! Drinking water throughout the day helps your skin maintain a plump, glowing appearance.</li>
         <li>Avoid touching your face during the day — it transfers oil and bacteria, and can disrupt your makeup and skincare layers.</li>
       </ul>
     </div>
   </div><!-- /midday -->
+
+  <!-- ══════════ MAKEUP ROUTINE ══════════ -->
+  <div class="section" id="section-makeuproutine">
+    <div class="routine-header" style="background:linear-gradient(135deg,rgba(247,197,222,0.28),rgba(196,168,232,0.22));border:1px solid rgba(247,197,222,0.5);">
+      <div class="routine-header-icon">💋</div>
+      <div>
+        <h2>Makeup Routine</h2>
+        <p>Step-by-step base makeup application — from prep to setting, for combination skin.</p>
+      </div>
+    </div>
+
+    <div class="info-highlight">
+      <h3>Before You Start — Skincare Prep is Everything</h3>
+      <p>Makeup always performs better on well-prepped skin. Make sure you've completed your Morning Skincare Routine (cleanser → toner → ampoule → moisturizer → SPF) and waited at least <strong>5 minutes</strong> after sunscreen before beginning makeup. This prevents pilling, improves blending, and ensures your makeup lasts longer. Your skincare is the true base — makeup just enhances it.</p>
+    </div>
+
+    <div class="pill-divider">
+      <div class="pill-divider-line"></div>
+      <div class="pill-divider-label">🌸 Everyday Base Makeup</div>
+      <div class="pill-divider-line"></div>
+    </div>
+
+    <div class="routine-wrap">
+
+      <div class="step-card" style="border-left:none;">
+        <div class="step-num" style="background:linear-gradient(135deg,#f7c5de,#c4a8e8);">1</div>
+        <div class="step-content">
+          <h4>Prep & Prime — BB Concealer</h4>
+          <span class="step-product-name">ONLYOU Concealer Brightening & Isolating BB Cream</span>
+          <p>This multi-tasking product acts as your primer, BB cream, and concealer all in one first step. Apply it to the entire face for light, even coverage and its isolating (primer-like) properties that help your foundation grip and last longer. Then go back and press an extra layer onto targeted areas — under eyes for dark circles, around the nose, on any blemishes or redness you want to conceal. Blend with clean fingertips or a small concealer brush.</p>
+          <div class="step-tip"><strong>✨ Technique:</strong> Apply thin overall first (use fingertips — warmth helps blend). Then dab and press extra product onto spots needing more coverage. Do NOT rub — dabbing preserves coverage and avoids streaks.</div>
+        </div>
+      </div>
+
+      <div class="step-card" style="border-left:none;">
+        <div class="step-num" style="background:linear-gradient(135deg,#f7c5de,#c4a8e8);">2</div>
+        <div class="step-content">
+          <h4>Choose Your Base — Skin Tint or Foundation</h4>
+          <span class="step-product-name">Option A: ESQA Minimalist Blurring Serum Skin Tint (Vanilla) — light, natural days<br>Option B: SKINTIFIC Cover Glow Cushion (Vanilla) — glowy, medium coverage<br>Option C: TIRTIR Mask Fit Red Cushion (17C Porcelain) — full coverage, long-wear days</span>
+          <p>Pick your base depending on the day and how much coverage you want:</p>
+          <ul class="benefits-list" style="margin-top:0.4rem;">
+            <li><strong>ESQA Skin Tint</strong> — for bare skin, minimal makeup, or skincare-first days. Apply with fingertips or damp sponge by pressing and patting into skin. Buildable sheer-to-light coverage.</li>
+            <li><strong>SKINTIFIC Cushion</strong> — for a glowy, dewy K-beauty finish with medium coverage. Press the cushion puff with bouncing motions, starting from the center and working outward.</li>
+            <li><strong>TIRTIR Cushion</strong> — for full coverage, transfer-resistant wear. Ideal for long days, events, or humid outdoor settings. Same bouncing technique; note it oxidizes slightly so start with a lighter touch.</li>
+          </ul>
+          <div class="step-tip"><strong>💡 Layering tip:</strong> You can mix bases — ESQA Skin Tint all over as a base, then a dab of TIRTIR cushion only on blemish-prone areas for targeted coverage. This looks the most natural.</div>
+        </div>
+      </div>
+
+      <div class="step-card" style="border-left:none;">
+        <div class="step-num" style="background:linear-gradient(135deg,#f7c5de,#c4a8e8);">3</div>
+        <div class="step-content">
+          <h4>Set the T-Zone — Loose Powder</h4>
+          <span class="step-product-name">Second Date Loose Powder — Translucent</span>
+          <p>After your base, the T-zone needs to be set with powder to prevent the oilier areas from breaking down your makeup during the day. Use a fluffy brush and apply the translucent powder only to the forehead, nose bridge, and chin. The cheeks should remain untouched — this keeps them looking naturally dewy and fresh while controlling the shiny zones.</p>
+          <div class="step-tip"><strong>⚠️ Key rule:</strong> Less is more with powder. Over-powdering is the fastest way to look cakey. One light pass over the T-zone is all you need — you can always add more, but you can't take it away easily.</div>
+        </div>
+      </div>
+
+      <div class="step-card" style="border-left:none;">
+        <div class="step-num" style="background:linear-gradient(135deg,#f7c5de,#c4a8e8);">4</div>
+        <div class="step-content">
+          <h4>Optional Extras — Blush, Eye Makeup & Lip</h4>
+          <span class="step-product-name">Your preferred blush, eyeshadow, eyeliner, mascara, and lip products</span>
+          <p>Apply any additional makeup steps here — blush, contour, bronzer, eye looks, brows, and lips. For combination skin, cream-based blush applies more naturally over the cheeks, while powder blush sets neatly over powdered areas. Build your eye and lip look as desired. Keep the cheeks minimal to let your glowy skin show through.</p>
+          <div class="step-tip"><strong>✨ Combo skin blush tip:</strong> Apply blush with a light hand — cream formulas blend beautifully into the skin tint or ESQA base, while pressed powder blushes work well over the TIRTIR cushion with loose powder set areas.</div>
+        </div>
+      </div>
+
+      <div class="step-card" style="border-left:none;">
+        <div class="step-num" style="background:linear-gradient(135deg,#f7c5de,#c4a8e8);">5</div>
+        <div class="step-content">
+          <h4>Lock It In — PIXY Matte Setting Mist (T-Zone Focus)</h4>
+          <span class="step-product-name">PIXY Aqua-Beauty Protecting Mist Matte-Finish</span>
+          <p>Once your full makeup look is complete, reach for the PIXY Matte Mist as your first setting spray. This is your oil-control insurance — it locks the T-zone down, controls shine throughout the day, and sets everything in the oiliest zones without disturbing the rest of your look. Hold 20–25cm away, close your eyes, and spray in a gentle sweeping motion covering the whole face (the matte effect is most powerful on the T-zone where sebum is most active).</p>
+          <div class="step-tip"><strong>⏱ Wait time:</strong> After spraying, wait 5–8 seconds and let it dry completely before the next step. Do NOT fan your face or blot — let the formula set on its own for best results.</div>
+        </div>
+      </div>
+
+      <div class="step-card" style="border-left:none;">
+        <div class="step-num" style="background:linear-gradient(135deg,#f7c5de,#c4a8e8);">6</div>
+        <div class="step-content">
+          <h4>Final Finish — L'ORÉAL Infallible Setting Mist</h4>
+          <span class="step-product-name">L'ORÉAL Paris Infallible 3-Second Setting Mist</span>
+          <p>The last step of your makeup routine — and it makes a huge difference. After the PIXY Matte Mist has dried, finish with the L'ORÉAL Infallible Setting Mist overall. This melts all the layers of product together for a seamless, skin-like finish. It adds a healthy, natural glow to the cheeks, prevents any powdery or cakey look, and locks the entire face for all-day wear. Your makeup will look like it's part of your skin.</p>
+          <div class="step-tip"><strong>✨ The combo effect:</strong> PIXY Matte (step 5) controls oily zones → L'ORÉAL Infallible (step 6) unifies everything and adds that natural glass-skin radiance. Together they're perfectly suited for combination skin — matte where you need it, glowy where you want it.</div>
+        </div>
+      </div>
+
+    </div><!-- /makeup routine steps -->
+
+    <div class="pill-divider" style="margin-top:2.5rem;">
+      <div class="pill-divider-line"></div>
+      <div class="pill-divider-label">💡 Coverage Level Guide</div>
+      <div class="pill-divider-line"></div>
+    </div>
+
+    <div class="skin-grid" style="margin-bottom:0;">
+      <div class="skin-card">
+        <div class="skin-card-icon">🌿</div>
+        <h3>Minimal / Skincare Look</h3>
+        <ul>
+          <li>ONLYOU BB Concealer (spot only)</li>
+          <li>ESQA Skin Tint all over</li>
+          <li>Light powder on T-zone</li>
+          <li>L'ORÉAL Setting Mist only</li>
+          <li>Best for: casual days, WFH, errands</li>
+        </ul>
+      </div>
+      <div class="skin-card">
+        <div class="skin-card-icon">✨</div>
+        <h3>Everyday Glam</h3>
+        <ul>
+          <li>ONLYOU BB Concealer full face</li>
+          <li>SKINTIFIC Cushion Foundation</li>
+          <li>Powder on T-zone</li>
+          <li>PIXY Matte Mist → L'ORÉAL Mist</li>
+          <li>Best for: daily outings, school, work</li>
+        </ul>
+      </div>
+      <div class="skin-card">
+        <div class="skin-card-icon">💎</div>
+        <h3>Full Coverage / Event</h3>
+        <ul>
+          <li>ONLYOU BB Concealer everywhere</li>
+          <li>TIRTIR Cushion (build 2 layers)</li>
+          <li>Generous powder on T-zone</li>
+          <li>PIXY Matte Mist → L'ORÉAL Mist</li>
+          <li>Best for: events, photos, long days</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tips-box" style="margin-top:1.5rem;">
+      <h4>💋 Makeup Routine Pro Tips</h4>
+      <ul>
+        <li>Always complete your skincare and wait 5 minutes after SPF before starting makeup — this is the most important prep step.</li>
+        <li>Apply every product with pressing and patting motions — dragging disrupts the layers beneath and causes patchiness.</li>
+        <li>The two setting mists are a game-changer for combination skin: PIXY for matte oil control, L'ORÉAL for skin-like finish. Use both every time for maximum wear.</li>
+        <li>If your TIRTIR cushion looks too light at first, don't panic — it oxidizes (darkens slightly) within 10–15 minutes to match your skin tone.</li>
+        <li>A damp beauty sponge is the best tool for applying any base for combination skin — it sheers out the product and prevents overloading oily areas.</li>
+        <li>Blush placement tip: for the most natural look, smile and apply to the apples of the cheeks, then blend up toward the temples with a fluffy brush.</li>
+        <li>Set a 2-hour reminder to reapply Bening's SPF spray over your makeup — sun protection doesn't stop once makeup is on!</li>
+      </ul>
+    </div>
+  </div><!-- /makeuproutine -->
 
 </main>
 
