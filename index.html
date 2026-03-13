@@ -288,6 +288,43 @@
   .how-to-title { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); margin-bottom: 0.3rem; }
   .how-to p { font-size: 0.82rem; color: var(--text2); line-height: 1.55; }
 
+  /* ── SUITABILITY ── */
+  .suitability {
+    margin-top: 0.9rem; padding-top: 0.8rem;
+    border-top: 1px dashed var(--border);
+  }
+  .suitability-title {
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.09em; color: var(--text3); margin-bottom: 0.45rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .suitability-title::before { content: '🧬'; font-size: 0.75rem; }
+  .suit-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .suit-pill {
+    font-size: 0.71rem; font-weight: 500; padding: 3px 10px;
+    border-radius: 50px; border: 1.5px solid var(--border);
+    color: var(--text3); background: var(--surface2);
+    display: inline-flex; align-items: center; gap: 4px;
+    transition: all 0.2s;
+  }
+  .suit-pill.yes {
+    background: rgba(167,139,218,0.15); border-color: var(--accent1);
+    color: var(--accent1); font-weight: 600;
+  }
+  .suit-pill.yes.combo {
+    background: linear-gradient(135deg,rgba(167,139,218,0.22),rgba(126,184,230,0.18));
+    border-color: var(--accent1); color: var(--accent1);
+    box-shadow: 0 0 0 2px rgba(167,139,218,0.18);
+  }
+  .suit-pill.caution {
+    background: rgba(255,200,80,0.15); border-color: #e0a830;
+    color: #b08020; font-weight: 500;
+  }
+  .suit-pill.no {
+    background: rgba(220,80,80,0.08); border-color: rgba(200,80,80,0.3);
+    color: #b05050; text-decoration: line-through; opacity: 0.6;
+  }
+
   /* ── CATEGORY LABELS ── */
   .category-label {
     font-family: 'Playfair Display', serif; font-size: 1.3rem;
@@ -617,6 +654,16 @@
             <li>Gentle enough for daily AM & PM use</li>
             <li>Helps reduce acne-causing bacteria gently</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill caution">⚠ Dry (may feel tight)</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Wet face with lukewarm water. Take a small amount and lather in palms. Massage gently onto face in circular motions for 30–60 seconds. Rinse thoroughly. Can be used morning and evening. Best for PM after an oil-based cleanser.</p>
@@ -639,6 +686,16 @@
             <li>Suitable as a morning cleanser for combination skin</li>
             <li>Helps prevent post-cleansing tightness and breakouts</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Ideal for morning cleansing. Wet face, apply a small amount, massage gently, and rinse with cool to lukewarm water. No need to double cleanse in the AM — this is all you need.</p>
@@ -661,6 +718,16 @@
             <li>Cleanses without leaving skin feeling tight or dry</li>
             <li>Great for barrier-compromised or sensitive combo skin</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill caution">⚠ Oily (use sparingly)</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Use morning or evening as a second-step cleanser. Apply to damp skin, massage gently, and rinse. Works great on days when your skin feels more sensitized or dry, as the ceramides help restore what cleansing removes.</p>
@@ -688,6 +755,16 @@
             <li>Calms post-cleansing irritation and tightness</li>
             <li>Improves skin texture over time with consistent use</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Apply after cleansing. Pour a small amount onto clean palms or cotton pad. Gently pat into the skin — do not rub. For extra hydration, try the 7-skin method: layer 3–7 thin applications. Let absorb fully before the next step.</p>
@@ -714,6 +791,16 @@
             <li>Strengthens and repairs the moisture barrier</li>
             <li>Lightweight and absorbs quickly — no heaviness on oily zones</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive / Reactive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Apply after toner, before moisturizer. Press 3–5 drops gently into the skin using fingertips. Focus on red, irritated, or acne-prone areas. Can be mixed with moisturizer for an extra calming boost. Use AM and PM.</p>
@@ -741,6 +828,16 @@
             <li>Improves radiance and gives a healthy glow</li>
             <li>Works well under SPF and makeup</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill caution">⚠ Oily (use lightly on T-zone)</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Apply after serum/ampoule. Take a pea-sized amount and warm between fingertips. Press and pat gently over the face. Use sparingly on oily T-zone; be more generous on drier cheek areas.</p>
@@ -764,6 +861,16 @@
             <li>Great for the drier cheek zones of combination skin</li>
             <li>Improves skin smoothness and reduces flakiness</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination (cheeks / dry zones)</span>
+              <span class="suit-pill caution">⚠ Oily (avoid T-zone)</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive / Eczema-prone</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Use AM and PM. Apply a generous amount to drier areas (cheeks, around mouth). On the T-zone, use sparingly or skip if already using a lighter moisturizer. Great for the evening routine as a last layer for repair overnight.</p>
@@ -787,6 +894,16 @@
             <li>Plumps and smooths skin texture</li>
             <li>Budget-friendly and beginner-friendly moisturizer</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Apply a pea-to-dime sized amount all over the face after serum. Pat gently into the skin. Suitable for AM and PM. A great everyday moisturizer that doesn't interfere with sunscreen or makeup.</p>
@@ -810,6 +927,16 @@
             <li>Great as a daytime moisturizer under SPF</li>
             <li>Cooling and refreshing upon application</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill caution">⚠ Dry (may need extra moisture)</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Best used in the AM routine. Apply after toner and ampoule. Smooth a thin, even layer across the face — the gel texture is forgiving and easy to blend. Perfect base for sunscreen application. For PM, pair with a richer cream on drier areas.</p>
@@ -838,6 +965,16 @@
             <li>Can help reduce redness and act as a mattifier</li>
             <li>Safe for use over actives without photosensitivity concerns</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive / Acne-prone</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Apply as the last skincare step (after moisturizer, before makeup). Use at least ½ tsp (~2.5ml) for the face to achieve labeled SPF. Pat and press gently — avoid rubbing to prevent pilling. Reapply every 2 hours when outdoors, or after sweating/touching your face.</p>
@@ -860,6 +997,16 @@
             <li>Convenient for on-the-go sun protection</li>
             <li>Keeps skin refreshed and protected throughout the day</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ All skin types</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Hold about 20–30cm from face. Close eyes and spray evenly across the face. Allow to dry naturally — do NOT rub or pat. Reapply every 2 hours when outdoors or after heavy sweating. Do not inhale the mist.</p>
@@ -910,6 +1057,16 @@
             <li>Vanilla shade: light tone with neutral-cool undertone</li>
             <li>Skincare-infused formula hydrates while covering</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill caution">⚠ Oily (set well with powder)</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Apply</div>
             <p>After sunscreen has fully dried (wait 5 min). Press and bounce the cushion puff onto skin — avoid dragging. Start from the center of the face and blend outward. Build coverage only where needed. Set T-zone lightly with loose powder after.</p>
@@ -933,6 +1090,16 @@
             <li>Long-wearing formula — great for humid climates</li>
             <li>Doesn't cake or crack — ideal for combination skin</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill caution">⚠ Dry (prep skin well)</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Apply</div>
             <p>Press the puff lightly into the cushion and apply with patting/pressing motions. Start from the high points of the face (nose bridge, center forehead) and blend outward. The TIRTIR cushion is known to oxidize slightly — pick slightly lighter than your true shade. Set with loose powder on T-zone only.</p>
@@ -956,6 +1123,16 @@
             <li>Vanilla: light, neutral shade that works for light to light-medium skin</li>
             <li>Ideal for bare, natural, or "glass skin" looks</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ Sensitive / Acne-prone</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Apply</div>
             <p>Apply with fingers or a damp beauty sponge after sunscreen. Warm a few drops between fingertips, then press and blend into skin. Great alone or as a base under concealer for a more natural look. Can be layered lightly for more coverage.</p>
@@ -983,6 +1160,16 @@
             <li>Can be used alone as a light BB or layered under foundation</li>
             <li>Multifunctional — reduces the number of products needed</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ All skin types</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Apply</div>
             <p>Can be used as a standalone BB cream: apply all over face after SPF, blend with fingers or sponge. As concealer: dot onto targeted areas (under eyes, blemishes, redness) and blend with fingertips or a small brush. Layer under cushion foundation for more coverage.</p>
@@ -1009,6 +1196,16 @@
             <li>Gives a natural, airbrushed, satin-matte finish</li>
             <li>Lightweight — won't make skin look cakey or flat</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination (T-zone only)</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill caution">⚠ Dry (use very sparingly)</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Apply</div>
             <p>Use a fluffy or dome-shaped powder brush. Tap off excess powder from brush before applying. Sweep lightly across T-zone (forehead, nose, chin) in gentle circular motions. Apply sparingly on cheeks to avoid looking flat. For extra setting, bake under eyes: press powder and let sit 3–5 min before dusting away.</p>
@@ -1037,6 +1234,16 @@
             <li>Great for humid climates where makeup tends to slide</li>
             <li>Can replace or reduce the need for excess loose powder</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill caution">⚠ Dry (may over-mattify)</span>
+              <span class="suit-pill yes">✓ Sensitive</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>Hold 20–25cm from face after completing your full makeup look. Close eyes and spray in a sweeping motion (left to right, then up to down) to cover evenly. Let it dry naturally — do NOT touch your face while it sets. Use as the final step of your makeup routine for best longevity.</p>
@@ -1061,6 +1268,16 @@
             <li>Works on all skin types — versatile and universally flattering</li>
             <li>Great for a dewy skin effect on dry cheek areas</li>
           </ul>
+          <div class="suitability">
+            <div class="suitability-title">Skin Type Suitability</div>
+            <div class="suit-pills">
+              <span class="suit-pill yes combo">✓ Combination</span>
+              <span class="suit-pill yes">✓ Oily</span>
+              <span class="suit-pill yes">✓ Normal</span>
+              <span class="suit-pill yes">✓ Dry</span>
+              <span class="suit-pill yes">✓ All skin types</span>
+            </div>
+          </div>
           <div class="how-to">
             <div class="how-to-title">✦ How to Use</div>
             <p>After finishing makeup, hold 25–30cm from the face and mist evenly in an X and T motion (across and down). Allow to dry completely — about 3–5 seconds. Can be used alone for a dewy refresh, or layered over the PIXY matte mist on combination skin (matte on T-zone first, then L'ORÉAL overall for glow on cheeks).</p>
