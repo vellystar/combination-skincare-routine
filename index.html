@@ -106,55 +106,28 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 1000;
   background: var(--nav-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  padding: 0 1.5rem;
+  box-shadow: 0 2px 24px var(--shadow);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
-  box-shadow: 0 2px 20px var(--shadow);
-  transition: background 0.4s, border-color 0.4s;
+  padding: 0 1.5rem;
+  height: 52px;
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-logo {
   font-family: 'Petit Formal Script', cursive;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--heading);
   letter-spacing: 0.02em;
   white-space: nowrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 0.2rem;
-  list-style: none;
-  overflow-x: auto;
-  scrollbar-width: none;
-  flex: 1;
-  padding: 0 0.5rem;
-  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-}
-.nav-links::-webkit-scrollbar { display: none; }
-
-.nav-links a {
-  display: block;
-  padding: 0.4rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text2);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.25s ease;
-  letter-spacing: 0.03em;
-}
-.nav-links a:hover,
-.nav-links a.active {
-  background: var(--secondary-soft);
-  color: var(--heading);
 }
 
 .nav-right {
@@ -162,6 +135,66 @@ nav {
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
+}
+
+/* Tab bar */
+.nav-tab-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 1rem;
+  height: 46px;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+}
+.nav-tab-bar::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0 0.85rem;
+  height: 100%;
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: var(--text3);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  position: relative;
+  transition: color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+.nav-tab .tab-icon {
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+.nav-tab:hover {
+  color: var(--heading);
+  background: var(--secondary-soft);
+}
+.nav-tab:hover .tab-icon { transform: scale(1.15); }
+.nav-tab.active {
+  color: var(--heading);
+  background: var(--secondary-soft);
+  box-shadow: 0 0 0 1.5px var(--secondary);
+}
+.nav-tab.active .tab-icon { transform: scale(1.1); }
+
+/* Divider between tabs */
+.nav-tab-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  flex-shrink: 0;
+  margin: 0;
+  align-self: center;
 }
 
 /* Dark mode toggle */
@@ -210,7 +243,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px 2rem 4rem;
+  padding: 115px 2rem 4rem;
   overflow: hidden;
 }
 
@@ -339,6 +372,7 @@ section {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  scroll-margin-top: 106px;
 }
 section.visible {
   opacity: 1;
@@ -472,6 +506,7 @@ section.visible {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.4rem;
+  align-items: start;
 }
 
 .product-card {
@@ -482,6 +517,8 @@ section.visible {
   transition: all 0.3s ease;
   box-shadow: 0 2px 12px var(--shadow);
   position: relative;
+  break-inside: avoid;
+  align-self: start;
 }
 .product-card:hover {
   transform: translateY(-5px);
@@ -791,7 +828,7 @@ footer .footer-title {
 }
 @media (max-width: 768px) {
   .mobile-nav { display: flex; }
-  nav .nav-links { display: none; }
+  nav .nav-tab-bar { display: none; }
   body { padding-bottom: 60px; }
 }
 
@@ -829,6 +866,11 @@ footer .footer-title {
   .nav-logo { font-size: 1.1rem; }
 }
 
+/* ──────────── REMOVAL CARD ──────────── */
+.removal-card .routine-header { background: linear-gradient(135deg, #EDE0FF, #D8CCFF); }
+[data-theme="dark"] .removal-card .routine-header { background: linear-gradient(135deg, #2A2248, #1E1838); }
+.removal-card .step-num { background: linear-gradient(135deg, #D8C0F8, #B090E8); color: #fff; box-shadow: 0 3px 8px rgba(176,144,232,0.3); }
+
 /* ──────────── BACK TO TOP ──────────── */
 .back-top {
   position: fixed;
@@ -860,27 +902,40 @@ footer .footer-title {
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">✿ Skin Sanctuary</div>
-  <ul class="nav-links">
-    <li><a href="#skin-type" class="nav-link">Skin Type</a></li>
-    <li><a href="#cleansers" class="nav-link">Cleansers</a></li>
-    <li><a href="#toners" class="nav-link">Toners & Ampoules</a></li>
-    <li><a href="#moisturizers" class="nav-link">Moisturizers</a></li>
-    <li><a href="#sunscreens" class="nav-link">Sunscreens</a></li>
-    <li><a href="#makeup" class="nav-link">Makeup</a></li>
-    <li><a href="#morning" class="nav-link">Morning</a></li>
-    <li><a href="#evening" class="nav-link">Evening</a></li>
-    <li><a href="#makeup-routine" class="nav-link">Makeup Look</a></li>
-    <li><a href="#midday" class="nav-link">Mid-day</a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="toggle-wrap">
-      <span class="toggle-label" id="toggle-label">☀️</span>
-      <label class="toggle">
-        <input type="checkbox" id="dark-toggle" onchange="toggleTheme()">
-        <span class="toggle-slider"></span>
-      </label>
+  <div class="nav-top">
+    <div class="nav-logo">✿ Skin Sanctuary</div>
+    <div class="nav-right">
+      <div class="toggle-wrap">
+        <span class="toggle-label" id="toggle-label">☀️</span>
+        <label class="toggle">
+          <input type="checkbox" id="dark-toggle" onchange="toggleTheme()">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
     </div>
+  </div>
+  <div class="nav-tab-bar">
+    <a href="#skin-type" class="nav-tab nav-link"><span class="tab-icon">🪷</span>Skin Type</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#cleansers" class="nav-tab nav-link"><span class="tab-icon">🫧</span>Cleansers</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#toners" class="nav-tab nav-link"><span class="tab-icon">💜</span>Toners & Ampoules</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#moisturizers" class="nav-tab nav-link"><span class="tab-icon">💧</span>Moisturizers</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#sunscreens" class="nav-tab nav-link"><span class="tab-icon">☀️</span>Sunscreens</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#makeup" class="nav-tab nav-link"><span class="tab-icon">💄</span>Makeup</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#morning" class="nav-tab nav-link"><span class="tab-icon">🌅</span>Morning</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#evening" class="nav-tab nav-link"><span class="tab-icon">🌙</span>Evening</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#makeup-routine" class="nav-tab nav-link"><span class="tab-icon">✨</span>Makeup Look</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#midday" class="nav-tab nav-link"><span class="tab-icon">🌞</span>Mid-day</a>
+    <div class="nav-tab-divider"></div>
+    <a href="#makeup-removal" class="nav-tab nav-link"><span class="tab-icon">🧴</span>Makeup Removal</a>
   </div>
 </nav>
 
@@ -1927,9 +1982,12 @@ footer .footer-title {
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-content">
-            <div class="step-product">Cleanse — Low pH Cleanser</div>
-            <div class="step-instruction">In the morning, your skin doesn't need a deep cleanse. Use either the <strong>Somethinc Low PH Gentle Cleanser</strong> or the <strong>Pond's Biome Cera-Hyamino Cleanser</strong> depending on your skin's mood. The Pond's is gentler and more moisturising — ideal when skin feels dry or tight. The Somethinc is efficient and straightforward for most mornings.</div>
-            <div class="step-tip">💡 Some days, simply rinsing with cool water is enough — especially if you have dry patches. Only use cleanser if skin feels congested or you sweat overnight.</div>
+            <div class="step-product">Cleanse — Choose Your Morning Low pH Cleanser</div>
+            <div class="step-instruction">In the morning, your skin doesn't need a deep cleanse — just a gentle refresh. Pick based on how skin feels when you wake up:<br><br>
+            🌿 <strong>Somethinc Low PH Gentle Cleanser</strong> — best for most mornings; lightweight, efficient, and barrier-safe for everyday use.<br>
+            💙 <strong>Pond's Biome Cera-Hyamino Cleanser</strong> — best when skin feels dry, tight, or sensitive overnight; ceramides and hyaluronic acid make cleansing feel nourishing rather than stripping.<br>
+            🐌 <strong>SOME BY MI Snail Truecica Gel Cleanser</strong> — use on mornings after a heavy sweat or a breakout-prone night; snail filtrate and centella give added repair benefits right from the first step.</div>
+            <div class="step-tip">💡 On very calm, dry-skin mornings a simple rinse with cool water is enough — save your cleanser for when skin actually needs it.</div>
             <div class="step-time">⏱ 60 seconds</div>
           </div>
         </div>
@@ -2008,8 +2066,13 @@ footer .footer-title {
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-content">
-            <div class="step-product">Second Cleanse — SOME BY MI Snail Truecica Low pH Gel Cleanser</div>
-            <div class="step-instruction">Follow with the gel cleanser to water-cleanse the skin and remove any remaining micellar water residue, sweat, and deep-seated impurities. Lather gently between palms and massage into damp skin for 60 seconds in circular motions. Focus on the T-zone where sebum and blackheads accumulate. Rinse thoroughly with cool water.</div>
+            <div class="step-product">Second Cleanse — Choose Your Low pH Cleanser</div>
+            <div class="step-instruction">Follow with a water-based low pH cleanser to rinse away micellar residue, sweat, and deeper impurities. You have three great options — pick based on how your skin feels tonight:<br><br>
+            🐌 <strong>SOME BY MI Snail Truecica Gel Cleanser</strong> — best for most evenings; snail filtrate and centella start repairing skin during the cleanse.<br>
+            🌿 <strong>Somethinc Low PH Gentle Cleanser</strong> — great on evenings when skin feels normal or slightly oily; efficient and barrier-safe.<br>
+            💙 <strong>Pond's Biome Cera-Hyamino Cleanser</strong> — best for evenings when skin feels dry, tight, or stressed; ceramides and hyaluronic acid provide extra comfort during cleansing.<br><br>
+            Lather gently between palms, massage in circular motions for 60 seconds, focusing on the T-zone. Rinse thoroughly with cool water and pat dry.</div>
+            <div class="step-tip">💡 Rotate your second cleanser based on how your skin feels — combination skin's needs shift with weather, hormones, and stress levels. All three are low pH and safe for nightly use.</div>
             <div class="step-time">⏱ 90 seconds</div>
           </div>
         </div>
@@ -2226,6 +2289,209 @@ footer .footer-title {
     </div>
   </section>
 
+  <!-- MAKEUP REMOVAL -->
+  <section id="makeup-removal">
+    <div class="section-header">
+      <div class="section-icon icon-lilac">🧴</div>
+      <h2 class="section-title"><span>End of Day Ritual</span>Makeup Removal</h2>
+    </div>
+
+    <!-- Why removal matters -->
+    <div class="combo-banner" style="margin-bottom:1.5rem">
+      <h3>✦ Why Proper Makeup Removal Matters</h3>
+      <p>Sleeping in makeup is one of the fastest ways to damage combination skin. Foundation, SPF, and setting products form an occlusive layer that traps sebum, dead cells, and environmental pollutants deep in pores — leading to congestion, breakouts, and accelerated skin ageing. Thorough makeup removal is the very first step of your evening skincare ritual, and it sets the foundation for every product that follows to actually absorb and work properly.</p>
+      <ul class="tip-list" style="margin-top:0.85rem">
+        <li>Makeup left overnight clogs pores and triggers breakouts on the T-zone</li>
+        <li>SPF and setting mists are occlusive — they must be fully removed for skin to breathe at night</li>
+        <li>Eye makeup residue causes lash breakage and eye irritation over time</li>
+        <li>A clean base helps toner and ampoule absorb up to 40% more effectively</li>
+        <li>Two-step removal (micellar + cleanser) is always more thorough than one step alone</li>
+      </ul>
+    </div>
+
+    <!-- Removal Products -->
+    <div class="products-grid" style="margin-bottom:2rem">
+
+      <!-- Micellar Water card -->
+      <div class="product-card">
+        <div class="product-card-top">
+          <div class="product-emoji">🌸</div>
+          <div class="product-meta">
+            <div class="product-brand">Glad2Glow</div>
+            <div class="product-name">Cherry Blossom Betaine Micellar Water</div>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-tags">
+            <span class="tag">Step 1 — Oil-Based Remove</span>
+            <span class="tag pink">Eyes · Lips · Face</span>
+          </div>
+          <div class="suitability-badge">✓ Primary Makeup Remover</div>
+          <div class="prod-section"><div class="prod-section-label">✦ Why This for Removal</div><div class="acc-inner">
+            <p>Micellar water uses tiny oil-filled molecules (micelles) that magnetically attract and lift oil-based products — foundation, cushion, lip stain, and SPF — without requiring harsh rubbing or rinsing. The betaine content also calms any irritation during the removal process.</p>
+            <ul>
+              <li>Dissolves cushion foundations (SKINTIFIC, TIRTIR), skin tint, and concealer effortlessly</li>
+              <li>Effectively removes the Time Phoria lip stain and NPure glow oil without tugging</li>
+              <li>Lifts setting mists (PIXY, L'Oréal) and SPF residue from skin surface</li>
+              <li>Cherry blossom extract soothes skin that may be sensitised after a long day of wear</li>
+              <li>Gentle enough for the delicate eye and lip area</li>
+            </ul>
+          </div></div>
+          <div class="prod-section"><div class="prod-section-label">✦ Removal Technique</div><div class="acc-inner">
+            <p><strong>For eyes & lips (waterproof products):</strong></p>
+            <ul>
+              <li>Soak a cotton pad generously and press over closed eyes for 15–20 seconds</li>
+              <li>Gently wipe downward over lashes — never rub sideways</li>
+              <li>Use a fresh soaked pad for the lips and press for 10 seconds before wiping</li>
+            </ul>
+            <p style="margin-top:0.6rem"><strong>For face (base makeup + SPF):</strong></p>
+            <ul>
+              <li>Use a fresh cotton pad per zone — cheeks, forehead, nose, chin</li>
+              <li>Press for 5 seconds, then sweep outward gently</li>
+              <li>Repeat until the cotton pad comes away clean</li>
+              <li>Pay extra attention to the hairline and jaw where foundation settles</li>
+            </ul>
+            <div class="step-tip">💡 Never skip micellar water if you wore makeup or SPF — even a "light" makeup day still requires proper removal. Your gel cleanser alone cannot fully dissolve oil-based products.</div>
+          </div></div>
+        </div></div>
+
+      <!-- SOME BY MI Cleanser as second step -->
+      <div class="product-card">
+        <div class="product-card-top">
+          <div class="product-emoji">🐌</div>
+          <div class="product-meta">
+            <div class="product-brand">SOME BY MI</div>
+            <div class="product-name">Snail Truecica Miracle Repair Low pH Gel Cleanser</div>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-tags">
+            <span class="tag">Step 2 — Water Cleanse</span>
+            <span class="tag green">Post-Removal Cleanse</span>
+          </div>
+          <div class="suitability-badge">✓ Second-Step Makeup Removal Cleanser</div>
+          <div class="prod-section"><div class="prod-section-label">✦ Why This After Micellar</div><div class="acc-inner">
+            <p>Micellar water loosens makeup but leaves a thin film of micelle residue on skin. The low-pH gel cleanser rinses this away while deeply cleansing pores, removing sweat, and ensuring the skin is truly clean and ready to absorb your nighttime treatments.</p>
+            <ul>
+              <li>Removes remaining micellar residue, sweat, and deeper impurities</li>
+              <li>Low pH protects the acid mantle so skin isn't stripped after removal</li>
+              <li>Snail filtrate begins repairing any micro-irritation caused by day wear immediately</li>
+              <li>Centella calms any post-makeup redness or sensitivity</li>
+              <li>Leaves skin clean, soft, and perfectly prepped for toner and ampoule</li>
+            </ul>
+          </div></div>
+          <div class="prod-section"><div class="prod-section-label">✦ Application After Removal</div><div class="acc-inner">
+            <ul>
+              <li>Wet face thoroughly with lukewarm water</li>
+              <li>Work a pea-sized amount into a gentle lather between palms</li>
+              <li>Massage in circular motions for 60 seconds across the entire face</li>
+              <li>Focus on T-zone, hairline, and jawline where makeup accumulates most</li>
+              <li>Rinse completely with cool water — check ears and hairline too</li>
+              <li>Pat dry with a clean, soft towel using gentle pressing motions</li>
+            </ul>
+            <div class="step-tip">💡 After proper double-cleansing, your face should feel clean but not tight. If it feels tight or squeaky-clean, your cleanser is too harsh — the SOME BY MI is perfectly pH-balanced to leave skin comfortable.</div>
+          </div></div>
+        </div></div>
+
+    </div>
+
+    <!-- Makeup Removal Routine Card -->
+    <div class="routine-card removal-card">
+      <div class="routine-header">
+        <div class="routine-header-icon">🧴</div>
+        <div class="routine-header-text">
+          <h3>Makeup Removal Routine</h3>
+          <p>Eyes → Lips → Face → Double Cleanse · Total time: approx. 8–12 minutes</p>
+        </div>
+      </div>
+      <div class="routine-steps">
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-product">Prep — Tie Hair Back & Wash Hands</div>
+            <div class="step-instruction">Before touching your face, pull your hair back with a headband or clip to keep it away from the removal products. Wash your hands thoroughly — transferring bacteria from hands to face during removal defeats the purpose entirely. Keep a clean towel within reach.</div>
+            <div class="step-time">⏱ 30 seconds</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-product">Eyes — Glad2Glow Micellar Water</div>
+            <div class="step-instruction">Always start with the eyes — they require the most time and gentlest technique. Saturate a cotton pad with micellar water and hold it flat over one closed eye for 15–20 seconds. This allows the micellar solution to fully dissolve any mascara, eyeshadow, or liner without requiring friction. Then gently sweep downward along the lashes. Use a separate soaked cotton pad for the other eye. Use a cotton bud dipped in micellar water for any stubborn liner at the waterline.</div>
+            <div class="step-tip">💡 Never wipe side-to-side on the eyes — the skin here is 10x thinner than the rest of the face and rubbing causes premature fine lines and lash fall.</div>
+            <div class="step-time">⏱ 1–2 minutes</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-product">Lips — Glad2Glow Micellar Water</div>
+            <div class="step-instruction">Lip stains (especially Time Phoria Stellar Dust) can be stubborn — they are designed to resist eating and drinking, which means they need proper removal. Saturate a cotton pad and press firmly over lips for 10–15 seconds. This soaking time is key — it loosens the stain formula before you wipe. Gently wipe away in a soft inward motion. Repeat once more if any colour remains. Finish with a tiny swipe of Nivea Rich Care lip balm to rehydrate lips after removal.</div>
+            <div class="step-tip">💡 The Glad2Glow micellar water's betaine content also gently brightens lips during removal — a nice bonus treatment while you clean!</div>
+            <div class="step-time">⏱ 1 minute</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-product">Face — Micellar Water (First Pass)</div>
+            <div class="step-instruction">Using a fresh cotton pad for each zone, work through the face systematically: forehead → cheeks → nose → chin → jawline → hairline. Press the pad gently for 5 seconds on each zone before sweeping outward. Use a new cotton pad whenever the one in your hand becomes visibly dirty. For areas with heavier coverage (undereyes from concealer, nose from foundation), allow an extra 5 seconds of press time. Continue until a cotton pad comes away with no visible product.</div>
+            <div class="step-time">⏱ 2–3 minutes</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-product">Double Cleanse — SOME BY MI Snail Truecica Gel Cleanser</div>
+            <div class="step-instruction">Even after thorough micellar removal, a thin film of product residue remains on skin. The second cleanse washes this away and deep-cleans pores. Wet your face, lather a pea-sized amount between palms, and massage in gentle circular motions for a full 60 seconds. Take your time — the massage motion also boosts circulation and helps the snail filtrate begin working immediately. Rinse completely with cool water and pat dry.</div>
+            <div class="step-tip">💡 Do a final check after cleansing: pat your jaw, hairline, and under-nose area — these are spots frequently missed and where foundation residue loves to hide.</div>
+            <div class="step-time">⏱ 90 seconds</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <div class="step-product">Check & Proceed to Evening Skincare</div>
+            <div class="step-instruction">After patting dry, check your skin in a well-lit mirror. It should look completely clean, slightly dewy from moisture, and feel comfortable — never tight or stripped. If you see any residue along the hairline or jaw, use one final swipe of micellar water on that area. Your skin is now perfectly prepped for the evening skincare routine — toner → ampoule → moisturiser. The cleaner your canvas, the more effectively every skincare product that follows will absorb and perform.</div>
+            <div class="step-time">⏱ 30 seconds check</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:1.5rem">
+      <div class="info-box">
+        <h4>⚠️ Common Removal Mistakes to Avoid</h4>
+        <ul>
+          <li>Rubbing the eye area aggressively — press and hold instead</li>
+          <li>Using one cotton pad for the entire face — always use fresh pads per zone</li>
+          <li>Skipping double cleanse on no-makeup days (SPF still needs thorough removal)</li>
+          <li>Using hot water — it dilates pores and can cause redness</li>
+          <li>Going to bed without removing lip products — lip stain stains lip skin over time</li>
+          <li>Wiping harshly on blemishes — press very gently over breakout areas</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h4>✦ Makeup-Free Days</h4>
+        <ul>
+          <li>On no-makeup days, micellar water is still needed to remove SPF</li>
+          <li>Use only the SOME BY MI gel cleanser as a single cleanse if you only wore lightweight SPF</li>
+          <li>Consider a no-makeup day 1–2x a week to let skin breathe</li>
+          <li>Even on rest days, the full evening skincare routine (toner → ampoule → moisturiser) should still be done</li>
+          <li>Makeup-free days are a great time to do gentle exfoliation or a calming mask</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
 </main>
 
 <!-- FOOTER -->
@@ -2258,10 +2524,14 @@ function toggleTheme() {
   document.getElementById('toggle-label').textContent = isDark ? '🌙' : '☀️';
 }
 
-// Scroll to section
+// Scroll to section (accounts for fixed nav)
 function scrollTo(id) {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (el) {
+    const navH = document.querySelector('nav').offsetHeight;
+    const top = el.getBoundingClientRect().top + window.scrollY - navH - 12;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
 }
 
 // Intersection Observer for section animations
@@ -2275,24 +2545,35 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-// Nav active highlight
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
+// Nav active highlight — scroll-spy using scroll position
+const allSections = Array.from(document.querySelectorAll('section[id]'));
+const allTabs = document.querySelectorAll('.nav-tab');
+const NAV_HEIGHT = document.querySelector('nav').offsetHeight + 8;
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-      if (link) {
-        link.classList.add('active');
-        link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
-  });
-}, { threshold: 0.4 });
+function setActiveTab(id) {
+  allTabs.forEach(t => t.classList.remove('active'));
+  const link = document.querySelector(`.nav-tab[href="#${id}"]`);
+  if (link) {
+    link.classList.add('active');
+    const bar = document.querySelector('.nav-tab-bar');
+    const linkLeft = link.offsetLeft - bar.offsetLeft;
+    const barWidth = bar.offsetWidth;
+    const linkWidth = link.offsetWidth;
+    bar.scrollTo({ left: linkLeft - (barWidth / 2) + (linkWidth / 2), behavior: 'smooth' });
+  }
+}
 
-sections.forEach(s => navObserver.observe(s));
+function onScroll() {
+  const scrollY = window.scrollY + NAV_HEIGHT + 40;
+  let current = allSections[0].id;
+  for (const section of allSections) {
+    if (section.offsetTop <= scrollY) current = section.id;
+  }
+  setActiveTab(current);
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
 // Back to top button
 window.addEventListener('scroll', () => {
