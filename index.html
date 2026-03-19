@@ -2780,123 +2780,134 @@ footer .footer-title {
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- MOBILE / TABLET BOTTOM NAV — all sections, scrollable -->
-<nav class="mobile-nav" id="mobileNav">
-  <button class="mob-btn" onclick="scrollTo('skin-type')"><span class="mob-icon">🪷</span><span>Skin Type</span></button>
-  <button class="mob-btn" onclick="scrollTo('cleansers')"><span class="mob-icon">🫧</span><span>Cleansers</span></button>
-  <button class="mob-btn" onclick="scrollTo('toners')"><span class="mob-icon">💜</span><span>Toners</span></button>
-  <button class="mob-btn" onclick="scrollTo('moisturizers')"><span class="mob-icon">💧</span><span>Moisturizers</span></button>
-  <button class="mob-btn" onclick="scrollTo('sunscreens')"><span class="mob-icon">☀️</span><span>Sunscreens</span></button>
-  <button class="mob-btn" onclick="scrollTo('makeup')"><span class="mob-icon">💄</span><span>Makeup</span></button>
-  <button class="mob-btn" onclick="scrollTo('morning')"><span class="mob-icon">🌅</span><span>Morning</span></button>
-  <button class="mob-btn" onclick="scrollTo('evening')"><span class="mob-icon">🌙</span><span>Evening</span></button>
-  <button class="mob-btn" onclick="scrollTo('makeup-routine')"><span class="mob-icon">✨</span><span>Makeup Look</span></button>
-  <button class="mob-btn" onclick="scrollTo('midday')"><span class="mob-icon">🌞</span><span>Mid-day</span></button>
-  <button class="mob-btn" onclick="scrollTo('makeup-removal')"><span class="mob-icon">🧴</span><span>Removal</span></button>
-</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mob-btn" onclick="goTo('skin-type')" data-id="skin-type"><span class="mob-icon">🪷</span><span>Skin Type</span></button>
+  <button class="mob-btn" onclick="goTo('cleansers')" data-id="cleansers"><span class="mob-icon">🫧</span><span>Cleansers</span></button>
+  <button class="mob-btn" onclick="goTo('toners')" data-id="toners"><span class="mob-icon">💜</span><span>Toners</span></button>
+  <button class="mob-btn" onclick="goTo('moisturizers')" data-id="moisturizers"><span class="mob-icon">💧</span><span>Moisturizers</span></button>
+  <button class="mob-btn" onclick="goTo('sunscreens')" data-id="sunscreens"><span class="mob-icon">☀️</span><span>Sunscreens</span></button>
+  <button class="mob-btn" onclick="goTo('makeup')" data-id="makeup"><span class="mob-icon">💄</span><span>Makeup</span></button>
+  <button class="mob-btn" onclick="goTo('morning')" data-id="morning"><span class="mob-icon">🌅</span><span>Morning</span></button>
+  <button class="mob-btn" onclick="goTo('evening')" data-id="evening"><span class="mob-icon">🌙</span><span>Evening</span></button>
+  <button class="mob-btn" onclick="goTo('makeup-routine')" data-id="makeup-routine"><span class="mob-icon">✨</span><span>Makeup Look</span></button>
+  <button class="mob-btn" onclick="goTo('midday')" data-id="midday"><span class="mob-icon">🌞</span><span>Mid-day</span></button>
+  <button class="mob-btn" onclick="goTo('makeup-removal')" data-id="makeup-removal"><span class="mob-icon">🧴</span><span>Removal</span></button>
+</div>
 
 <script>
-
-// Price filter
-function filterProducts(btn) {
-  const section = btn.dataset.section;
-  const tier    = btn.dataset.tier;
-
-  // Update active button in this filter bar
-  document.querySelectorAll(`.filter-btn[data-section="${section}"]`).forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  // Show/hide cards in the corresponding grid(s)
-  // Find all products-grids that belong to this section
-  const grids = document.querySelectorAll(`[data-filter-section="${section}"]`);
-  grids.forEach(grid => {
-    grid.querySelectorAll('.product-card').forEach(card => {
-      if (tier === 'all') {
-        card.classList.remove('filtered-out');
-      } else {
-        const hasTier = card.querySelector(`.price-badge.price-${tier}`);
-        card.classList.toggle('filtered-out', !hasTier);
-      }
-    });
-  });
-}
-
-// Dark mode
+// ── Dark mode ──────────────────────────────────────────────────────
 function toggleTheme() {
-  const html = document.documentElement;
+  const root = document.documentElement;
   const isDark = document.getElementById('dark-toggle').checked;
-  html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', isDark ? 'dark' : 'light');
   document.getElementById('toggle-label').textContent = isDark ? '🌙' : '☀️';
 }
 
-// Scroll to section (accounts for fixed nav)
-function scrollTo(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    const navH = document.querySelector('nav').offsetHeight;
-    const top = el.getBoundingClientRect().top + window.scrollY - navH - 12;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
+// ── Price filter ───────────────────────────────────────────────────
+function filterProducts(btn) {
+  const section = btn.dataset.section;
+  const tier    = btn.dataset.tier;
+  document.querySelectorAll('.filter-btn[data-section="' + section + '"]')
+    .forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('[data-filter-section="' + section + '"]')
+    .forEach(function(grid) {
+      grid.querySelectorAll('.product-card').forEach(function(card) {
+        if (tier === 'all') {
+          card.classList.remove('filtered-out');
+        } else {
+          var has = card.querySelector('.price-badge.price-' + tier);
+          card.classList.toggle('filtered-out', !has);
+        }
+      });
+    });
 }
 
-// Intersection Observer for section animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+// ── Navigation: get top-nav height only ───────────────────────────
+function getTopNavHeight() {
+  var topRow = document.querySelector('.nav-top');
+  var tabBar = document.querySelector('.nav-tab-bar');
+  var h = topRow ? topRow.offsetHeight : 0;
+  if (tabBar && getComputedStyle(tabBar).display !== 'none') {
+    h += tabBar.offsetHeight;
+  }
+  return h;
+}
+
+// ── goTo: scroll to section (avoids native scrollTo conflict) ──────
+function goTo(sectionId) {
+  var el = document.getElementById(sectionId);
+  if (!el) return;
+  var navH = getTopNavHeight();
+  var rect = el.getBoundingClientRect();
+  var targetY = rect.top + window.pageYOffset - navH - 8;
+  window.scrollTo({ top: targetY, behavior: 'smooth' });
+}
+
+// ── Section reveal animation ──────────────────────────────────────
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.06 });
+document.querySelectorAll('section').forEach(function(s) { revealObs.observe(s); });
 
-document.querySelectorAll('section').forEach(s => observer.observe(s));
-
-// Nav active highlight — scroll-spy using scroll position
-const allSections = Array.from(document.querySelectorAll('section[id]'));
-const allTabs = document.querySelectorAll('.nav-tab');
-const NAV_HEIGHT = document.querySelector('nav').offsetHeight + 8;
+// ── Scroll-spy: highlight active tab + mob-btn ────────────────────
+var allSections = Array.from(document.querySelectorAll('section[id]'));
+var allDesktopTabs = document.querySelectorAll('.nav-tab');
+var mobBar = document.getElementById('mobileNav');
+var lastActive = '';
 
 function setActiveTab(id) {
-  allTabs.forEach(t => t.classList.remove('active'));
-  const link = document.querySelector(`.nav-tab[href="#${id}"]`);
+  if (id === lastActive) return;
+  lastActive = id;
+
+  // Desktop tabs
+  allDesktopTabs.forEach(function(t) { t.classList.remove('active'); });
+  var link = document.querySelector('.nav-tab[href="#' + id + '"]');
   if (link) {
     link.classList.add('active');
-    const bar = document.querySelector('.nav-tab-bar');
-    if (bar) {
-      const linkLeft = link.offsetLeft - bar.offsetLeft;
-      bar.scrollTo({ left: linkLeft - bar.offsetWidth / 2 + link.offsetWidth / 2, behavior: 'smooth' });
+    var bar = document.querySelector('.nav-tab-bar');
+    if (bar && getComputedStyle(bar).display !== 'none') {
+      var left = link.offsetLeft - bar.offsetLeft - bar.offsetWidth / 2 + link.offsetWidth / 2;
+      bar.scrollTo({ left: left, behavior: 'smooth' });
     }
   }
-  // Also highlight matching mob-btn
-  document.querySelectorAll('.mob-btn').forEach(b => b.classList.remove('active'));
-  const mobBar = document.getElementById('mobileNav');
+
+  // Mobile bottom nav buttons
   if (mobBar) {
-    // match by onclick text
-    const btns = mobBar.querySelectorAll('.mob-btn');
-    btns.forEach(b => {
-      if (b.getAttribute('onclick')?.includes(`'${id}'`)) {
-        b.classList.add('active');
-        mobBar.scrollTo({ left: b.offsetLeft - mobBar.offsetWidth/2 + b.offsetWidth/2, behavior: 'smooth' });
-      }
+    mobBar.querySelectorAll('.mob-btn').forEach(function(b) {
+      b.classList.remove('active');
     });
+    var activeBtn = mobBar.querySelector('.mob-btn[data-id="' + id + '"]');
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+      var btnLeft = activeBtn.offsetLeft - mobBar.offsetWidth / 2 + activeBtn.offsetWidth / 2;
+      mobBar.scrollTo({ left: btnLeft, behavior: 'smooth' });
+    }
   }
 }
 
 function onScroll() {
-  const scrollY = window.scrollY + NAV_HEIGHT + 40;
-  let current = allSections[0].id;
-  for (const section of allSections) {
-    if (section.offsetTop <= scrollY) current = section.id;
+  var offset = getTopNavHeight() + 50;
+  var scrollY = window.pageYOffset + offset;
+  var current = allSections[0] ? allSections[0].id : '';
+  for (var i = 0; i < allSections.length; i++) {
+    if (allSections[i].offsetTop <= scrollY) current = allSections[i].id;
   }
   setActiveTab(current);
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+window.addEventListener('resize', function() { lastActive = ''; onScroll(); }, { passive: true });
+// Run after fonts/layout settle
+setTimeout(onScroll, 200);
 
-// Back to top button
-window.addEventListener('scroll', () => {
-  const btn = document.getElementById('backTop');
-  btn.classList.toggle('show', window.scrollY > 400);
-});
+// ── Back-to-top button ────────────────────────────────────────────
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backTop');
+  if (btn) btn.classList.toggle('show', window.pageYOffset > 400);
+}, { passive: true });
 </script>
 </body>
 </html>
