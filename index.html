@@ -113,87 +113,82 @@ nav {
   transition: background 0.4s, border-color 0.4s;
 }
 
+/* ── Row 1: Logo + dark mode toggle ── */
 .nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.5rem;
-  height: 52px;
+  padding: 0 1.25rem;
+  height: 50px;
   border-bottom: 1px solid var(--border);
 }
 
 .nav-logo {
   font-family: 'Petit Formal Script', cursive;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--heading);
   letter-spacing: 0.02em;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   flex-shrink: 0;
 }
 
-/* Tab bar */
+/* ── Row 2: Scrollable tab bar ── */
 .nav-tab-bar {
   display: flex;
   align-items: center;
-  gap: 0.15rem;
   overflow-x: auto;
   scrollbar-width: none;
-  padding: 0 1rem;
-  height: 46px;
-  position: relative;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  -webkit-overflow-scrolling: touch;
+  padding: 0 0.75rem;
+  height: 44px;
+  gap: 0.1rem;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 .nav-tab-bar::-webkit-scrollbar { display: none; }
 
+/* ── Individual tab ── */
 .nav-tab {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0 0.85rem;
-  height: 100%;
-  font-size: 0.73rem;
+  gap: 0.28rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--text3);
   text-decoration: none;
   white-space: nowrap;
   letter-spacing: 0.03em;
-  position: relative;
-  transition: color 0.2s ease, background 0.2s ease;
   flex-shrink: 0;
-  border-radius: 8px;
-  margin: 6px 0;
+  transition: color 0.18s, background 0.18s, box-shadow 0.18s;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 .nav-tab .tab-icon {
-  font-size: 0.85rem;
-  transition: transform 0.2s ease;
+  font-size: 0.82rem;
   line-height: 1;
 }
-.nav-tab:hover {
-  color: var(--heading);
-  background: var(--secondary-soft);
-}
-.nav-tab:hover .tab-icon { transform: scale(1.15); }
+.nav-tab:hover,
 .nav-tab.active {
   color: var(--heading);
   background: var(--secondary-soft);
   box-shadow: 0 0 0 1.5px var(--secondary);
 }
-.nav-tab.active .tab-icon { transform: scale(1.1); }
 
-/* Divider between tabs */
+/* ── Dividers (desktop only) ── */
 .nav-tab-divider {
   width: 1px;
   height: 14px;
   background: var(--border);
   flex-shrink: 0;
-  margin: 0;
   align-self: center;
 }
 
@@ -243,7 +238,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: clamp(95px, 12vw, 130px) clamp(1rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
+  padding: clamp(108px, 13vw, 140px) clamp(1rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
   overflow: hidden;
 }
 
@@ -815,40 +810,39 @@ footer .footer-title {
 }
 
 /* ──────────── MOBILE / TABLET NAV ──────────── */
-/* On phones: show a fixed bottom scrollable pill-tab strip */
-.mobile-nav { display: none; }
+.mobile-nav { display: none !important; }
 
-@media (max-width: 1024px) {
-  nav .nav-tab-bar { display: none; }
-  nav .nav-top { border-bottom: none; }
+/* ── All screens: tab bar always visible below logo row ── */
 
-  .mobile-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    z-index: 1001;
-    background: var(--nav-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1.5px solid var(--border);
-    box-shadow: 0 -4px 24px var(--shadow);
-    padding: 0.35rem 0.5rem env(safe-area-inset-bottom, 0.35rem);
-    gap: 0.25rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    align-items: center;
-    min-height: 58px;
-  }
-  .mobile-nav::-webkit-scrollbar { display: none; }
-  body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); }
-  section { scroll-margin-top: 56px; }
+/* Phone (≤ 640px): compact tabs, no dividers */
+@media (max-width: 640px) {
+  .nav-top    { height: 46px; padding: 0 1rem; }
+  .nav-logo   { font-size: 1.05rem; }
+  .nav-tab-bar { height: 40px; padding: 0 0.5rem; }
+  .nav-tab    { font-size: 0.65rem; padding: 0.22rem 0.55rem; gap: 0.2rem; }
+  .nav-tab .tab-icon { font-size: 0.75rem; }
+  .nav-tab-divider { display: none; }
+  section     { scroll-margin-top: 92px; }
+  .hero       { padding-top: 108px; }
+  body        { padding-bottom: 0; }
 }
 
+/* Tablet (641px – 1024px): medium tabs, no dividers */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .nav-top    { height: 48px; }
+  .nav-tab-bar { height: 42px; }
+  .nav-tab    { font-size: 0.68rem; padding: 0.25rem 0.65rem; }
+  .nav-tab-divider { display: none; }
+  section     { scroll-margin-top: 96px; }
+  .hero       { padding-top: 116px; }
+}
+
+/* Desktop (≥ 1025px): full tabs with dividers */
 @media (min-width: 1025px) {
-  .mobile-nav { display: none !important; }
-  section { scroll-margin-top: 106px; }
+  .nav-top    { height: 52px; }
+  .nav-tab-bar { height: 46px; }
+  .nav-tab    { font-size: 0.73rem; padding: 0.28rem 0.75rem; }
+  section     { scroll-margin-top: 106px; }
 }
 
 .mob-btn {
@@ -883,7 +877,7 @@ footer .footer-title {
 @media (max-width: 479px) {
   main { padding: 0 1rem 5rem; }
 
-  .hero { padding: 90px 1rem 3rem; }
+  .hero { padding: 108px 1rem 3rem; }
   .hero-title { font-size: 2rem; }
   .hero-sub   { font-size: 0.95rem; }
   .hero-pills { gap: 0.4rem; }
@@ -1081,7 +1075,7 @@ footer .footer-title {
 .back-top.show { opacity: 1; pointer-events: auto; }
 .back-top:hover { transform: translateY(-3px); }
 
-@media (max-width: 1024px) { .back-top { bottom: 4.8rem; right: 1rem; width: 36px; height: 36px; font-size: 0.85rem; } }
+@media (max-width: 640px) { .back-top { bottom: 1.5rem; right: 1rem; width: 34px; height: 34px; font-size: 0.8rem; } }
 </style>
 </head>
 <body>
@@ -2843,6 +2837,17 @@ function goTo(sectionId) {
   var targetY = rect.top + window.pageYOffset - navH - 8;
   window.scrollTo({ top: targetY, behavior: 'smooth' });
 }
+
+// Intercept <a> tab clicks so href="#x" doesn't trigger native jump
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-tab').forEach(function(tab) {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = tab.getAttribute('href').replace('#', '');
+      goTo(id);
+    });
+  });
+});
 
 // ── Section reveal animation ──────────────────────────────────────
 var revealObs = new IntersectionObserver(function(entries) {
