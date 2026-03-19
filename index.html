@@ -365,13 +365,11 @@ main {
 section {
   margin-bottom: 5rem;
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.55s ease;
   scroll-margin-top: 106px;
 }
 section.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .section-header {
@@ -2791,16 +2789,16 @@ footer .footer-title {
 <script>
 // ── Dark mode ──────────────────────────────────────────────────────
 function toggleTheme() {
-  const root = document.documentElement;
-  const isDark = document.getElementById('dark-toggle').checked;
+  var root = document.documentElement;
+  var isDark = document.getElementById('dark-toggle').checked;
   root.setAttribute('data-theme', isDark ? 'dark' : 'light');
   document.getElementById('toggle-label').textContent = isDark ? '🌙' : '☀️';
 }
 
 // ── Price filter ───────────────────────────────────────────────────
 function filterProducts(btn) {
-  const section = btn.dataset.section;
-  const tier    = btn.dataset.tier;
+  var section = btn.dataset.section;
+  var tier    = btn.dataset.tier;
   document.querySelectorAll('.filter-btn[data-section="' + section + '"]')
     .forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
@@ -2817,102 +2815,106 @@ function filterProducts(btn) {
     });
 }
 
-// ── Navigation: get top-nav height only ───────────────────────────
-function getTopNavHeight() {
+// ── Cache nav height once, recalculate only on resize ─────────────
+var cachedNavH = 0;
+function calcNavHeight() {
   var topRow = document.querySelector('.nav-top');
   var tabBar = document.querySelector('.nav-tab-bar');
-  var h = topRow ? topRow.offsetHeight : 0;
-  if (tabBar && getComputedStyle(tabBar).display !== 'none') {
-    h += tabBar.offsetHeight;
-  }
-  return h;
+  cachedNavH = (topRow ? topRow.offsetHeight : 0) +
+               (tabBar ? tabBar.offsetHeight : 0);
 }
 
-// ── goTo: scroll to section (avoids native scrollTo conflict) ──────
+// ── goTo: jump to section with correct offset ──────────────────────
 function goTo(sectionId) {
   var el = document.getElementById(sectionId);
   if (!el) return;
-  var navH = getTopNavHeight();
-  var rect = el.getBoundingClientRect();
-  var targetY = rect.top + window.pageYOffset - navH - 8;
+  var targetY = el.getBoundingClientRect().top + window.pageYOffset - cachedNavH - 6;
   window.scrollTo({ top: targetY, behavior: 'smooth' });
 }
 
-// Intercept <a> tab clicks so href="#x" doesn't trigger native jump
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.nav-tab').forEach(function(tab) {
-    tab.addEventListener('click', function(e) {
-      e.preventDefault();
-      var id = tab.getAttribute('href').replace('#', '');
-      goTo(id);
-    });
+// ── Intercept <a> tab clicks (stop native # jump on mobile) ────────
+document.querySelectorAll('.nav-tab').forEach(function(tab) {
+  tab.addEventListener('click', function(e) {
+    e.preventDefault();
+    var id = tab.getAttribute('href').replace('#','');
+    goTo(id);
   });
 });
 
-// ── Section reveal animation ──────────────────────────────────────
+// ── Section reveal (IntersectionObserver — no layout impact) ───────
 var revealObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target); // stop observing once revealed
+    }
   });
-}, { threshold: 0.06 });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('section').forEach(function(s) { revealObs.observe(s); });
 
-// ── Scroll-spy: highlight active tab + mob-btn ────────────────────
-var allSections = Array.from(document.querySelectorAll('section[id]'));
-var allDesktopTabs = document.querySelectorAll('.nav-tab');
-var mobBar = document.getElementById('mobileNav');
-var lastActive = '';
+// ── Scroll-spy ─────────────────────────────────────────────────────
+var allSections    = Array.from(document.querySelectorAll('section[id]'));
+var allTabs        = document.querySelectorAll('.nav-tab');
+var tabBar         = document.querySelector('.nav-tab-bar');
+var lastActiveId   = '';
+var rafPending     = false;
+
+// Precompute section tops (recalculated on resize)
+var sectionTops = [];
+function cacheSectionTops() {
+  sectionTops = allSections.map(function(s) { return s.offsetTop; });
+}
 
 function setActiveTab(id) {
-  if (id === lastActive) return;
-  lastActive = id;
+  if (id === lastActiveId) return;
+  lastActiveId = id;
 
-  // Desktop tabs
-  allDesktopTabs.forEach(function(t) { t.classList.remove('active'); });
+  allTabs.forEach(function(t) { t.classList.remove('active'); });
   var link = document.querySelector('.nav-tab[href="#' + id + '"]');
   if (link) {
     link.classList.add('active');
-    var bar = document.querySelector('.nav-tab-bar');
-    if (bar && getComputedStyle(bar).display !== 'none') {
-      var left = link.offsetLeft - bar.offsetLeft - bar.offsetWidth / 2 + link.offsetWidth / 2;
-      bar.scrollTo({ left: left, behavior: 'smooth' });
-    }
-  }
-
-  // Mobile bottom nav buttons
-  if (mobBar) {
-    mobBar.querySelectorAll('.mob-btn').forEach(function(b) {
-      b.classList.remove('active');
-    });
-    var activeBtn = mobBar.querySelector('.mob-btn[data-id="' + id + '"]');
-    if (activeBtn) {
-      activeBtn.classList.add('active');
-      var btnLeft = activeBtn.offsetLeft - mobBar.offsetWidth / 2 + activeBtn.offsetWidth / 2;
-      mobBar.scrollTo({ left: btnLeft, behavior: 'smooth' });
+    // Scroll tab bar to centre active tab — instant, not smooth, to avoid fighting user scroll
+    if (tabBar) {
+      var targetLeft = link.offsetLeft - tabBar.offsetLeft - (tabBar.offsetWidth / 2) + (link.offsetWidth / 2);
+      tabBar.scrollLeft = targetLeft;
     }
   }
 }
 
 function onScroll() {
-  var offset = getTopNavHeight() + 50;
-  var scrollY = window.pageYOffset + offset;
-  var current = allSections[0] ? allSections[0].id : '';
-  for (var i = 0; i < allSections.length; i++) {
-    if (allSections[i].offsetTop <= scrollY) current = allSections[i].id;
-  }
-  setActiveTab(current);
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(function() {
+    rafPending = false;
+    var scrollY = window.pageYOffset + cachedNavH + 30;
+    var current = allSections.length ? allSections[0].id : '';
+    for (var i = 0; i < sectionTops.length; i++) {
+      if (sectionTops[i] <= scrollY) current = allSections[i].id;
+    }
+    setActiveTab(current);
+
+    // Back-to-top button
+    var btn = document.getElementById('backTop');
+    if (btn) btn.classList.toggle('show', window.pageYOffset > 400);
+  });
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', function() { lastActive = ''; onScroll(); }, { passive: true });
-// Run after fonts/layout settle
-setTimeout(onScroll, 200);
 
-// ── Back-to-top button ────────────────────────────────────────────
-window.addEventListener('scroll', function() {
-  var btn = document.getElementById('backTop');
-  if (btn) btn.classList.toggle('show', window.pageYOffset > 400);
+window.addEventListener('resize', function() {
+  calcNavHeight();
+  cacheSectionTops();
+  lastActiveId = '';
+  onScroll();
 }, { passive: true });
+
+// ── Init ───────────────────────────────────────────────────────────
+calcNavHeight();
+// Small delay so fonts + layout are fully painted before caching
+setTimeout(function() {
+  cacheSectionTops();
+  onScroll();
+}, 300);
 </script>
 </body>
 </html>
