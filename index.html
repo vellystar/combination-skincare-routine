@@ -243,7 +243,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 115px 2rem 4rem;
+  padding: clamp(95px, 12vw, 130px) clamp(1rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
   overflow: hidden;
 }
 
@@ -363,7 +363,7 @@ main {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem 5rem;
+  padding: 0 clamp(1rem, 4vw, 1.5rem) 5rem;
 }
 
 /* ──────────── SECTION ──────────── */
@@ -795,7 +795,7 @@ section.visible {
   grid-template-columns: 1fr 1fr;
   gap: 1.2rem;
 }
-@media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+/* two-col breakpoints handled in responsive block */
 
 /* ──────────── FOOTER ──────────── */
 footer {
@@ -814,56 +814,242 @@ footer .footer-title {
   margin-bottom: 0.5rem;
 }
 
-/* ──────────── MOBILE BOTTOM NAV ──────────── */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: var(--nav-bg);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid var(--border);
-  padding: 0.5rem 0;
-  justify-content: space-around;
-}
-@media (max-width: 768px) {
-  .mobile-nav { display: flex; }
+/* ──────────── MOBILE / TABLET NAV ──────────── */
+/* On phones: show a fixed bottom scrollable pill-tab strip */
+.mobile-nav { display: none; }
+
+@media (max-width: 1024px) {
   nav .nav-tab-bar { display: none; }
-  body { padding-bottom: 60px; }
+  nav .nav-top { border-bottom: none; }
+
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 1001;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1.5px solid var(--border);
+    box-shadow: 0 -4px 24px var(--shadow);
+    padding: 0.35rem 0.5rem env(safe-area-inset-bottom, 0.35rem);
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    align-items: center;
+    min-height: 58px;
+  }
+  .mobile-nav::-webkit-scrollbar { display: none; }
+  body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); }
+  section { scroll-margin-top: 56px; }
+}
+
+@media (min-width: 1025px) {
+  .mobile-nav { display: none !important; }
+  section { scroll-margin-top: 106px; }
 }
 
 .mob-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.18rem;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--text3);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
-  padding: 0.3rem 0.5rem;
-  border-radius: 10px;
+  padding: 0.35rem 0.7rem;
+  border-radius: 12px;
   transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
 }
+.mob-btn .mob-icon { font-size: 1rem; line-height: 1; }
 .mob-btn:hover, .mob-btn.active {
   color: var(--heading);
   background: var(--secondary-soft);
+  box-shadow: 0 0 0 1.5px var(--secondary);
 }
-.mob-btn span:first-child { font-size: 1.1rem; }
 
-/* ──────────── RESPONSIVE ──────────── */
-@media (max-width: 900px) {
-  .products-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+/* ──────────── RESPONSIVE — mobile-first ──────────── */
+
+/* ── Phone (< 480px) ── */
+@media (max-width: 479px) {
+  main { padding: 0 1rem 5rem; }
+
+  .hero { padding: 90px 1rem 3rem; }
+  .hero-title { font-size: 2rem; }
+  .hero-sub   { font-size: 0.95rem; }
+  .hero-pills { gap: 0.4rem; }
+  .pill       { font-size: 0.72rem; padding: 0.35rem 0.8rem; }
+
+  .section-header { gap: 0.75rem; margin-bottom: 1.5rem; }
+  .section-icon   { width: 38px; height: 38px; font-size: 1rem; }
+  .section-title  { font-size: 1.4rem; }
+
+  .skin-grid         { grid-template-columns: 1fr; }
+  .products-grid     { grid-template-columns: 1fr; gap: 1rem; }
+
+  .combo-banner     { padding: 1.2rem 1.2rem; }
+  .combo-banner h3  { font-size: 1.1rem; }
+
+  .routine-card     { border-radius: 16px; }
+  .routine-header   { padding: 1.2rem 1rem; flex-direction: column; text-align: center; gap: 0.5rem; }
+  .routine-header-icon { font-size: 2rem; }
+  .routine-header-text h3 { font-size: 1.3rem; }
+  .routine-steps    { padding: 1rem 1rem 1.5rem; }
+  .step             { gap: 0.75rem; padding: 1rem 0; }
+  .step-num         { width: 30px; height: 30px; font-size: 0.72rem; }
+  .step-product     { font-size: 0.95rem; }
+  .step-instruction { font-size: 0.8rem; }
+  .step-tip         { font-size: 0.75rem; }
+
+  .two-col    { grid-template-columns: 1fr; }
+  .info-box   { padding: 1rem 1.1rem; }
+
+  .product-card-top { padding: 1rem 1rem 0; }
+  .product-body     { padding: 0.85rem 1rem 1rem; }
+  .product-name     { font-size: 0.95rem; }
+
+  .filter-bar   { gap: 0.35rem; }
+  .filter-btn   { font-size: 0.67rem; padding: 0.25rem 0.65rem; }
+  .filter-label { display: none; }
+
+  .makeup-subsection h4 { font-size: 0.95rem; }
+
+  .nav-top { padding: 0 1rem; height: 48px; }
+  .nav-logo { font-size: 1rem; }
+  .toggle-label { display: none; }
 }
-@media (max-width: 600px) {
-  .routine-steps { padding: 1.2rem 1.2rem 1.5rem; }
-  .routine-header { padding: 1.5rem 1.2rem 1.2rem; }
-  .step { gap: 0.8rem; }
-  .products-grid { grid-template-columns: 1fr; }
-  .nav-logo { font-size: 1.1rem; }
+
+/* ── Large phone / small tablet (480px – 767px) ── */
+@media (min-width: 480px) and (max-width: 767px) {
+  main { padding: 0 1.25rem 5rem; }
+  .products-grid { grid-template-columns: 1fr; gap: 1.1rem; }
+  .skin-grid     { grid-template-columns: 1fr 1fr; }
+  .two-col       { grid-template-columns: 1fr; }
+  .routine-header { padding: 1.4rem 1.5rem; }
+  .routine-steps  { padding: 1.2rem 1.5rem 1.5rem; }
+  .filter-label   { display: none; }
+}
+
+/* ── Tablet (768px – 1024px) ── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  main { padding: 0 1.5rem 5rem; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .skin-grid     { grid-template-columns: repeat(2, 1fr); }
+  .two-col       { grid-template-columns: 1fr 1fr; }
+  .routine-header { padding: 1.75rem 1.75rem 1.25rem; }
+  .routine-steps  { padding: 1.25rem 1.75rem 1.75rem; }
+}
+
+/* ── Desktop (≥ 1025px) ── */
+@media (min-width: 1025px) {
+  .products-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .skin-grid     { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+}
+
+
+
+/* ──────────── PRICE FILTER BAR ──────────── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+  align-items: center;
+  row-gap: 0.4rem;
+}
+.filter-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text3);
+  margin-right: 0.2rem;
+}
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  color: var(--text2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  letter-spacing: 0.03em;
+}
+.filter-btn:hover { border-color: var(--secondary); color: var(--heading); background: var(--secondary-soft); }
+.filter-btn.active { color: var(--heading); background: var(--secondary-soft); border-color: var(--secondary); box-shadow: 0 0 0 1px var(--secondary); }
+.filter-btn[data-tier="budget"].active       { background: #E8F8EE; border-color: #68C888; color: #1A6035; box-shadow: 0 0 0 1px #68C888; }
+.filter-btn[data-tier="affordable"].active   { background: #E4F0FF; border-color: #5890E0; color: #1A4080; box-shadow: 0 0 0 1px #5890E0; }
+.filter-btn[data-tier="midrange"].active     { background: #EEE6FF; border-color: #9870D8; color: #4A28A0; box-shadow: 0 0 0 1px #9870D8; }
+.filter-btn[data-tier="premium"].active      { background: #FFF0E0; border-color: #E08838; color: #884010; box-shadow: 0 0 0 1px #E08838; }
+[data-theme="dark"] .filter-btn[data-tier="budget"].active     { background: #1A3828; border-color: #3A8858; color: #68C898; box-shadow: 0 0 0 1px #3A8858; }
+[data-theme="dark"] .filter-btn[data-tier="affordable"].active { background: #1A2848; border-color: #3A68B8; color: #78AAEE; box-shadow: 0 0 0 1px #3A68B8; }
+[data-theme="dark"] .filter-btn[data-tier="midrange"].active   { background: #281848; border-color: #7050C8; color: #B090F0; box-shadow: 0 0 0 1px #7050C8; }
+[data-theme="dark"] .filter-btn[data-tier="premium"].active    { background: #382010; border-color: #C07030; color: #F0A060; box-shadow: 0 0 0 1px #C07030; }
+
+.product-card.filtered-out {
+  display: none;
+}
+
+/* ──────────── PRICE TIER BADGES ──────────── */
+.price-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 20px;
+  padding: 0.22rem 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+  border: 1.5px solid transparent;
+}
+.price-budget {
+  background: #E8F8EE;
+  color: #2A7A45;
+  border-color: #B8E8CC;
+}
+.price-affordable {
+  background: #EAF3FF;
+  color: #2060A8;
+  border-color: #B8D8F8;
+}
+.price-midrange {
+  background: #F0EAFF;
+  color: #6040B0;
+  border-color: #D0C0F8;
+}
+.price-premium {
+  background: #FFF0E8;
+  color: #A05020;
+  border-color: #F8D8B8;
+}
+[data-theme="dark"] .price-budget    { background: #1A3828; color: #68D098; border-color: #2A5838; }
+[data-theme="dark"] .price-affordable { background: #1A2840; color: #78AAEE; border-color: #2A4060; }
+[data-theme="dark"] .price-midrange  { background: #281A48; color: #B898F8; border-color: #402878; }
+[data-theme="dark"] .price-premium   { background: #381A10; color: #F0A878; border-color: #582A18; }
+
+
+/* Touch devices: disable hover transforms */
+@media (hover: none) {
+  .product-card:hover { transform: none; box-shadow: 0 2px 12px var(--shadow); border-color: var(--border); }
+  .skin-card:hover    { transform: none; box-shadow: 0 2px 12px var(--shadow); border-color: var(--border); }
+  .step:hover         { padding-left: 0; }
+  .pill:hover         { transform: none; }
 }
 
 /* ──────────── REMOVAL CARD ──────────── */
@@ -895,7 +1081,7 @@ footer .footer-title {
 .back-top.show { opacity: 1; pointer-events: auto; }
 .back-top:hover { transform: translateY(-3px); }
 
-@media (max-width: 768px) { .back-top { bottom: 5.5rem; } }
+@media (max-width: 1024px) { .back-top { bottom: 4.8rem; right: 1rem; width: 36px; height: 36px; font-size: 0.85rem; } }
 </style>
 </head>
 <body>
@@ -1039,7 +1225,15 @@ footer .footer-title {
       <div class="section-icon icon-blue">🫧</div>
       <h2 class="section-title"><span>Step 1 & Double Cleansing</span>Cleansers</h2>
     </div>
-    <div class="products-grid">
+        <div class="filter-bar" data-section="cleansers">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="cleansers" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="cleansers" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="cleansers" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="cleansers" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="cleansers" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" data-filter-section="cleansers">
 
       <!-- Glad2Glow Micellar -->
       <div class="product-card">
@@ -1057,6 +1251,7 @@ footer .footer-title {
             <span class="tag pink">Makeup Remover</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
+          <div class="price-badge price-budget">💚 Budget Friendly · Under Rp 50k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A gentle micellar water infused with <strong>cherry blossom extract</strong> and <strong>betaine</strong> to effectively dissolve makeup, sunscreen, and daily impurities without harsh rubbing or rinsing.</p>
               <ul>
@@ -1095,6 +1290,7 @@ footer .footer-title {
             <span class="tag green">Repair</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
+          <div class="price-badge price-affordable">💙 Affordable · Rp 89k–110k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A low-pH gel cleanser powered by <strong>snail secretion filtrate</strong> and <strong>centella asiatica (Truecica)</strong> for gentle yet thorough cleansing that repairs and calms while you cleanse.</p>
               <ul>
@@ -1134,6 +1330,7 @@ footer .footer-title {
             <span class="tag green">Barrier-Safe</span>
           </div>
           <div class="suitability-badge">✓ Great for Combination Skin</div>
+          <div class="price-badge price-affordable">💙 Affordable · Rp 65k–95k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A local Indonesian favourite — a mild, low-pH cleanser formulated to cleanse without disrupting the skin's natural protective barrier.</p>
               <ul>
@@ -1172,6 +1369,7 @@ footer .footer-title {
             <span class="tag green">Biome-Friendly</span>
           </div>
           <div class="suitability-badge">✓ Great for Combination Skin</div>
+          <div class="price-badge price-budget">💚 Budget Friendly · Rp 35k–55k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>An innovative cleanser that works with your skin's microbiome, featuring a powerful trio of <strong>ceramides</strong>, <strong>hyaluronic acid</strong>, and <strong>amino acids</strong>.</p>
               <ul>
@@ -1203,7 +1401,15 @@ footer .footer-title {
       <div class="section-icon icon-lilac">💜</div>
       <h2 class="section-title"><span>Step 2 & 3</span>Toners & Ampoules</h2>
     </div>
-    <div class="products-grid">
+        <div class="filter-bar" data-section="toners">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="toners" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="toners" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="toners" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="toners" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="toners" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" data-filter-section="toners">
 
       <!-- SOME BY MI Toner -->
       <div class="product-card">
@@ -1221,6 +1427,7 @@ footer .footer-title {
             <span class="tag green">Hydrating</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
+          <div class="price-badge price-midrange">💜 Mid-Range · Rp 130k–190k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A lightweight, hydrating toner that delivers the regenerative power of <strong>snail mucin</strong> and the calming properties of <strong>centella asiatica</strong> in every drop.</p>
               <ul>
@@ -1260,6 +1467,7 @@ footer .footer-title {
             <span class="tag blue">Calming</span>
           </div>
           <div class="suitability-badge">✓ Holy Grail for Combination Skin</div>
+          <div class="price-badge price-midrange">💜 Mid-Range · Rp 130k–190k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>One of the most beloved K-beauty ampoules — a concentrated <strong>centella asiatica water (95%+)</strong> formula that is incredibly lightweight yet deeply restorative.</p>
               <ul>
@@ -1289,7 +1497,15 @@ footer .footer-title {
       <div class="section-icon icon-blue">💦</div>
       <h2 class="section-title"><span>Step 4</span>Moisturizers</h2>
     </div>
-    <div class="products-grid">
+        <div class="filter-bar" data-section="moisturizers">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="moisturizers" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="moisturizers" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="moisturizers" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="moisturizers" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="moisturizers" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" data-filter-section="moisturizers">
 
       <!-- Skin1004 Brightening Cream -->
       <div class="product-card">
@@ -1307,6 +1523,7 @@ footer .footer-title {
             <span class="tag green">Centella</span>
           </div>
           <div class="suitability-badge">✓ Best for PM Use / Drier Days</div>
+          <div class="price-badge price-midrange">💜 Mid-Range · Rp 150k–230k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A unique <strong>capsule cream</strong> that encapsulates brightening actives within tiny capsules that burst upon application, delivering concentrated ingredients to the skin.</p>
               <ul>
@@ -1345,6 +1562,7 @@ footer .footer-title {
             <span class="tag green">Barrier Repair</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
+          <div class="price-badge price-affordable">💙 Affordable · Rp 50k–80k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A ceramide-rich moisturiser focused on rebuilding and protecting the skin's lipid barrier for long-term healthy, balanced skin.</p>
               <ul>
@@ -1382,6 +1600,7 @@ footer .footer-title {
             <span class="tag green">Ceramide</span>
           </div>
           <div class="suitability-badge">✓ Great for All-Over Use</div>
+          <div class="price-badge price-budget">💚 Budget Friendly · Rp 45k–65k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A power-duo moisturiser combining <strong>hyaluronic acid (Hyalu)</strong> and <strong>ceramides (cera)</strong> for deep, long-lasting hydration that also repairs the barrier.</p>
               <ul>
@@ -1418,6 +1637,7 @@ footer .footer-title {
             <span class="tag green">AM Favourite</span>
           </div>
           <div class="suitability-badge">✓ Best for AM / Oily Days</div>
+          <div class="price-badge price-affordable">💙 Affordable · Rp 80k–130k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A gel-textured moisturiser — the lightest of your moisturiser lineup, perfect for humid days or as a morning base under SPF and makeup.</p>
               <ul>
@@ -1458,7 +1678,15 @@ footer .footer-title {
       <div class="section-icon icon-sun">☀️</div>
       <h2 class="section-title"><span>Step 5 — The Most Important Step</span>Sunscreens</h2>
     </div>
-    <div class="products-grid">
+        <div class="filter-bar" data-section="sunscreens">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="sunscreens" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="sunscreens" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="sunscreens" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="sunscreens" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="sunscreens" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" data-filter-section="sunscreens">
 
       <!-- YOU Sunscreen -->
       <div class="product-card">
@@ -1476,6 +1704,7 @@ footer .footer-title {
             <span class="tag green">AM Final Step</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
+          <div class="price-badge price-affordable">💙 Affordable · Rp 70k–120k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A <strong>physical (mineral) sunscreen</strong> that uses UV-reflecting mineral filters (zinc oxide and/or titanium dioxide) to protect skin from both UVA and UVB rays.</p>
               <ul>
@@ -1515,6 +1744,7 @@ footer .footer-title {
             <span class="tag pink">Over Makeup</span>
           </div>
           <div class="suitability-badge">✓ Perfect Mid-Day Reapplication Tool</div>
+          <div class="price-badge price-affordable">💙 Affordable · Rp 80k–140k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A sunscreen spray by Indonesian dermatologist Dr. Oky Pratama — formulated for convenient, mess-free <strong>SPF reapplication over makeup</strong> without disrupting your look.</p>
               <ul>
@@ -1547,7 +1777,15 @@ footer .footer-title {
 
     <div class="makeup-subsection">
       <h4>✦ Base & Complexion</h4>
-      <div class="products-grid">
+          <div class="filter-bar" data-section="makeup-base">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="makeup-base" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="makeup-base" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="makeup-base" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="makeup-base" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="makeup-base" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" data-filter-section="makeup-base">
 
         <!-- SKINTIFIC Cushion -->
         <div class="product-card">
@@ -1565,6 +1803,7 @@ footer .footer-title {
               <span class="tag blue">Medium-Full Coverage</span>
               <span class="tag pink">Glow Finish</span>
             </div>
+            <div class="price-badge price-midrange">💜 Mid-Range · Rp 150k–220k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A buildable cushion foundation that combines skincare ingredients with medium-to-full coverage for a "Cover Glow" complexion effect.</p>
                 <ul>
@@ -1602,6 +1841,7 @@ footer .footer-title {
               <span class="tag blue">Full Coverage</span>
               <span class="tag pink">Skin-Like Finish</span>
             </div>
+            <div class="price-badge price-premium">🩷 Premium · Rp 280k–420k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>One of the most acclaimed K-beauty cushions — TIRTIR Mask Fit Red delivers an iconic <strong>skin-like, second-skin finish</strong> with impressive coverage.</p>
                 <ul>
@@ -1640,6 +1880,7 @@ footer .footer-title {
               <span class="tag blue">Serum Hybrid</span>
               <span class="tag green">Light Coverage</span>
             </div>
+            <div class="price-badge price-midrange">💜 Mid-Range · Rp 160k–250k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>The ultimate "no-makeup makeup" base — a lightweight skin tint that blurs imperfections while feeding skin with serum actives.</p>
                 <ul>
@@ -1675,6 +1916,7 @@ footer .footer-title {
               <span class="tag blue">2-in-1</span>
               <span class="tag pink">Brightening</span>
             </div>
+            <div class="price-badge price-budget">💚 Budget Friendly · Under Rp 50k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A versatile two-in-one product that functions as both a <strong>concealer and a BB cream</strong> — covering imperfections while brightening and isolating skin tone.</p>
                 <ul>
@@ -1711,6 +1953,7 @@ footer .footer-title {
               <span class="tag blue">Translucent</span>
               <span class="tag green">Mattifying</span>
             </div>
+            <div class="price-badge price-affordable">💙 Affordable · Rp 75k–120k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A translucent loose setting powder that locks in your base makeup for long-wearing, shine-free results without adding any colour or heaviness.</p>
                 <ul>
@@ -1735,7 +1978,15 @@ footer .footer-title {
 
     <div class="makeup-subsection" style="margin-top:2rem">
       <h4>✦ Lips</h4>
-      <div class="products-grid">
+          <div class="filter-bar" data-section="makeup-lips">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="makeup-lips" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="makeup-lips" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="makeup-lips" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="makeup-lips" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="makeup-lips" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" data-filter-section="makeup-lips">
 
         <!-- Glad2Glow Lip Serum -->
         <div class="product-card">
@@ -1753,6 +2004,7 @@ footer .footer-title {
               <span class="tag blue">Brightening</span>
               <span class="tag pink">Peach Tint</span>
             </div>
+            <div class="price-badge price-budget">💚 Budget Friendly · Rp 30k–50k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A multitasking lip serum that treats and tints lips simultaneously — brightening pigmented lips while delivering a warm peach-coral hue.</p>
                 <ul>
@@ -1790,6 +2042,7 @@ footer .footer-title {
               <span class="tag blue">Moisturizing</span>
               <span class="tag pink">Rosy Tint</span>
             </div>
+            <div class="price-badge price-budget">💚 Budget Friendly · Rp 25k–45k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A classic tinted lip balm that combines deep moisture care with a subtle, elegant rosy hue.</p>
                 <ul>
@@ -1826,6 +2079,7 @@ footer .footer-title {
               <span class="tag blue">Long-Lasting</span>
               <span class="tag pink">Cherry Red</span>
             </div>
+            <div class="price-badge price-affordable">💙 Affordable · Rp 55k–95k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A long-wearing lip stain with a "Stellar Dust" finish — buildable colour that stains the lips for a gradient or full-lip effect.</p>
                 <ul>
@@ -1863,6 +2117,7 @@ footer .footer-title {
               <span class="tag blue">Multi-Use</span>
               <span class="tag pink">Peach Glow</span>
             </div>
+            <div class="price-badge price-affordable">💙 Affordable · Rp 55k–90k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A versatile glow oil that can be used on both the face and lips for a luminous, healthy-looking glow.</p>
                 <ul>
@@ -1886,7 +2141,15 @@ footer .footer-title {
 
     <div class="makeup-subsection" style="margin-top:2rem">
       <h4>✦ Setting & Finishing</h4>
-      <div class="products-grid">
+          <div class="filter-bar" data-section="makeup-setting">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="makeup-setting" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="makeup-setting" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="makeup-setting" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="makeup-setting" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="makeup-setting" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" data-filter-section="makeup-setting">
 
         <!-- PIXY Mist -->
         <div class="product-card">
@@ -1903,6 +2166,7 @@ footer .footer-title {
               <span class="tag blue">Matte Finish</span>
               <span class="tag green">Protecting</span>
             </div>
+            <div class="price-badge price-budget">💚 Budget Friendly · Rp 35k–60k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A setting and protecting mist with a <strong>matte finish</strong> — ideal for combination skin that wants to control shine while keeping makeup in place.</p>
                 <ul>
@@ -1940,6 +2204,7 @@ footer .footer-title {
               <span class="tag blue">Long-Lasting</span>
               <span class="tag pink">Fast-Setting</span>
             </div>
+            <div class="price-badge price-midrange">💜 Mid-Range · Rp 130k–180k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A fast-acting setting mist from L'Oréal's long-wearing Infallible line — sets makeup in just 3 seconds for all-day staying power.</p>
                 <ul>
@@ -2310,7 +2575,15 @@ footer .footer-title {
     </div>
 
     <!-- Removal Products -->
-    <div class="products-grid" style="margin-bottom:2rem">
+        <div class="filter-bar" data-section="makeup-removal-prods">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-section="makeup-removal-prods" data-tier="all" onclick="filterProducts(this)">✦ All</button>
+      <button class="filter-btn" data-section="makeup-removal-prods" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
+      <button class="filter-btn" data-section="makeup-removal-prods" data-tier="affordable" onclick="filterProducts(this)">💙 Affordable</button>
+      <button class="filter-btn" data-section="makeup-removal-prods" data-tier="midrange" onclick="filterProducts(this)">💜 Mid-Range</button>
+      <button class="filter-btn" data-section="makeup-removal-prods" data-tier="premium" onclick="filterProducts(this)">🩷 Premium</button>
+    </div>
+    <div class="products-grid" style="margin-bottom:2rem" data-filter-section="makeup-removal-prods">
 
       <!-- Micellar Water card -->
       <div class="product-card">
@@ -2326,6 +2599,7 @@ footer .footer-title {
             <span class="tag">Step 1 — Oil-Based Remove</span>
             <span class="tag pink">Eyes · Lips · Face</span>
           </div>
+          <div class="price-badge price-budget">💚 Budget Friendly · Under Rp 50k</div>
           <div class="suitability-badge">✓ Primary Makeup Remover</div>
           <div class="prod-section"><div class="prod-section-label">✦ Why This for Removal</div><div class="acc-inner">
             <p>Micellar water uses tiny oil-filled molecules (micelles) that magnetically attract and lift oil-based products — foundation, cushion, lip stain, and SPF — without requiring harsh rubbing or rinsing. The betaine content also calms any irritation during the removal process.</p>
@@ -2370,6 +2644,7 @@ footer .footer-title {
             <span class="tag green">Post-Removal Cleanse</span>
           </div>
           <div class="suitability-badge">✓ Second-Step Makeup Removal Cleanser</div>
+          <div class="price-badge price-affordable">💙 Affordable · Rp 89k–110k</div>
           <div class="prod-section"><div class="prod-section-label">✦ Why This After Micellar</div><div class="acc-inner">
             <p>Micellar water loosens makeup but leaves a thin film of micelle residue on skin. The low-pH gel cleanser rinses this away while deeply cleansing pores, removing sweat, and ensuring the skin is truly clean and ready to absorb your nighttime treatments.</p>
             <ul>
@@ -2504,18 +2779,47 @@ footer .footer-title {
 <!-- BACK TO TOP -->
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<!-- MOBILE BOTTOM NAV -->
-<div class="mobile-nav">
-  <button class="mob-btn" onclick="scrollTo('skin-type')"><span>🪷</span><span>Skin</span></button>
-  <button class="mob-btn" onclick="scrollTo('cleansers')"><span>🫧</span><span>Clean</span></button>
-  <button class="mob-btn" onclick="scrollTo('moisturizers')"><span>💧</span><span>Moist</span></button>
-  <button class="mob-btn" onclick="scrollTo('makeup')"><span>💄</span><span>Makeup</span></button>
-  <button class="mob-btn" onclick="scrollTo('morning')"><span>🌅</span><span>AM</span></button>
-  <button class="mob-btn" onclick="scrollTo('evening')"><span>🌙</span><span>PM</span></button>
-  <button class="mob-btn" onclick="scrollTo('midday')"><span>☀️</span><span>Midday</span></button>
-</div>
+<!-- MOBILE / TABLET BOTTOM NAV — all sections, scrollable -->
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mob-btn" onclick="scrollTo('skin-type')"><span class="mob-icon">🪷</span><span>Skin Type</span></button>
+  <button class="mob-btn" onclick="scrollTo('cleansers')"><span class="mob-icon">🫧</span><span>Cleansers</span></button>
+  <button class="mob-btn" onclick="scrollTo('toners')"><span class="mob-icon">💜</span><span>Toners</span></button>
+  <button class="mob-btn" onclick="scrollTo('moisturizers')"><span class="mob-icon">💧</span><span>Moisturizers</span></button>
+  <button class="mob-btn" onclick="scrollTo('sunscreens')"><span class="mob-icon">☀️</span><span>Sunscreens</span></button>
+  <button class="mob-btn" onclick="scrollTo('makeup')"><span class="mob-icon">💄</span><span>Makeup</span></button>
+  <button class="mob-btn" onclick="scrollTo('morning')"><span class="mob-icon">🌅</span><span>Morning</span></button>
+  <button class="mob-btn" onclick="scrollTo('evening')"><span class="mob-icon">🌙</span><span>Evening</span></button>
+  <button class="mob-btn" onclick="scrollTo('makeup-routine')"><span class="mob-icon">✨</span><span>Makeup Look</span></button>
+  <button class="mob-btn" onclick="scrollTo('midday')"><span class="mob-icon">🌞</span><span>Mid-day</span></button>
+  <button class="mob-btn" onclick="scrollTo('makeup-removal')"><span class="mob-icon">🧴</span><span>Removal</span></button>
+</nav>
 
 <script>
+
+// Price filter
+function filterProducts(btn) {
+  const section = btn.dataset.section;
+  const tier    = btn.dataset.tier;
+
+  // Update active button in this filter bar
+  document.querySelectorAll(`.filter-btn[data-section="${section}"]`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Show/hide cards in the corresponding grid(s)
+  // Find all products-grids that belong to this section
+  const grids = document.querySelectorAll(`[data-filter-section="${section}"]`);
+  grids.forEach(grid => {
+    grid.querySelectorAll('.product-card').forEach(card => {
+      if (tier === 'all') {
+        card.classList.remove('filtered-out');
+      } else {
+        const hasTier = card.querySelector(`.price-badge.price-${tier}`);
+        card.classList.toggle('filtered-out', !hasTier);
+      }
+    });
+  });
+}
+
 // Dark mode
 function toggleTheme() {
   const html = document.documentElement;
@@ -2556,10 +2860,23 @@ function setActiveTab(id) {
   if (link) {
     link.classList.add('active');
     const bar = document.querySelector('.nav-tab-bar');
-    const linkLeft = link.offsetLeft - bar.offsetLeft;
-    const barWidth = bar.offsetWidth;
-    const linkWidth = link.offsetWidth;
-    bar.scrollTo({ left: linkLeft - (barWidth / 2) + (linkWidth / 2), behavior: 'smooth' });
+    if (bar) {
+      const linkLeft = link.offsetLeft - bar.offsetLeft;
+      bar.scrollTo({ left: linkLeft - bar.offsetWidth / 2 + link.offsetWidth / 2, behavior: 'smooth' });
+    }
+  }
+  // Also highlight matching mob-btn
+  document.querySelectorAll('.mob-btn').forEach(b => b.classList.remove('active'));
+  const mobBar = document.getElementById('mobileNav');
+  if (mobBar) {
+    // match by onclick text
+    const btns = mobBar.querySelectorAll('.mob-btn');
+    btns.forEach(b => {
+      if (b.getAttribute('onclick')?.includes(`'${id}'`)) {
+        b.classList.add('active');
+        mobBar.scrollTo({ left: b.offsetLeft - mobBar.offsetWidth/2 + b.offsetWidth/2, behavior: 'smooth' });
+      }
+    });
   }
 }
 
