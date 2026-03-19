@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>✿ My Skincare & Makeup Sanctuary</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;500;600;700&family=Petit+Formal+Script&display=swap" rel="stylesheet">
@@ -537,6 +537,9 @@ section {
   position: relative;
   break-inside: avoid;
   align-self: start;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .product-card:hover {
   transform: translateY(-5px);
@@ -722,6 +725,8 @@ section {
   font-size: 0.83rem;
   color: var(--text2);
   line-height: 1.65;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .step-tip {
   margin-top: 0.5rem;
@@ -978,10 +983,11 @@ footer .footer-title {
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 1.4rem;
+  gap: 0.35rem;
+  margin-bottom: 1.2rem;
   align-items: center;
-  row-gap: 0.4rem;
+  row-gap: 0.35rem;
+  width: 100%;
 }
 .filter-label {
   font-size: 0.7rem;
@@ -1022,6 +1028,56 @@ footer .footer-title {
   display: none;
 }
 
+
+/* ──────────── PRICE DISCLAIMER ──────────── */
+.price-disclaimer {
+  background: linear-gradient(135deg, #FFF8E8, #FFF0D0);
+  border: 1.5px solid #F0D890;
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  font-size: 0.77rem;
+  color: #806020;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+[data-theme="dark"] .price-disclaimer {
+  background: linear-gradient(135deg, #2A2010, #221808);
+  border-color: #604810;
+  color: #D0A840;
+}
+
+
+/* ──────────── WHERE TO BUY ──────────── */
+.where-to-buy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: var(--card2);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 0.6rem 0.85rem;
+  margin-top: 0.65rem;
+  font-size: 0.75rem;
+  color: var(--text2);
+  line-height: 1.55;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.where-to-buy .wtb-icon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+.where-to-buy strong {
+  color: var(--heading);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
 /* ──────────── PRICE TIER BADGES ──────────── */
 .price-badge {
   display: inline-flex;
@@ -1031,9 +1087,13 @@ footer .footer-title {
   padding: 0.22rem 0.7rem;
   font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin-top: 0.5rem;
   border: 1.5px solid transparent;
+  flex-wrap: wrap;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.5;
 }
 .price-budget {
   background: #E8F8EE;
@@ -1109,9 +1169,9 @@ footer .footer-title {
     <div class="nav-logo">✿ Skin Sanctuary</div>
     <div class="nav-right">
       <div class="toggle-wrap">
-        <span class="toggle-label" id="toggle-label">☀️</span>
+        <span class="toggle-label" id="toggle-label">🌙</span>
         <label class="toggle">
-          <input type="checkbox" id="dark-toggle" onchange="toggleTheme()">
+          <input type="checkbox" id="dark-toggle" onchange="toggleTheme()" checked>
           <span class="toggle-slider"></span>
         </label>
       </div>
@@ -1242,7 +1302,10 @@ footer .footer-title {
       <div class="section-icon icon-blue">🫧</div>
       <h2 class="section-title"><span>Step 1 & Double Cleansing</span>Cleansers</h2>
     </div>
-        <div class="filter-bar" data-section="cleansers">
+        <div class="price-disclaimer">
+      ⚠️ <strong>Prices may change at any time.</strong> Ranges are based on official Shopee/Tokopedia listings (March 2026). Promotional prices, TikTok Live flash sales, and reseller prices may differ significantly. Always check the latest price on official stores.
+    </div>
+    <div class="filter-bar" data-section="cleansers">
       <span class="filter-label">Filter:</span>
       <button class="filter-btn active" data-section="cleansers" data-tier="all" onclick="filterProducts(this)">✦ All</button>
       <button class="filter-btn" data-section="cleansers" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
@@ -1268,7 +1331,8 @@ footer .footer-title {
             <span class="tag pink">Makeup Remover</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
-          <div class="price-badge price-budget">💚 Budget Friendly · Under Rp 50k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 130ml ~Rp 85k–105k · 300ml ~Rp 120k–145k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Glad2Glow Official Store), Watsons, Guardian, Indomaret, Alfamart</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A gentle micellar water infused with <strong>cherry blossom extract</strong> and <strong>betaine</strong> to effectively dissolve makeup, sunscreen, and daily impurities without harsh rubbing or rinsing.</p>
               <ul>
@@ -1307,7 +1371,8 @@ footer .footer-title {
             <span class="tag green">Repair</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
-          <div class="price-badge price-affordable">💙 Affordable · Rp 89k–110k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 30ml ~Rp 55k–75k · 100ml ~Rp 120k–150k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (SOME BY MI Official), Sociolla, StyleKorean, BeautyMall Indonesia</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A low-pH gel cleanser powered by <strong>snail secretion filtrate</strong> and <strong>centella asiatica (Truecica)</strong> for gentle yet thorough cleansing that repairs and calms while you cleanse.</p>
               <ul>
@@ -1347,7 +1412,8 @@ footer .footer-title {
             <span class="tag green">Barrier-Safe</span>
           </div>
           <div class="suitability-badge">✓ Great for Combination Skin</div>
-          <div class="price-badge price-affordable">💙 Affordable · Rp 65k–95k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 15ml ~Rp 39k–43k · 100ml ~Rp 99k–108k · 350ml ~Rp 219k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Somethinc Official), Guardian, Watsons, Indomaret, Alfamart</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A local Indonesian favourite — a mild, low-pH cleanser formulated to cleanse without disrupting the skin's natural protective barrier.</p>
               <ul>
@@ -1386,7 +1452,8 @@ footer .footer-title {
             <span class="tag green">Biome-Friendly</span>
           </div>
           <div class="suitability-badge">✓ Great for Combination Skin</div>
-          <div class="price-badge price-budget">💚 Budget Friendly · Rp 35k–55k</div>
+          <div class="price-badge price-budget">💚 Budget Friendly · 90g ~Rp 25k–45k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Pond's Official), Guardian, Watsons, Indomaret, Alfamart, most supermarkets</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>An innovative cleanser that works with your skin's microbiome, featuring a powerful trio of <strong>ceramides</strong>, <strong>hyaluronic acid</strong>, and <strong>amino acids</strong>.</p>
               <ul>
@@ -1418,7 +1485,10 @@ footer .footer-title {
       <div class="section-icon icon-lilac">💜</div>
       <h2 class="section-title"><span>Step 2 & 3</span>Toners & Ampoules</h2>
     </div>
-        <div class="filter-bar" data-section="toners">
+        <div class="price-disclaimer">
+      ⚠️ <strong>Prices may change at any time.</strong> Ranges are based on official Shopee/Tokopedia listings (March 2026). Promotional prices, TikTok Live flash sales, and reseller prices may differ significantly. Always check the latest price on official stores.
+    </div>
+    <div class="filter-bar" data-section="toners">
       <span class="filter-label">Filter:</span>
       <button class="filter-btn active" data-section="toners" data-tier="all" onclick="filterProducts(this)">✦ All</button>
       <button class="filter-btn" data-section="toners" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
@@ -1444,7 +1514,8 @@ footer .footer-title {
             <span class="tag green">Hydrating</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
-          <div class="price-badge price-midrange">💜 Mid-Range · Rp 130k–190k</div>
+          <div class="price-badge price-midrange">💜 Mid-Range · 30ml ~Rp 55k–80k · 150ml ~Rp 143k–198k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (SOME BY MI Official), Sociolla, StyleKorean, BeautyMall Indonesia</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A lightweight, hydrating toner that delivers the regenerative power of <strong>snail mucin</strong> and the calming properties of <strong>centella asiatica</strong> in every drop.</p>
               <ul>
@@ -1484,7 +1555,8 @@ footer .footer-title {
             <span class="tag blue">Calming</span>
           </div>
           <div class="suitability-badge">✓ Holy Grail for Combination Skin</div>
-          <div class="price-badge price-midrange">💜 Mid-Range · Rp 130k–190k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 30ml ~Rp 55k–80k · 55ml ~Rp 80k–130k · 100ml ~Rp 140k–200k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (SKIN1004 Official), Sociolla, BeautyMall Indonesia</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>One of the most beloved K-beauty ampoules — a concentrated <strong>centella asiatica water (95%+)</strong> formula that is incredibly lightweight yet deeply restorative.</p>
               <ul>
@@ -1514,7 +1586,10 @@ footer .footer-title {
       <div class="section-icon icon-blue">💦</div>
       <h2 class="section-title"><span>Step 4</span>Moisturizers</h2>
     </div>
-        <div class="filter-bar" data-section="moisturizers">
+        <div class="price-disclaimer">
+      ⚠️ <strong>Prices may change at any time.</strong> Ranges are based on official Shopee/Tokopedia listings (March 2026). Promotional prices, TikTok Live flash sales, and reseller prices may differ significantly. Always check the latest price on official stores.
+    </div>
+    <div class="filter-bar" data-section="moisturizers">
       <span class="filter-label">Filter:</span>
       <button class="filter-btn active" data-section="moisturizers" data-tier="all" onclick="filterProducts(this)">✦ All</button>
       <button class="filter-btn" data-section="moisturizers" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
@@ -1540,7 +1615,8 @@ footer .footer-title {
             <span class="tag green">Centella</span>
           </div>
           <div class="suitability-badge">✓ Best for PM Use / Drier Days</div>
-          <div class="price-badge price-midrange">💜 Mid-Range · Rp 150k–230k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 75ml ~Rp 70k–130k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (SKIN1004 Official), Sociolla, BeautyMall Indonesia</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A unique <strong>capsule cream</strong> that encapsulates brightening actives within tiny capsules that burst upon application, delivering concentrated ingredients to the skin.</p>
               <ul>
@@ -1579,7 +1655,8 @@ footer .footer-title {
             <span class="tag green">Barrier Repair</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
-          <div class="price-badge price-affordable">💙 Affordable · Rp 50k–80k</div>
+          <div class="price-badge price-budget">💚 Budget Friendly · 30g ~Rp 45k–50k · 100g ~Rp 90k–120k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Glad2Glow Official Store), Watsons, Guardian</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A ceramide-rich moisturiser focused on rebuilding and protecting the skin's lipid barrier for long-term healthy, balanced skin.</p>
               <ul>
@@ -1617,7 +1694,8 @@ footer .footer-title {
             <span class="tag green">Ceramide</span>
           </div>
           <div class="suitability-badge">✓ Great for All-Over Use</div>
-          <div class="price-badge price-budget">💚 Budget Friendly · Rp 45k–65k</div>
+          <div class="price-badge price-budget">💚 Budget Friendly · 50ml ~Rp 42k–75k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (The Originote Official), BeautyMall Indonesia</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A power-duo moisturiser combining <strong>hyaluronic acid (Hyalu)</strong> and <strong>ceramides (cera)</strong> for deep, long-lasting hydration that also repairs the barrier.</p>
               <ul>
@@ -1654,7 +1732,8 @@ footer .footer-title {
             <span class="tag green">AM Favourite</span>
           </div>
           <div class="suitability-badge">✓ Best for AM / Oily Days</div>
-          <div class="price-badge price-affordable">💙 Affordable · Rp 80k–130k</div>
+          <div class="price-badge price-midrange">💜 Mid-Range · 25ml ~Rp 169k · 50ml ~Rp 299k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Somethinc Official), Guardian, Watsons</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A gel-textured moisturiser — the lightest of your moisturiser lineup, perfect for humid days or as a morning base under SPF and makeup.</p>
               <ul>
@@ -1695,7 +1774,10 @@ footer .footer-title {
       <div class="section-icon icon-sun">☀️</div>
       <h2 class="section-title"><span>Step 5 — The Most Important Step</span>Sunscreens</h2>
     </div>
-        <div class="filter-bar" data-section="sunscreens">
+        <div class="price-disclaimer">
+      ⚠️ <strong>Prices may change at any time.</strong> Ranges are based on official Shopee/Tokopedia listings (March 2026). Promotional prices, TikTok Live flash sales, and reseller prices may differ significantly. Always check the latest price on official stores.
+    </div>
+    <div class="filter-bar" data-section="sunscreens">
       <span class="filter-label">Filter:</span>
       <button class="filter-btn active" data-section="sunscreens" data-tier="all" onclick="filterProducts(this)">✦ All</button>
       <button class="filter-btn" data-section="sunscreens" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
@@ -1721,7 +1803,8 @@ footer .footer-title {
             <span class="tag green">AM Final Step</span>
           </div>
           <div class="suitability-badge">✓ Excellent for Combination Skin</div>
-          <div class="price-badge price-affordable">💙 Affordable · Rp 70k–120k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 30ml ~Rp 50k–70k · 40ml ~Rp 65k–95k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (YOU Official Store), Guardian, Watsons, Indomaret</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A <strong>physical (mineral) sunscreen</strong> that uses UV-reflecting mineral filters (zinc oxide and/or titanium dioxide) to protect skin from both UVA and UVB rays.</p>
               <ul>
@@ -1761,7 +1844,8 @@ footer .footer-title {
             <span class="tag pink">Over Makeup</span>
           </div>
           <div class="suitability-badge">✓ Perfect Mid-Day Reapplication Tool</div>
-          <div class="price-badge price-affordable">💙 Affordable · Rp 80k–140k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 60ml ~Rp 60k–90k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Bening's Official), select Guardian & Watsons outlets</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
               <p>A sunscreen spray by Indonesian dermatologist Dr. Oky Pratama — formulated for convenient, mess-free <strong>SPF reapplication over makeup</strong> without disrupting your look.</p>
               <ul>
@@ -1794,7 +1878,10 @@ footer .footer-title {
 
     <div class="makeup-subsection">
       <h4>✦ Base & Complexion</h4>
-          <div class="filter-bar" data-section="makeup-base">
+          <div class="price-disclaimer">
+      ⚠️ <strong>Prices may change at any time.</strong> Ranges are based on official Shopee/Tokopedia listings (March 2026). Promotional prices, TikTok Live flash sales, and reseller prices may differ significantly. Always check the latest price on official stores.
+    </div>
+    <div class="filter-bar" data-section="makeup-base">
       <span class="filter-label">Filter:</span>
       <button class="filter-btn active" data-section="makeup-base" data-tier="all" onclick="filterProducts(this)">✦ All</button>
       <button class="filter-btn" data-section="makeup-base" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
@@ -1820,7 +1907,8 @@ footer .footer-title {
               <span class="tag blue">Medium-Full Coverage</span>
               <span class="tag pink">Glow Finish</span>
             </div>
-            <div class="price-badge price-midrange">💜 Mid-Range · Rp 150k–220k</div>
+            <div class="price-badge price-affordable">💙 Affordable · 11g ~Rp 98k–130k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (SKINTIFIC Official), Guardian, Watsons, Sociolla</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A buildable cushion foundation that combines skincare ingredients with medium-to-full coverage for a "Cover Glow" complexion effect.</p>
                 <ul>
@@ -1858,7 +1946,8 @@ footer .footer-title {
               <span class="tag blue">Full Coverage</span>
               <span class="tag pink">Skin-Like Finish</span>
             </div>
-            <div class="price-badge price-premium">🩷 Premium · Rp 280k–420k</div>
+            <div class="price-badge price-midrange">💜 Mid-Range · 4.5g mini ~Rp 119k–167k · 18g full ~Rp 200k–253k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (TIRTIR Official), Sociolla, StyleKorean Indonesia</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>One of the most acclaimed K-beauty cushions — TIRTIR Mask Fit Red delivers an iconic <strong>skin-like, second-skin finish</strong> with impressive coverage.</p>
                 <ul>
@@ -1897,7 +1986,8 @@ footer .footer-title {
               <span class="tag blue">Serum Hybrid</span>
               <span class="tag green">Light Coverage</span>
             </div>
-            <div class="price-badge price-midrange">💜 Mid-Range · Rp 160k–250k</div>
+            <div class="price-badge price-midrange">💜 Mid-Range · 35ml ~Rp 170k–185k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (ESQA Official), Sociolla, Watsons, Guardian</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>The ultimate "no-makeup makeup" base — a lightweight skin tint that blurs imperfections while feeding skin with serum actives.</p>
                 <ul>
@@ -1933,7 +2023,7 @@ footer .footer-title {
               <span class="tag blue">2-in-1</span>
               <span class="tag pink">Brightening</span>
             </div>
-            <div class="price-badge price-budget">💚 Budget Friendly · Under Rp 50k</div>
+            <div class="price-badge price-affordable">💙 Affordable · ~Rp 85k–105k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A versatile two-in-one product that functions as both a <strong>concealer and a BB cream</strong> — covering imperfections while brightening and isolating skin tone.</p>
                 <ul>
@@ -1970,7 +2060,8 @@ footer .footer-title {
               <span class="tag blue">Translucent</span>
               <span class="tag green">Mattifying</span>
             </div>
-            <div class="price-badge price-affordable">💙 Affordable · Rp 75k–120k</div>
+            <div class="price-badge price-affordable">💙 Affordable · ~Rp 75k–120k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Second Date Official), Sociolla</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A translucent loose setting powder that locks in your base makeup for long-wearing, shine-free results without adding any colour or heaviness.</p>
                 <ul>
@@ -2021,7 +2112,8 @@ footer .footer-title {
               <span class="tag blue">Brightening</span>
               <span class="tag pink">Peach Tint</span>
             </div>
-            <div class="price-badge price-budget">💚 Budget Friendly · Rp 30k–50k</div>
+            <div class="price-badge price-budget">💚 Budget Friendly · 7g ~Rp 30k–45k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Glad2Glow Official Store), Watsons, Guardian</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A multitasking lip serum that treats and tints lips simultaneously — brightening pigmented lips while delivering a warm peach-coral hue.</p>
                 <ul>
@@ -2059,7 +2151,7 @@ footer .footer-title {
               <span class="tag blue">Moisturizing</span>
               <span class="tag pink">Rosy Tint</span>
             </div>
-            <div class="price-badge price-budget">💚 Budget Friendly · Rp 25k–45k</div>
+            <div class="price-badge price-budget">💚 Budget Friendly · ~Rp 25k–40k</div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A classic tinted lip balm that combines deep moisture care with a subtle, elegant rosy hue.</p>
                 <ul>
@@ -2096,7 +2188,8 @@ footer .footer-title {
               <span class="tag blue">Long-Lasting</span>
               <span class="tag pink">Cherry Red</span>
             </div>
-            <div class="price-badge price-affordable">💙 Affordable · Rp 55k–95k</div>
+            <div class="price-badge price-midrange">💜 Mid-Range · ~Rp 185k–195k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Time Phoria Official), Sociolla</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A long-wearing lip stain with a "Stellar Dust" finish — buildable colour that stains the lips for a gradient or full-lip effect.</p>
                 <ul>
@@ -2134,7 +2227,8 @@ footer .footer-title {
               <span class="tag blue">Multi-Use</span>
               <span class="tag pink">Peach Glow</span>
             </div>
-            <div class="price-badge price-affordable">💙 Affordable · Rp 55k–90k</div>
+            <div class="price-badge price-affordable">💙 Affordable · ~Rp 55k–85k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (NPure Official), Guardian, Watsons</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A versatile glow oil that can be used on both the face and lips for a luminous, healthy-looking glow.</p>
                 <ul>
@@ -2183,7 +2277,8 @@ footer .footer-title {
               <span class="tag blue">Matte Finish</span>
               <span class="tag green">Protecting</span>
             </div>
-            <div class="price-badge price-budget">💚 Budget Friendly · Rp 35k–60k</div>
+            <div class="price-badge price-budget">💚 Budget Friendly · ~Rp 30k–55k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (PIXY Official), Guardian, Watsons, Indomaret, Alfamart, most supermarkets</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A setting and protecting mist with a <strong>matte finish</strong> — ideal for combination skin that wants to control shine while keeping makeup in place.</p>
                 <ul>
@@ -2221,7 +2316,8 @@ footer .footer-title {
               <span class="tag blue">Long-Lasting</span>
               <span class="tag pink">Fast-Setting</span>
             </div>
-            <div class="price-badge price-midrange">💜 Mid-Range · Rp 130k–180k</div>
+            <div class="price-badge price-midrange">💜 Mid-Range · ~Rp 120k–160k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (L'Oréal Official), Guardian, Watsons, Indomaret, Alfamart</div></div>
             <div class="prod-section"><div class="prod-section-label">✦ Benefits & Info</div><div class="acc-inner">
                 <p>A fast-acting setting mist from L'Oréal's long-wearing Infallible line — sets makeup in just 3 seconds for all-day staying power.</p>
                 <ul>
@@ -2592,7 +2688,10 @@ footer .footer-title {
     </div>
 
     <!-- Removal Products -->
-        <div class="filter-bar" data-section="makeup-removal-prods">
+        <div class="price-disclaimer">
+      ⚠️ <strong>Prices may change at any time.</strong> Ranges are based on official Shopee/Tokopedia listings (March 2026). Promotional prices, TikTok Live flash sales, and reseller prices may differ significantly. Always check the latest price on official stores.
+    </div>
+    <div class="filter-bar" data-section="makeup-removal-prods">
       <span class="filter-label">Filter:</span>
       <button class="filter-btn active" data-section="makeup-removal-prods" data-tier="all" onclick="filterProducts(this)">✦ All</button>
       <button class="filter-btn" data-section="makeup-removal-prods" data-tier="budget" onclick="filterProducts(this)">💚 Budget Friendly</button>
@@ -2616,7 +2715,8 @@ footer .footer-title {
             <span class="tag">Step 1 — Oil-Based Remove</span>
             <span class="tag pink">Eyes · Lips · Face</span>
           </div>
-          <div class="price-badge price-budget">💚 Budget Friendly · Under Rp 50k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 130ml ~Rp 85k–105k · 300ml ~Rp 120k–145k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (Glad2Glow Official Store), Watsons, Guardian, Indomaret, Alfamart</div></div>
           <div class="suitability-badge">✓ Primary Makeup Remover</div>
           <div class="prod-section"><div class="prod-section-label">✦ Why This for Removal</div><div class="acc-inner">
             <p>Micellar water uses tiny oil-filled molecules (micelles) that magnetically attract and lift oil-based products — foundation, cushion, lip stain, and SPF — without requiring harsh rubbing or rinsing. The betaine content also calms any irritation during the removal process.</p>
@@ -2661,7 +2761,8 @@ footer .footer-title {
             <span class="tag green">Post-Removal Cleanse</span>
           </div>
           <div class="suitability-badge">✓ Second-Step Makeup Removal Cleanser</div>
-          <div class="price-badge price-affordable">💙 Affordable · Rp 89k–110k</div>
+          <div class="price-badge price-affordable">💙 Affordable · 30ml ~Rp 55k–75k · 100ml ~Rp 120k–150k</div>
+          <div class="where-to-buy"><span class="wtb-icon">🛍️</span><div><strong>Where to Buy</strong>Shopee & Tokopedia (SOME BY MI Official), Sociolla, StyleKorean, BeautyMall Indonesia</div></div>
           <div class="prod-section"><div class="prod-section-label">✦ Why This After Micellar</div><div class="acc-inner">
             <p>Micellar water loosens makeup but leaves a thin film of micelle residue on skin. The low-pH gel cleanser rinses this away while deeply cleansing pores, removing sweat, and ensuring the skin is truly clean and ready to absorb your nighttime treatments.</p>
             <ul>
