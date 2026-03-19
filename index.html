@@ -84,14 +84,21 @@ body {
   color: var(--text);
   min-height: 100vh;
   transition: background 0.4s ease, color 0.4s ease;
-  overflow-x: hidden;
+  /* overflow-x:hidden removed — breaks position:fixed on iOS Safari */
+}
+/* Clip overflow on a wrapper instead */
+main, .hero {
+  overflow-x: clip;
 }
 
 /* ──────────── DECORATIVE BG ──────────── */
+/* Decorative gradient — absolute on mobile (no fixed scroll issues) */
 body::before {
   content: '';
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 100%;
+  min-height: 100vh;
   background:
     radial-gradient(ellipse 600px 500px at 10% 20%, var(--glow), transparent),
     radial-gradient(ellipse 500px 600px at 90% 70%, rgba(139,167,232,0.12), transparent),
@@ -144,13 +151,16 @@ nav {
   display: flex;
   align-items: center;
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   padding: 0 0.75rem;
   height: 44px;
   gap: 0.1rem;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  will-change: scroll-position;
 }
 .nav-tab-bar::-webkit-scrollbar { display: none; }
 
@@ -254,6 +264,10 @@ nav {
   opacity: 0.35;
   animation: floatPetal linear infinite;
 }
+/* Disable petals on touch/mobile — too expensive */
+@media (hover: none), (max-width: 1024px) {
+  .floating-petals { display: none; }
+}
 .petal:nth-child(1)  { left: 5%;  top: -10%; font-size: 1.2rem; animation-duration: 14s; animation-delay: 0s; }
 .petal:nth-child(2)  { left: 15%; top: -10%; font-size: 0.9rem; animation-duration: 18s; animation-delay: 2s; }
 .petal:nth-child(3)  { left: 30%; top: -10%; font-size: 1.4rem; animation-duration: 12s; animation-delay: 4s; }
@@ -280,6 +294,14 @@ nav {
   color: var(--secondary);
   margin-bottom: 1rem;
   animation: fadeUp 0.8s ease both;
+}
+
+@media (max-width: 1024px) {
+  .hero-eyebrow, .hero-title, .hero-sub, .hero-pills, .scroll-hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .hero-title {
@@ -364,12 +386,15 @@ main {
 /* ──────────── SECTION ──────────── */
 section {
   margin-bottom: 5rem;
-  opacity: 0;
-  transition: opacity 0.55s ease;
   scroll-margin-top: 106px;
 }
-section.visible {
-  opacity: 1;
+/* Fade-in only on devices that can handle it (desktop/hover) */
+@media (hover: hover) and (min-width: 1025px) {
+  section {
+    opacity: 0;
+    transition: opacity 0.55s ease;
+  }
+  section.visible { opacity: 1; }
 }
 
 .section-header {
@@ -2909,12 +2934,21 @@ window.addEventListener('resize', function() {
 }, { passive: true });
 
 // ── Init ───────────────────────────────────────────────────────────
-calcNavHeight();
-// Small delay so fonts + layout are fully painted before caching
-setTimeout(function() {
+function init() {
+  calcNavHeight();
   cacheSectionTops();
   onScroll();
-}, 300);
+}
+
+// Wait for fonts + full paint before caching offsets
+if (document.readyState === 'complete') {
+  init();
+} else {
+  window.addEventListener('load', function() {
+    // Extra delay for webfonts to apply and reflow to settle
+    setTimeout(init, 100);
+  });
+}
 </script>
 </body>
 </html>
