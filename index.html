@@ -28,7 +28,7 @@
   --shadow-sm:  0 2px 8px rgba(0,0,0,0.35);
   --shadow-md:  0 6px 24px rgba(0,0,0,0.45);
   --shadow-lg:  0 16px 48px rgba(0,0,0,0.55);
-  --nav-h:      96px;
+  --nav-h:      52px;
 }
 [data-theme="light"] {
   --c-bg:       #F4F0FF;
@@ -77,16 +77,80 @@ nav{
 }
 .nav-row1{
   display:flex;align-items:center;justify-content:space-between;
-  height:50px;padding:0 1.25rem;
-  border-bottom:1px solid var(--c-border);
+  height:52px;padding:0 1.25rem;
 }
 .nav-logo{
   font-family:'Petit Formal Script',cursive;
   font-size:1.2rem;color:var(--c-accent);
   white-space:nowrap;
 }
-.nav-controls{display:flex;align-items:center;gap:.75rem}
-/* toggle */
+.nav-controls{display:flex;align-items:center;gap:.65rem}
+
+/* ── Hamburger button ── */
+.nav-burger{
+  display:flex;flex-direction:column;justify-content:center;gap:4.5px;
+  width:36px;height:36px;border-radius:9px;
+  background:transparent;border:1.5px solid var(--c-border2);
+  cursor:pointer;padding:8px 7px;
+  transition:background .18s,border-color .18s;
+  -webkit-tap-highlight-color:transparent;
+  flex-shrink:0;
+}
+.nav-burger:hover{background:rgba(196,168,240,.12);border-color:var(--c-accent)}
+.nav-burger span{
+  display:block;width:100%;height:1.5px;
+  background:var(--c-muted);border-radius:2px;
+  transition:transform .25s ease,opacity .2s ease,background .18s;
+  transform-origin:center;
+}
+body.menu-open .nav-burger span:nth-child(1){transform:translateY(6px) rotate(45deg);background:var(--c-accent)}
+body.menu-open .nav-burger span:nth-child(2){opacity:0;transform:scaleX(0)}
+body.menu-open .nav-burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:var(--c-accent)}
+
+/* ── Dropdown menu ── */
+.nav-menu{
+  position:fixed;
+  top:52px;left:0;right:0;
+  background:var(--c-nav);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--c-border);
+  box-shadow:var(--shadow-md);
+  z-index:999;
+  /* hidden by default */
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .32s cubic-bezier(.4,0,.2,1);
+}
+body.menu-open .nav-menu{max-height:520px}
+.nav-menu-inner{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.3rem;
+  padding:.75rem 1rem 1rem;
+}
+.nav-tab{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.62rem .8rem;
+  border-radius:10px;
+  font-size:.78rem;font-weight:700;
+  color:var(--c-muted);
+  text-decoration:none;
+  transition:background .15s,color .15s;
+  -webkit-tap-highlight-color:transparent;
+  min-height:44px;
+}
+.nav-tab:hover,.nav-tab.active{
+  background:rgba(196,168,240,.14);
+  color:var(--c-accent);
+}
+.nav-tab.active{
+  background:rgba(196,168,240,.18);
+  box-shadow:inset 2px 0 0 var(--c-accent);
+}
+.nav-tab .ti{font-size:1rem;flex-shrink:0}
+
+/* ── Theme toggle ── */
 .toggle-wrap{display:flex;align-items:center;gap:.4rem}
 .toggle-emoji{font-size:1rem;cursor:pointer;user-select:none}
 .toggle{position:relative;width:42px;height:23px;cursor:pointer}
@@ -107,34 +171,15 @@ nav{
 .toggle input:checked~.toggle-track{background:#3A2868}
 .toggle input:checked~.toggle-thumb{transform:translateX(19px);background:#C4A8E8}
 
-/* tab bar */
-.nav-tabs{
-  display:flex;align-items:center;
-  height:46px;padding:0 .5rem;
-  overflow-x:auto;overflow-y:hidden;
-  scrollbar-width:none;
-  gap:.15rem;
-  -webkit-overflow-scrolling:touch;
-}
-.nav-tabs::-webkit-scrollbar{display:none}
-.nav-tab{
-  display:inline-flex;align-items:center;gap:.3rem;
-  padding:.28rem .72rem;
-  border-radius:var(--r-pill);
-  font-size:.72rem;font-weight:700;
-  color:var(--c-muted);
-  text-decoration:none;
-  white-space:nowrap;
-  flex-shrink:0;
-  transition:background .18s,color .18s,box-shadow .18s;
+/* Overlay when menu is open */
+.nav-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.35);
+  z-index:998;
   -webkit-tap-highlight-color:transparent;
 }
-.nav-tab:hover,.nav-tab.active{
-  background:rgba(196,168,240,.15);
-  color:var(--c-accent);
-  box-shadow:0 0 0 1.5px var(--c-accent);
-}
-.nav-tab .ti{font-size:.85rem}
+body.menu-open .nav-overlay{display:block}
 
 /* ── HERO ── */
 .hero{
@@ -603,8 +648,8 @@ footer .f-logo{
 
 /* ── MOBILE — phone ── */
 @media(max-width:640px){
-  :root{--nav-h:88px}
-  body{font-size:14px;padding-top:88px}
+  :root{--nav-h:52px}
+  body{font-size:14px;padding-top:52px}
 
   main{padding:2rem .85rem 4rem}
 
@@ -764,21 +809,20 @@ footer .f-logo{
 /* ── Ensure section never clips at edges ── */
 .section { overflow:visible }
 
-/* ── Improve touch target for nav tabs ── */
-.nav-tab { min-height:40px }
+/* nav-tab min-height handled in .nav-tab definition */
 
-/* ── Light mode nav adjustment ── */
-[data-theme="light"] .nav-tab:hover,
-[data-theme="light"] .nav-tab.active {
-  background:rgba(123,88,200,.1);
-  color:var(--c-accent);
-  box-shadow:0 0 0 1.5px var(--c-accent);
+/* ── Light mode nav ── */
+[data-theme="light"] .nav-tab:hover,[data-theme="light"] .nav-tab.active{
+  background:rgba(123,88,200,.1);color:var(--c-accent);
 }
+[data-theme="light"] .nav-menu{background:rgba(244,240,255,.97)}
+[data-theme="light"] .nav-burger{border-color:var(--c-border2)}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
 <nav>
   <div class="nav-row1">
     <span class="nav-logo">✿ Skin Sanctuary</span>
@@ -791,20 +835,25 @@ footer .f-logo{
           <span class="toggle-thumb"></span>
         </label>
       </div>
+      <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-  <div class="nav-tabs" id="navTabs">
-    <a href="#skin-type"      class="nav-tab" data-id="skin-type"><span class="ti">🪷</span>Skin Type</a>
-    <a href="#cleansers"      class="nav-tab" data-id="cleansers"><span class="ti">🫧</span>Cleansers</a>
-    <a href="#toners"         class="nav-tab" data-id="toners"><span class="ti">💜</span>Toners</a>
-    <a href="#moisturizers"   class="nav-tab" data-id="moisturizers"><span class="ti">💧</span>Moisturizers</a>
-    <a href="#sunscreens"     class="nav-tab" data-id="sunscreens"><span class="ti">☀️</span>Sunscreens</a>
-    <a href="#makeup"         class="nav-tab" data-id="makeup"><span class="ti">💄</span>Makeup</a>
-    <a href="#morning"        class="nav-tab" data-id="morning"><span class="ti">🌅</span>Morning</a>
-    <a href="#evening"        class="nav-tab" data-id="evening"><span class="ti">🌙</span>Evening</a>
-    <a href="#makeup-routine" class="nav-tab" data-id="makeup-routine"><span class="ti">✨</span>Makeup Look</a>
-    <a href="#midday"         class="nav-tab" data-id="midday"><span class="ti">🌞</span>Mid-day</a>
-    <a href="#removal"        class="nav-tab" data-id="removal"><span class="ti">🧴</span>Removal</a>
+  <div class="nav-menu" id="navMenu">
+    <div class="nav-menu-inner" id="navTabs">
+      <a href="#skin-type"      class="nav-tab" data-id="skin-type"><span class="ti">🪷</span>Skin Type</a>
+      <a href="#cleansers"      class="nav-tab" data-id="cleansers"><span class="ti">🫧</span>Cleansers</a>
+      <a href="#toners"         class="nav-tab" data-id="toners"><span class="ti">💜</span>Toners</a>
+      <a href="#moisturizers"   class="nav-tab" data-id="moisturizers"><span class="ti">💧</span>Moisturizers</a>
+      <a href="#sunscreens"     class="nav-tab" data-id="sunscreens"><span class="ti">☀️</span>Sunscreens</a>
+      <a href="#makeup"         class="nav-tab" data-id="makeup"><span class="ti">💄</span>Makeup</a>
+      <a href="#morning"        class="nav-tab" data-id="morning"><span class="ti">🌅</span>Morning</a>
+      <a href="#evening"        class="nav-tab" data-id="evening"><span class="ti">🌙</span>Evening</a>
+      <a href="#makeup-routine" class="nav-tab" data-id="makeup-routine"><span class="ti">✨</span>Makeup Look</a>
+      <a href="#midday"         class="nav-tab" data-id="midday"><span class="ti">🌞</span>Mid-day</a>
+      <a href="#removal"        class="nav-tab" data-id="removal"><span class="ti">🧴</span>Removal</a>
+    </div>
   </div>
 </nav>
 
@@ -1450,20 +1499,29 @@ function toggleTheme(){
   document.getElementById('toggle-emoji').textContent=on?'🌙':'☀️';
 }
 
+// ── Hamburger menu ────────────────────────────────────
+function toggleMenu(){
+  var open=document.body.classList.toggle('menu-open');
+  document.getElementById('navBurger').setAttribute('aria-expanded',open);
+}
+function closeMenu(){
+  document.body.classList.remove('menu-open');
+  document.getElementById('navBurger').setAttribute('aria-expanded','false');
+}
+// Close on Escape
+document.addEventListener('keydown',function(e){if(e.key==='Escape') closeMenu();});
+
 // ── Nav scroll-spy ─────────────────────────────────────
 var sections=Array.from(document.querySelectorAll('.section[id]'));
 var tabs=document.querySelectorAll('.nav-tab');
 var tabBar=document.getElementById('navTabs');
 var lastId='';
-var navH=96;
+var navH=52;
 
 function calcNavH(){
   var n=document.querySelector('nav');
-  navH=n?n.offsetHeight:96;
-  // Apply scroll-margin-top to all sections dynamically
-  sections.forEach(function(s){
-    s.style.scrollMarginTop=(navH+8)+'px';
-  });
+  navH=n?n.getBoundingClientRect().height:52;
+  sections.forEach(function(s){ s.style.scrollMarginTop=(navH+8)+'px'; });
 }
 
 function spy(){
@@ -1476,42 +1534,37 @@ function spy(){
   lastId=cur;
   tabs.forEach(function(t){t.classList.remove('active')});
   var link=tabBar.querySelector('[data-id="'+cur+'"]');
-  if(link){
-    link.classList.add('active');
-    // Scroll tab into view — instant, no smooth (avoids fighting user scroll)
-    var target=link.offsetLeft-(tabBar.offsetWidth/2)+(link.offsetWidth/2);
-    tabBar.scrollLeft=target;
-  }
-  // Back to top button
+  if(link) link.classList.add('active');
   var btt=document.getElementById('btt');
   if(btt) btt.classList.toggle('show',window.pageYOffset>300);
 }
 
-// Tab clicks — offset-aware smooth scroll
+// Tab clicks — close menu, then scroll
 tabs.forEach(function(tab){
   tab.addEventListener('click',function(e){
     e.preventDefault();
+    closeMenu();
     var id=tab.getAttribute('href').replace('#','');
     var el=document.getElementById(id);
     if(!el) return;
-    var top=el.getBoundingClientRect().top+window.pageYOffset-navH-8;
-    window.scrollTo({top:top,behavior:'smooth'});
+    // Small delay so menu close animation doesn't fight scroll
+    setTimeout(function(){
+      var top=el.getBoundingClientRect().top+window.pageYOffset-navH-8;
+      window.scrollTo({top:top,behavior:'smooth'});
+    },80);
   });
 });
 
-// Throttled scroll listener
 var raf=false;
 window.addEventListener('scroll',function(){
   if(raf) return; raf=true;
   requestAnimationFrame(function(){raf=false; spy();});
 },{passive:true});
 
-// Recalculate on resize (orientation change on mobile)
 window.addEventListener('resize',function(){
   calcNavH(); lastId=''; spy();
 },{passive:true});
 
-// Init after everything has painted and fonts are loaded
 window.addEventListener('load',function(){
   calcNavH();
   setTimeout(function(){ calcNavH(); spy(); },150);
