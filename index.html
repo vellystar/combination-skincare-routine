@@ -676,6 +676,71 @@ footer .f-logo{
   .skin-grid{grid-template-columns:repeat(2,1fr)}
 }
 
+
+
+/* ── SHADE SECTION ── */
+
+/* "Your shade" gradient card */
+.my-shade-card{
+  display:flex;align-items:stretch;
+  border-radius:11px;overflow:hidden;
+  border:1px solid var(--c-border);
+  box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+.my-shade-swatch{
+  width:68px;flex-shrink:0;position:relative;
+}
+.my-shade-swatch::after{
+  content:'✦ yours';
+  position:absolute;bottom:.32rem;left:50%;
+  transform:translateX(-50%);
+  font-size:.46rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(255,255,255,.9);white-space:nowrap;
+  text-shadow:0 1px 4px rgba(0,0,0,.55);
+}
+.my-shade-info{
+  flex:1;padding:.5rem .7rem;
+  background:var(--c-raised);
+  display:flex;flex-direction:column;justify-content:center;gap:.2rem;
+}
+.my-shade-name{
+  font-family:'Outfit',sans-serif;
+  font-size:.85rem;font-weight:600;color:var(--c-heading);line-height:1.2;
+}
+.my-shade-meta{font-size:.68rem;color:var(--c-muted);display:flex;gap:.4rem;flex-wrap:wrap}
+.my-shade-meta span{display:flex;align-items:center;gap:.25rem}
+.my-shade-pip{
+  display:inline-block;width:7px;height:7px;
+  border-radius:50%;flex-shrink:0;
+}
+
+/* Divider label between card and other shades */
+.shade-divider{
+  font-size:.6rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--c-faint);
+  margin:.55rem 0 .35rem;display:block;
+}
+
+/* Swatch row */
+.shade-row{display:flex;flex-wrap:wrap;gap:.45rem .5rem;align-items:flex-start}
+.sw{
+  display:flex;flex-direction:column;align-items:center;gap:.22rem;
+  min-width:36px;cursor:default;
+}
+.sw-dot{
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.1);
+  box-shadow:0 1px 5px rgba(0,0,0,.3);
+  transition:transform .14s,box-shadow .14s;
+}
+[data-theme="light"] .sw-dot{border-color:rgba(0,0,0,.09)}
+.sw:hover .sw-dot{transform:scale(1.18);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.sw-label{
+  font-size:.57rem;font-weight:700;color:var(--c-faint);
+  text-align:center;max-width:44px;line-height:1.2;
+}
+
 /* ── SAFE AREA (iOS notch / Dynamic Island) ── */
 @supports(padding: max(0px)){
   body { padding-top: max(var(--nav-h), env(safe-area-inset-top) + var(--nav-h)); }
@@ -1051,6 +1116,7 @@ footer .f-logo{
         <div class="pc-tags"><span class="tag">Cushion</span><span class="tag b">Medium-Full Coverage</span><span class="tag p">Glow Finish</span></div>
         <span class="price affordable">💙 Affordable · 11g ~Rp 98k–130k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/skintific_id" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.sociolla.com/search?q=skintific+cushion" class="sl sociolla" target="_blank">Sociolla</a><a href="https://skintific.id" class="sl website" target="_blank">🌐 Website</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#F5DFC2,#E8C896)"></div><div class="my-shade-info"><div class="my-shade-name">01 Vanilla</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#F5DFC2"></span>Neutral/Warm</span><span>· Dewy Glow</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#F7EEE2"></div><div class="sw-label">00 Porcelain</div></div><div class="sw"><div class="sw-dot" style="background:#EDD5B2"></div><div class="sw-label">02 Ivory</div></div><div class="sw"><div class="sw-dot" style="background:#E8C9A8"></div><div class="sw-label">03 Petal</div></div><div class="sw"><div class="sw-dot" style="background:#D9B890"></div><div class="sw-label">03A Almond</div></div><div class="sw"><div class="sw-dot" style="background:#CFA882"></div><div class="sw-label">04 Beige</div></div><div class="sw"><div class="sw-dot" style="background:#C49070"></div><div class="sw-label">05 Sand</div></div><div class="sw"><div class="sw-dot" style="background:#B87850"></div><div class="sw-label">06 Honey</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Buildable cushion with skincare ingredients for a dewy "Cover Glow" complexion effect.</p><ul><li>Buildable coverage — sheer to full depending on application</li><li>Infused with skincare actives during wear</li><li>Dewy, glowing finish flatters combination skin</li><li>Vanilla: light to light-medium, neutral/warm undertones</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li>Press and stamp with puff — never swipe</li><li>Start from centre of face, blend outward</li><li>Build up only on areas needing more coverage</li><li>Set T-zone with loose powder to control shine</li></ul></div></div>
       </div>
@@ -1062,6 +1128,7 @@ footer .f-logo{
         <div class="pc-tags"><span class="tag">Cushion</span><span class="tag b">Full Coverage</span><span class="tag p">Skin-Like Finish</span></div>
         <span class="price midrange">💜 Mid-Range · 4.5g mini ~Rp 119k–167k · 18g full ~Rp 200k–253k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/search?keyword=tirtir+mask+fit+red+cushion" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.sociolla.com/search?q=tirtir" class="sl sociolla" target="_blank">Sociolla</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#F5E2D0,#E8CCAA)"></div><div class="my-shade-info"><div class="my-shade-name">17C Porcelain</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#F5E2D0"></span>Cool</span><span>· Skin-Like Satin</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#F8EDE0"></div><div class="sw-label">13C</div></div><div class="sw"><div class="sw-dot" style="background:#F5E8D8"></div><div class="sw-label">13N</div></div><div class="sw"><div class="sw-dot" style="background:#F5E2CC"></div><div class="sw-label">15C</div></div><div class="sw"><div class="sw-dot" style="background:#EDCFAA"></div><div class="sw-label">17N</div></div><div class="sw"><div class="sw-dot" style="background:#E8C898"></div><div class="sw-label">17W</div></div><div class="sw"><div class="sw-dot" style="background:#E8C498"></div><div class="sw-label">21C</div></div><div class="sw"><div class="sw-dot" style="background:#E0B888"></div><div class="sw-label">21N</div></div><div class="sw"><div class="sw-dot" style="background:#D8AE78"></div><div class="sw-label">21W</div></div><div class="sw"><div class="sw-dot" style="background:#D8A878"></div><div class="sw-label">23C</div></div><div class="sw"><div class="sw-dot" style="background:#D09870"></div><div class="sw-label">23N</div></div><div class="sw"><div class="sw-dot" style="background:#C88858"></div><div class="sw-label">23W</div></div><div class="sw"><div class="sw-dot" style="background:#C88860"></div><div class="sw-label">25N</div></div><div class="sw"><div class="sw-dot" style="background:#B87050"></div><div class="sw-label">27W</div></div><div class="sw"><div class="sw-dot" style="background:#A06040"></div><div class="sw-label">33N</div></div><div class="sw"><div class="sw-dot" style="background:#885038"></div><div class="sw-label">35W</div></div><div class="sw"><div class="sw-dot" style="background:#703828"></div><div class="sw-label">37N</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Cult K-beauty cushion delivering iconic skin-like second-skin finish with full coverage.</p><ul><li>Full buildable coverage — looks like real skin, not a mask</li><li>17C Porcelain: very light, cool/neutral undertones</li><li>Long-wearing, holds up through humidity</li><li>Contains skincare ingredients during wear</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li>Apply in light pressing motions with puff</li><li>Start from centre (nose, cheeks) and blend out</li><li>Dab under eyes and around nose</li><li>Build up on spots needing more coverage</li></ul></div></div>
       </div>
@@ -1073,6 +1140,7 @@ footer .f-logo{
         <div class="pc-tags"><span class="tag">Skin Tint</span><span class="tag b">Serum Hybrid</span><span class="tag g">Light Coverage</span></div>
         <span class="price midrange">💜 Mid-Range · 35ml ~Rp 170k–185k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/search?keyword=esqa+skin+tint" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.tokopedia.com/search?q=esqa+skin+tint" class="sl tokped" target="_blank">Tokopedia</a><a href="https://www.sociolla.com/search?q=esqa+skin+tint" class="sl sociolla" target="_blank">Sociolla</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#F8E4CE,#EDD0A8)"></div><div class="my-shade-info"><div class="my-shade-name">Vanilla</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#F8E4CE"></span>Neutral/Warm</span><span>· Soft Blur</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#F0D4A8"></div><div class="sw-label">Custard</div></div><div class="sw"><div class="sw-dot" style="background:#EDD0A0"></div><div class="sw-label">Oat</div></div><div class="sw"><div class="sw-dot" style="background:#E8C898"></div><div class="sw-label">Pancake</div></div><div class="sw"><div class="sw-dot" style="background:#D8B080"></div><div class="sw-label">Granola</div></div><div class="sw"><div class="sw-dot" style="background:#C89868"></div><div class="sw-label">Almond</div></div><div class="sw"><div class="sw-dot" style="background:#B88050"></div><div class="sw-label">Toffee</div></div><div class="sw"><div class="sw-dot" style="background:#A87040"></div><div class="sw-label">Honey</div></div><div class="sw"><div class="sw-dot" style="background:#906038"></div><div class="sw-label">Latte</div></div><div class="sw"><div class="sw-dot" style="background:#704830"></div><div class="sw-label">Mocha</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>The ultimate "no-makeup makeup" base — serum skin tint that blurs and feeds skin.</p><ul><li>Light, sheer coverage that evens tone naturally</li><li>Serum formula delivers benefits during wear</li><li>Blurring effect minimises pores and fine lines</li><li>Vanilla: light skin, neutral to warm undertones</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li>Apply with fingers, sponge, or flat brush</li><li>Blend with gentle pressing and tapping motions</li><li>Use alone for bare-skin days</li><li>Layer cushion on top for buildable coverage</li></ul></div></div>
       </div>
@@ -1093,8 +1161,10 @@ footer .f-logo{
       <div class="pc-head"><div class="pc-emoji">🌫️</div><div class="pc-meta"><div class="pc-brand">Second Date</div><div class="pc-name">Loose Powder</div><div class="pc-shade">Shade: Translucent</div></div></div>
       <div class="pc-body">
         <div class="pc-tags"><span class="tag">Setting Powder</span><span class="tag b">Translucent</span><span class="tag g">Mattifying</span></div>
+        <span class="suit">✓ Universal — All Skin Tones</span>
         <span class="price affordable">💙 Affordable · ~Rp 75k–120k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/search?keyword=second+date+loose+powder" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.sociolla.com/search?q=second+date+powder" class="sl sociolla" target="_blank">Sociolla</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,rgba(230,225,245,0.5),rgba(210,205,230,0.35))"></div><div class="my-shade-info"><div class="my-shade-name">Translucent</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:rgba(196,168,240,0.4)"></span>Universal</span><span>· Matte Set</span></div></div></div><p class="pc-body-text" style="margin-top:.45rem">Single shade — works on all skin tones without adding colour.</p></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Translucent loose setting powder — locks in base makeup for long-wearing, shine-free results.</p><ul><li>Works on all skin tones without altering colour</li><li>Controls oil and shine, especially T-zone</li><li>Sets foundation and concealer — prevents creasing</li><li>Blurs pores for soft-focus airbrushed effect</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li>Tap off excess from brush first</li><li>Press/tap across T-zone and undereye</li><li>Light hand on cheeks to preserve glow</li><li>Dust off excess with clean fluffy brush</li></ul></div></div>
       </div>
@@ -1119,6 +1189,7 @@ footer .f-logo{
         <div class="pc-tags"><span class="tag">Lip Serum</span><span class="tag b">Brightening</span><span class="tag p">Peach Tint</span></div>
         <span class="price budget">💚 Budget Friendly · 7g ~Rp 30k–45k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/glad2glow.indo" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.tokopedia.com/glad2glow" class="sl tokped" target="_blank">Tokopedia</a><a href="https://www.sociolla.com/search?q=glad2glow+lip" class="sl sociolla" target="_blank">Sociolla</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#F4905C,#E86A38)"></div><div class="my-shade-info"><div class="my-shade-name">Pumpkin Frost</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#F4905C"></span>Warm</span><span>· Frosty Shimmer</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#E8607A"></div><div class="sw-label">01 Strawberry Glaze</div></div><div class="sw"><div class="sw-dot" style="background:#C04868"></div><div class="sw-label">03 Berry Soda</div></div><div class="sw"><div class="sw-dot" style="background:#F0E0D0"></div><div class="sw-label">04 Pearl Sparkle</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Treats and tints lips — brightening pigmented lips while delivering a warm peach-coral hue.</p><ul><li>Serum actives brighten dark lips over time</li><li>Pumpkin Frost: warm peach-orange with frosty shimmer</li><li>Moisturises and plumps with each application</li><li>Lightweight, non-sticky texture</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li>Apply with doe-foot applicator directly to lips</li><li>Layer for more colour intensity</li><li>Use alone or over lip balm</li></ul></div></div>
       </div>
@@ -1130,6 +1201,7 @@ footer .f-logo{
         <div class="pc-tags"><span class="tag">Tinted Balm</span><span class="tag b">Moisturizing</span><span class="tag p">Rosy Tint</span></div>
         <span class="price budget">💚 Budget Friendly · ~Rp 25k–40k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/search?keyword=nivea+lip+rich+care" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.tokopedia.com/search?q=nivea+rich+care+color" class="sl tokped" target="_blank">Tokopedia</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#C89098,#A87080)"></div><div class="my-shade-info"><div class="my-shade-name">Smoky Rose</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#C89098"></span>Cool</span><span>· Subtle Gloss</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#E8A0A0"></div><div class="sw-label">Natural Rose</div></div><div class="sw"><div class="sw-dot" style="background:#F0B888"></div><div class="sw-label">Peach</div></div><div class="sw"><div class="sw-dot" style="background:#C88868"></div><div class="sw-label">Caramel</div></div><div class="sw"><div class="sw-dot" style="background:#C85870"></div><div class="sw-label">Cherry Kiss</div></div><div class="sw"><div class="sw-dot" style="background:#904860"></div><div class="sw-label">Glossy Berry</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Classic tinted balm combining deep moisture with a muted dusty rose hue.</p><ul><li>Smoky Rose: sophisticated, universally flattering</li><li>Shea butter and vitamins for moisture</li><li>Softens and heals dry, chapped lips</li><li>Comfortable non-sticky all-day wear</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li>Swipe directly onto lips</li><li>Use as base under other lip products</li><li>Reapply as needed throughout the day</li><li>Works as overnight lip treatment</li></ul></div></div>
       </div>
@@ -1141,6 +1213,7 @@ footer .f-logo{
         <div class="pc-tags"><span class="tag">Lip Stain</span><span class="tag b">Long-Lasting</span><span class="tag p">Cherry Red</span></div>
         <span class="price midrange">💜 Mid-Range · ~Rp 185k–195k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/search?keyword=time+phoria+stellar+dust" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.sociolla.com/search?q=time+phoria" class="sl sociolla" target="_blank">Sociolla</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#D83848,#B02030)"></div><div class="my-shade-info"><div class="my-shade-name">04 Cherrion</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#D83848"></span>Neutral</span><span>· Blurred Dust</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#C07878"></div><div class="sw-label">01 Rosewood</div></div><div class="sw"><div class="sw-dot" style="background:#9A5848"></div><div class="sw-label">02 Mochacino</div></div><div class="sw"><div class="sw-dot" style="background:#E890A8"></div><div class="sw-label">03 Pinkle</div></div><div class="sw"><div class="sw-dot" style="background:#803058"></div><div class="sw-label">05 Plummy</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Long-wearing lip stain with blurred Stellar Dust finish — buildable from gradient to full.</p><ul><li>Cherrion: cherry red with natural depth — bold yet wearable</li><li>Stain formula lasts through eating and drinking</li><li>Blurred soft-focus finish (not glossy or hard matte)</li><li>Comfortable, not heavy or sticky</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li><strong>Gradient:</strong> Apply to centre, tap and blend outward</li><li><strong>Full lip:</strong> Apply inner to outer, build up</li><li>Tap with fingertip to soften edges</li><li>Layer NPure Glow Oil on top for glass-lip effect</li></ul></div></div>
       </div>
@@ -1152,18 +1225,20 @@ footer .f-logo{
         <div class="pc-tags"><span class="tag">Face & Lip Oil</span><span class="tag b">Multi-Use</span><span class="tag p">Peach Glow</span></div>
         <span class="price affordable">💙 Affordable · ~Rp 55k–85k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/search?keyword=npure+glow+up+oil" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.tokopedia.com/search?q=npure+glow+up+oil" class="sl tokped" target="_blank">Tokopedia</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#F4A870,#E88848)"></div><div class="my-shade-info"><div class="my-shade-name">Marigold Peach</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#F4A870"></span>Warm</span><span>· Glossy Glow</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#E8A098"></div><div class="sw-label">Rose Gold</div></div><div class="sw"><div class="sw-dot" style="background:#B06080"></div><div class="sw-label">Berry Glaze</div></div><div class="sw"><div class="sw-dot" style="background:#E87858"></div><div class="sw-label">Coral Bliss</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Versatile glow oil for face and lips — creates luminous, healthy-looking radiance.</p><ul><li>Marigold Peach: warm golden-peach tint</li><li>Multi-use: lip gloss, cheek highlighter, or mixing oil</li><li>Creates glass-skin or dewy complexion effect</li><li>Mix with foundation for a lit-from-within glow</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li><strong>Lips:</strong> Alone or over lip stain for glossy effect</li><li><strong>Cheeks:</strong> Dab on cheekbones, blend with fingertip</li><li><strong>Mix:</strong> One drop into foundation for custom glow</li><li>Apply last as a finishing touch</li></ul></div></div>
       </div>
     </div>
 
     <div class="pc" data-tier="affordable">
-      <div class="pc-head"><div class="pc-emoji">🌷</div><div class="pc-meta"><div class="pc-brand">SOMETHINC</div><div class="pc-name">Ceraplump Tinted Lip Balm SPF 25 PA++++</div><div class="pc-shade">Shade: Valentine</div></div></div>
+      <div class="pc-head"><div class="pc-emoji">🌷</div><div class="pc-meta"><div class="pc-brand">SOMETHINC</div><div class="pc-name">Ceraplump Tinted Lip Balm SPF 25 PA++++</div><div class="pc-shade">Shade: 06 Valentine</div></div></div>
       <div class="pc-body">
         <div class="pc-tags"><span class="tag">Tinted Balm</span><span class="tag b">SPF 25 PA++++</span><span class="tag g">Plumping</span><span class="tag p">Lip Care</span></div>
         <span class="suit">✓ Best Daily SPF Lip Product</span>
         <span class="price affordable">💙 Affordable · 2g ~Rp 75k–89k</span>
         <div class="wtb"><span class="wtb-label">🛍️ Where to Buy</span><div class="wtb-links"><a href="https://shopee.co.id/somethinc" class="sl shopee" target="_blank">🛒 Shopee</a><a href="https://www.tokopedia.com/somethinc" class="sl tokped" target="_blank">Tokopedia</a><a href="https://www.zalora.co.id/catalogsearch/result/?q=somethinc+ceraplump" class="sl zalora" target="_blank">Zalora</a><a href="https://somethinc.com" class="sl website" target="_blank">🌐 Website</a></div></div>
+        <div class="pc-section"><span class="pc-section-title">✦ Available Shades</span><div class="my-shade-card"><div class="my-shade-swatch" style="background:linear-gradient(160deg,#E88898,#D06878)"></div><div class="my-shade-info"><div class="my-shade-name">06 Valentine</div><div class="my-shade-meta"><span><span class="my-shade-pip" style="background:#E88898"></span>Cool-Neutral</span><span>· Plumpy Glow</span></div></div></div><span class="shade-divider">All available shades</span><div class="shade-row"><div class="sw"><div class="sw-dot" style="background:#F0B8B8"></div><div class="sw-label">01 Rabbit</div></div><div class="sw"><div class="sw-dot" style="background:#F4A898"></div><div class="sw-label">02 Sorbet</div></div><div class="sw"><div class="sw-dot" style="background:#C89070"></div><div class="sw-label">03 Pecan</div></div><div class="sw"><div class="sw-dot" style="background:#E8A8B0"></div><div class="sw-label">04 Lace</div></div><div class="sw"><div class="sw-dot" style="background:#B83850"></div><div class="sw-label">05 Sangria</div></div><div class="sw"><div class="sw-dot" style="background:#D890A0"></div><div class="sw-label">07 Ballet</div></div><div class="sw"><div class="sw-dot" style="background:#E07080"></div><div class="sw-label">08 Ribbon</div></div><div class="sw"><div class="sw-dot" style="background:#F0A8B8"></div><div class="sw-label">09 Sakura</div></div><div class="sw"><div class="sw-dot" style="background:#906050"></div><div class="sw-label">10 Walnut</div></div><div class="sw"><div class="sw-dot" style="background:#704050"></div><div class="sw-label">11 Raisin</div></div><div class="sw"><div class="sw-dot" style="background:#C06078"></div><div class="sw-label">12 Coquette</div></div></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ Benefits & Info</span><div class="pc-body-text"><p>Multitasking lip balm combining <strong>sun protection, barrier repair and plumping colour tint</strong> in one.</p><ul><li><strong>SPF 25 PA++++:</strong> Broad-spectrum UV protection — prevents lip darkening</li><li><strong>Ceramide:</strong> Repairs lip barrier, locks in moisture</li><li><strong>Peptide:</strong> Smooths lip lines, creates plumping effect</li><li><strong>Vitamin C:</strong> Brightens natural lip pigmentation</li><li>Valentine: soft rosy pink — universally flattering</li><li>Clicker applicator — precise and hygienic</li></ul></div></div>
         <div class="pc-section"><span class="pc-section-title">✦ How to Apply</span><div class="pc-body-text"><ul><li>Click 3–5 times to dispense (very little needed)</li><li>Apply directly to lips, outer to inner</li><li>Tap and press lips together to blend</li><li>Reapply every 2–3 hours outdoors for SPF</li></ul><div class="pc-tip">☀️ PA++++ = highest UVA protection rating. Your lips get sunscreen too!</div></div></div>
       </div>
