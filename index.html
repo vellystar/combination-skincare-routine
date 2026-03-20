@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>✿ Skin Sanctuary</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;600;700;800&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;600;700;800&family=Outfit:wght@400;500;600&family=Petit+Formal+Script&display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
 :root {
@@ -60,7 +60,7 @@ body{
   color:var(--c-text);
   font-size:15px;
   line-height:1.6;
-  overflow-x:hidden;
+  overflow-x:clip;
   transition:background .35s,color .35s;
   padding-top:var(--nav-h);
 }
@@ -138,7 +138,7 @@ nav{
 
 /* ── HERO ── */
 .hero{
-  min-height:70vh;
+  min-height:auto;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   text-align:center;
@@ -269,6 +269,7 @@ main{max-width:1200px;margin:0 auto;padding:0 1.25rem 6rem}
   margin-right:.15rem;
 }
 .filter-btn{
+  min-height:36px;
   padding:.22rem .7rem;
   border-radius:var(--r-pill);
   border:1.5px solid var(--c-border2);
@@ -323,8 +324,7 @@ main{max-width:1200px;margin:0 auto;padding:0 1.25rem 6rem}
   overflow:hidden;
 }
 @media(hover:hover){.pc:hover{border-color:var(--c-accent);box-shadow:var(--shadow-md);transform:translateY(-3px)}}
-@media(max-width:479px){.pc{flex:0 0 255px}}
-@media(min-width:1280px){.pc{flex:0 0 305px}}
+
 .pc.out{display:none}
 
 /* card header */
@@ -349,9 +349,11 @@ main{max-width:1200px;margin:0 auto;padding:0 1.25rem 6rem}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .pc-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:.97rem;font-weight:600;color:var(--c-heading);
-  line-height:1.25;
+  font-family:'Outfit',sans-serif;
+  font-size:.97rem;font-weight:500;color:var(--c-heading);
+  line-height:1.3;
+  word-break:break-word;
+  overflow-wrap:break-word;
 }
 .pc-shade{font-size:.67rem;color:var(--c-faint);font-style:italic;margin-top:.1rem}
 
@@ -497,7 +499,7 @@ main{max-width:1200px;margin:0 auto;padding:0 1.25rem 6rem}
   font-size:1rem;font-weight:600;color:var(--c-heading);
   margin-bottom:.25rem;
 }
-.step-text{font-size:.8rem;color:var(--c-muted);line-height:1.6;word-break:break-word}
+.step-text{font-size:.8rem;color:var(--c-muted);line-height:1.6;word-break:break-word;overflow-wrap:break-word}
 .step-text strong{color:var(--c-text)}
 .step-tip{
   background:rgba(196,168,240,.08);
@@ -669,6 +671,40 @@ footer .f-logo{
   main{padding:0 1.1rem 4rem}
   .two-col{grid-template-columns:1fr 1fr}
   .skin-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ── SAFE AREA (iOS notch / Dynamic Island) ── */
+@supports(padding: max(0px)){
+  body { padding-top: max(var(--nav-h), env(safe-area-inset-top) + var(--nav-h)); }
+  nav  { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  #btt { bottom: max(1rem, env(safe-area-inset-bottom) + .5rem); right: max(1.25rem, env(safe-area-inset-right) + 1rem); }
+}
+
+/* ── Ensure info-block lists indent correctly ── */
+.info-block ul { padding-left:1.1rem }
+.info-block li { margin-bottom:.3rem }
+
+/* ── Prevent text overflow in all cards and steps ── */
+.pc,.step-content,.info-block,.combo-banner,.routine-card{
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+
+/* ── Make shop links wrap nicely on very narrow screens ── */
+.wtb-links { gap:.25rem }
+
+/* ── Ensure section never clips at edges ── */
+.section { overflow:visible }
+
+/* ── Improve touch target for nav tabs ── */
+.nav-tab { min-height:40px }
+
+/* ── Light mode nav adjustment ── */
+[data-theme="light"] .nav-tab:hover,
+[data-theme="light"] .nav-tab.active {
+  background:rgba(123,88,200,.1);
+  color:var(--c-accent);
+  box-shadow:0 0 0 1.5px var(--c-accent);
 }
 </style>
 </head>
