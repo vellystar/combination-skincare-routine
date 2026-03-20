@@ -472,31 +472,35 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 1.25rem 6rem}
 .rh-midday {background:linear-gradient(135deg,rgba(76,175,122,.08),transparent)}
 .rh-removal{background:linear-gradient(135deg,rgba(176,144,232,.08),transparent)}
 
-.routine-steps{padding:.5rem 0}
+.routine-steps{padding:.25rem 0}
 .step{
   display:flex;gap:.85rem;
-  padding:1rem 1.4rem;
+  padding:.9rem 1.4rem;
   border-bottom:1px solid var(--c-border);
   transition:background .18s;
+  align-items:flex-start;
 }
 .step:last-child{border-bottom:none}
 .step:hover{background:var(--c-raised)}
 .step-num{
-  width:30px;height:30px;border-radius:50%;
+  width:28px;height:28px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-size:.72rem;font-weight:800;color:#fff;
-  flex-shrink:0;margin-top:.05rem;
+  font-size:.7rem;font-weight:800;color:#fff;
+  flex-shrink:0;margin-top:.2rem;
 }
 .sn-morning{background:linear-gradient(135deg,#F4A96A,#E88040)}
 .sn-evening{background:linear-gradient(135deg,#8B78D8,#6A58C8)}
 .sn-makeup {background:linear-gradient(135deg,#E87AAA,#C85080)}
 .sn-midday {background:linear-gradient(135deg,#5CC880,#3A9858)}
 .sn-removal{background:linear-gradient(135deg,#B090E8,#8060C8)}
-.step-content{flex:1;min-width:0}
+.step-content{
+  flex:1;min-width:0;
+  display:flex;flex-direction:column;gap:.3rem;
+}
 .step-product{
   font-family:'Cormorant Garamond',serif;
   font-size:1rem;font-weight:600;color:var(--c-heading);
-  margin-bottom:.25rem;
+  line-height:1.25;
 }
 .step-text{font-size:.8rem;color:var(--c-muted);line-height:1.6;word-break:break-word;overflow-wrap:break-word}
 .step-text strong{color:var(--c-text)}
@@ -504,15 +508,15 @@ main{max-width:1200px;margin:0 auto;padding:2.5rem 1.25rem 6rem}
   background:rgba(196,168,240,.08);
   border-left:2.5px solid var(--c-accent);
   border-radius:0 7px 7px 0;
-  padding:.38rem .6rem;margin-top:.4rem;
+  padding:.35rem .6rem;
   font-size:.75rem;color:var(--c-muted);font-style:italic;
 }
 .step-time{
-  display:inline-block;margin-top:.35rem;
-  padding:.14rem .5rem;border-radius:var(--r-pill);
+  display:inline-flex;align-self:flex-start;
+  padding:.12rem .5rem;border-radius:var(--r-pill);
   background:rgba(196,168,240,.1);
   color:var(--c-accent);
-  font-size:.65rem;font-weight:700;
+  font-size:.63rem;font-weight:700;
 }
 
 /* ── TWO-COL INFO ── */
@@ -996,7 +1000,7 @@ footer .f-logo{
   <div class="product-track" data-section="spf">
 
     <div class="pc" data-tier="affordable">
-      <div class="pc-head"><div class="pc-emoji">🌤️</div><div class="pc-meta"><div class="pc-brand">YOU</div><div class="pc-name">Physical Sunscreen Sunbrella</div></div></div>
+      <div class="pc-head"><div class="pc-emoji">🌤️</div><div class="pc-meta"><div class="pc-brand">YOU</div><div class="pc-name">Physical Sunscreen Sunbrella SPF 30 PA+++</div></div></div>
       <div class="pc-body">
         <div class="pc-tags"><span class="tag">Physical SPF</span><span class="tag b">Broad Spectrum</span><span class="tag g">AM Final Step</span></div>
         <span class="suit">✓ Excellent for Combination Skin</span>
@@ -1218,7 +1222,7 @@ footer .f-logo{
       <div class="step"><div class="step-num sn-morning">2</div><div class="step-content"><div class="step-product">Tone — SOME BY MI Snail Truecica Toner</div><div class="step-text">Apply immediately on damp skin after cleansing. Rebalances pH and primes skin to absorb the ampoule. Press with palms from centre outward rather than swiping.</div><div class="step-time">⏱ 30–60 seconds</div></div></div>
       <div class="step"><div class="step-num sn-morning">3</div><div class="step-content"><div class="step-product">Treat — SKIN1004 Madagascar Centella Ampoule</div><div class="step-text">Dispense 3–5 drops and press into skin, focusing on redness, breakouts, or post-acne marks. Absorbs within seconds.</div><div class="pc-tip">💡 Focus on active spots — works as a calming serum and spot treatment in one.</div><div class="step-time">⏱ 30 seconds + 1 min absorb</div></div></div>
       <div class="step"><div class="step-num sn-morning">4</div><div class="step-content"><div class="step-product">Moisturise — Based on the Day</div><div class="step-text"><strong>Humid/Oily day:</strong> Somethinc Ceramic Skin Moisturizer Gel.<br><strong>Regular day:</strong> The Originote Hyalucera Moisturizer.<br><strong>Dry/cool day:</strong> Glad2Glow Ceramide Moisturizer.<br>Apply more on cheeks, less on T-zone.</div><div class="step-time">⏱ 1 minute + 2 min absorb</div></div></div>
-      <div class="step"><div class="step-num sn-morning">5</div><div class="step-content"><div class="step-product">Protect — YOU Physical Sunscreen Sunbrella ☀️</div><div class="step-text">The most important step. Apply a generous amount (~¼ tsp) across entire face, neck, and exposed areas. Press and pat — never rub. Wait 5 minutes before makeup.</div><div class="pc-tip">⚠️ Never skip SPF — even indoors. UV rays penetrate windows daily.</div><div class="step-time">⏱ 2 minutes + 5 min before makeup</div></div></div>
+      <div class="step"><div class="step-num sn-morning">5</div><div class="step-content"><div class="step-product">Protect — YOU Physical Sunscreen Sunbrella SPF 30 PA+++ ☀️</div><div class="step-text">The most important step. Apply a generous amount (~¼ tsp) across entire face, neck, and exposed areas. Press and pat — never rub. Wait 5 minutes before makeup.</div><div class="pc-tip">⚠️ Never skip SPF — even indoors. UV rays penetrate windows daily.</div><div class="step-time">⏱ 2 minutes + 5 min before makeup</div></div></div>
     </div>
   </div>
 </section>
@@ -1308,7 +1312,7 @@ footer .f-logo{
     </ul>
   </div>
   <div class="disclaimer">⚠️ <strong>Prices may change.</strong> Based on official Shopee/Tokopedia listings, March 2026.</div>
-  <div class="product-track" data-section="removal" style="margin-bottom:1.5rem">
+  <div class="product-track" data-section="removal" style="margin-bottom:.75rem">
     <div class="pc" data-tier="affordable">
       <div class="pc-head"><div class="pc-emoji">🌸</div><div class="pc-meta"><div class="pc-brand">Glad2Glow</div><div class="pc-name">Cherry Blossom Betaine Micellar Water</div></div></div>
       <div class="pc-body">
