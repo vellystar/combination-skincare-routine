@@ -91,6 +91,33 @@ a{color:inherit;text-decoration:none;}
 .cat-badge{font-size:.71rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:99px;background:linear-gradient(90deg,var(--sapphire),var(--royal));color:white;flex-shrink:0;}
 .cat-line{flex:1;height:1px;background:var(--border);}
 
+/* ─── Category Filter Bar ───────────────────── */
+.filter-bar{
+  display:flex;flex-wrap:nowrap;gap:8px;margin-bottom:28px;
+  overflow-x:auto;overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding-bottom:4px;
+}
+.filter-bar::-webkit-scrollbar{display:none;}
+.filter-pill{
+  font-size:.78rem;font-weight:600;padding:7px 16px;border-radius:99px;
+  border:1.5px solid var(--border);
+  background:var(--surface2);color:var(--text-muted);
+  cursor:pointer;transition:all .25s;white-space:nowrap;flex-shrink:0;
+  display:inline-flex;align-items:center;gap:6px;
+  -webkit-tap-highlight-color:transparent;
+  min-height:36px;
+}
+.filter-pill:hover{border-color:var(--sky);color:var(--sky);background:rgba(107,165,231,.08);}
+.filter-pill.active{
+  background:linear-gradient(135deg,var(--sapphire),var(--royal));
+  color:white;border-color:transparent;
+  box-shadow:0 3px 14px rgba(15,82,186,.35);
+}
+.cat-group{transition:opacity .3s;}
+.cat-group.hidden{display:none;}
+
 /* Product Grid */
 .products-grid{display:grid;grid-template-columns:1fr;gap:16px;}
 
@@ -294,6 +321,7 @@ a{color:inherit;text-decoration:none;}
   <button class="tab-btn" data-section="evening">🌙 Evening</button>
   <button class="tab-btn" data-section="midday">☀️ Midday</button>
   <button class="tab-btn" data-section="routines">📋 Routines</button>
+  <button class="tab-btn" data-section="brushes">🖌️ Brushes</button>
   <button class="tab-btn" data-section="shades">🎨 Shades</button>
 </div>
 
@@ -357,6 +385,17 @@ a{color:inherit;text-decoration:none;}
     <span class="price-cat price-premium">⭐ Premium — above Rp 200.000</span>
   </div>
 
+  <div class="filter-bar" id="sc-filter">
+    <button class="filter-pill active" data-filter="all" data-section="sc">✦ All</button>
+    <button class="filter-pill" data-filter="sc-cleanser" data-section="sc">🧼 Cleansers</button>
+    <button class="filter-pill" data-filter="sc-toner" data-section="sc">💧 Toner</button>
+    <button class="filter-pill" data-filter="sc-ampoule" data-section="sc">🌿 Ampoules & Serums</button>
+    <button class="filter-pill" data-filter="sc-moisturizer" data-section="sc">💙 Moisturizers</button>
+    <button class="filter-pill" data-filter="sc-sunscreen" data-section="sc">🛡️ Sunscreens</button>
+    <button class="filter-pill" data-filter="sc-oilcontrol" data-section="sc">🧻 Oil Control</button>
+  </div>
+
+  <div class="cat-group" data-group="sc-cleanser">
   <div class="cat-header"><span class="cat-badge">Cleansers & Micellar</span><div class="cat-line"></div></div>
   <div class="products-grid">
 
@@ -443,6 +482,10 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 
+  </div>
+  </div><!-- end sc-cleanser -->
+
+  <div class="cat-group" data-group="sc-toner">
   <div class="cat-header"><span class="cat-badge">Toner</span><div class="cat-line"></div></div>
   <div class="products-grid">
     <div class="prod-card reveal">
@@ -467,6 +510,10 @@ a{color:inherit;text-decoration:none;}
     </div>
   </div>
 
+  </div>
+  </div><!-- end sc-toner -->
+
+  <div class="cat-group" data-group="sc-ampoule">
   <div class="cat-header"><span class="cat-badge">Ampoules & Serums</span><div class="cat-line"></div></div>
   <div class="products-grid">
 
@@ -532,6 +579,10 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 
+  </div>
+  </div><!-- end sc-ampoule -->
+
+  <div class="cat-group" data-group="sc-moisturizer">
   <div class="cat-header"><span class="cat-badge">Moisturizers</span><div class="cat-line"></div></div>
   <div class="products-grid">
 
@@ -658,6 +709,10 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 
+  </div>
+  </div><!-- end sc-moisturizer -->
+
+  <div class="cat-group" data-group="sc-sunscreen">
   <div class="cat-header"><span class="cat-badge">Sunscreens</span><div class="cat-line"></div></div>
   <div class="products-grid">
 
@@ -720,9 +775,43 @@ a{color:inherit;text-decoration:none;}
     </div>
 
   </div>
-</section>
 
-<!-- ═══════ MAKEUP PRODUCTS ═══════ -->
+  </div>
+  </div><!-- end sc-sunscreen -->
+
+  <div class="cat-group" data-group="sc-oilcontrol">
+  <div class="cat-header"><span class="cat-badge">Oil Control</span><div class="cat-line"></div></div>
+  <div class="products-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Oil Control Film · T-Zone Tool</div>
+        <div class="prod-name">Clean & Clear Oil Control Film</div>
+        <div class="prod-brand">Johnson & Johnson</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ T-Zone Essential</span><span class="tag tag-good">✓ Combo Friendly</span><span class="tag tag-skin">Midday / Anytime</span></div>
+        <div class="info-block"><div class="info-label">Key Features</div><div class="benefit-pills"><span class="benefit-pill">Translucent Blue Film</span><span class="benefit-pill">Absorbs Excess Sebum</span><span class="benefit-pill">No Powder Residue</span><span class="benefit-pill">200 Sheets / Pack</span></div></div>
+        <div class="info-block"><div class="info-label">Benefits</div><div class="info-text">Thin translucent blue film sheets absorb excess sebum from the T-zone instantly without disturbing makeup or leaving white powder residue. Unlike traditional blotting paper, the film material grips and lifts oil more efficiently — ideal for combination skin's oily forehead, nose, and chin. Leaves a clean, matte finish that lasts. The sheets turn translucent once they've absorbed oil, so you can see exactly how much was removed. An essential step before midday SPF reapplication.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">Peel one sheet from the pack. Press — never rub — gently onto T-zone: forehead first, then nose, then chin. Hold for 2–3 seconds and lift cleanly. Use a fresh sheet per zone if very oily. Follow immediately with Bening's Sunscreen Spray reapplication, then set with Second Date Translucent Powder for a refreshed, matte finish. Can also be used anytime during the day between SPF reapplication cycles.</div></div>
+        <div class="info-block"><div class="info-label">Suitability</div><div class="info-text">Perfect for combination skin — targets only the oily T-zone without drying out the cheeks. The film format is gentler on makeup than traditional tissue blotting and more effective at sebum absorption than most blotting papers. A must-have in your bag for Indonesia's humid climate.</div></div>
+        <div class="price-block">
+          <div class="price-row"><span class="price-range">Rp 18.000 – 35.000</span><span class="price-cat price-budget">💚 Budget</span></div>
+          <div class="buy-label">Where to Buy</div>
+          <div class="buy-chips">
+            <a class="buy-chip" href="https://klikindomaret.com/page/searching?keyword=clean+clear+oil+control+film" target="_blank" rel="noopener">🏪 Klik Indomaret</a>
+            <a class="buy-chip" href="https://www.alfacart.com/search?q=clean+clear+oil+control+film" target="_blank" rel="noopener">🏪 Alfacart</a>
+            <a class="buy-chip" href="https://shopee.co.id/search?keyword=clean+clear+oil+control+film+johnson" target="_blank" rel="noopener">🛒 Shopee</a>
+            <a class="buy-chip" href="https://www.tokopedia.com/search?q=clean+clear+oil+control+film" target="_blank" rel="noopener">🛒 Tokopedia</a>
+            <a class="buy-chip" href="https://www.guardian.co.id/catalogsearch/result/?q=clean+clear+oil+control+film" target="_blank" rel="noopener">🏪 Guardian</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- end sc-oilcontrol -->
+</section>
 <section class="section" id="makeup-products">
   <h2 class="section-title">💄 Makeup Products</h2><div class="divider"></div>
   <p class="section-sub">Full catalog of every makeup product — with price, where to buy, shade info, benefits, and application tips. See the 📋 Routines tab for how to layer them together.</p>
@@ -732,6 +821,15 @@ a{color:inherit;text-decoration:none;}
     <span class="price-cat price-premium">⭐ Premium — above Rp 200.000</span>
   </div>
 
+  <div class="filter-bar" id="mk-filter">
+    <button class="filter-pill active" data-filter="all" data-section="mk">✦ All</button>
+    <button class="filter-pill" data-filter="mk-base" data-section="mk">🎨 Base & Foundation</button>
+    <button class="filter-pill" data-filter="mk-mist" data-section="mk">💨 Setting Mists</button>
+    <button class="filter-pill" data-filter="mk-eyes" data-section="mk">👁️ Eyes & Brows</button>
+    <button class="filter-pill" data-filter="mk-lips" data-section="mk">💋 Lip Products</button>
+  </div>
+
+  <div class="cat-group" data-group="mk-base">
   <div class="cat-header"><span class="cat-badge">Base & Foundation</span><div class="cat-line"></div></div>
   <div class="makeup-grid">
 
@@ -856,6 +954,10 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 
+  </div>
+  </div><!-- end mk-base -->
+
+  <div class="cat-group" data-group="mk-mist">
   <div class="cat-header"><span class="cat-badge">Setting Mists</span><div class="cat-line"></div></div>
   <div class="makeup-grid">
 
@@ -900,6 +1002,10 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 
+  </div>
+  </div><!-- end mk-mist -->
+
+  <div class="cat-group" data-group="mk-eyes">
   <div class="cat-header"><span class="cat-badge">Eyes & Brows</span><div class="cat-line"></div></div>
   <div class="makeup-grid">
 
@@ -980,6 +1086,10 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 
+  </div>
+  </div><!-- end mk-eyes -->
+
+  <div class="cat-group" data-group="mk-lips">
   <div class="cat-header"><span class="cat-badge">Lip Products</span><div class="cat-line"></div></div>
   <div class="makeup-grid">
 
@@ -1079,6 +1189,7 @@ a{color:inherit;text-decoration:none;}
     </div>
 
   </div>
+  </div><!-- end mk-lips -->
 </section>
 
 <!-- ═══════ MORNING ═══════ -->
@@ -1122,13 +1233,13 @@ a{color:inherit;text-decoration:none;}
   <div class="tip-box"><span class="tip-icon">⚡</span><div class="tip-text"><strong>Why Reapply?</strong> UV filters chemically break down after ~2 hours of sun exposure. Skipping reapplication cancels out morning SPF and allows UV damage to accelerate pigmentation, premature aging, and barrier damage — undoing all your skincare investment.</div></div>
   <div class="midday-grid" style="margin:24px 0;">
     <div class="midday-card reveal"><h4>☁️ Mostly Indoors</h4><p>Reapply once around noon with Bening's Spray. A 3-second spritz is sufficient. UV still penetrates glass windows and blue light from screens contributes to pigmentation over time.</p></div>
-    <div class="midday-card reveal"><h4>🌞 Outdoor Activities</h4><p>Reapply every 2 hours of direct sun. Spray Bening's generously from 15–20 cm in a slow sweep. Press lightly with fingertips. Top with translucent powder to mattify T-zone.</p></div>
+    <div class="midday-card reveal"><h4>🌞 Outdoor Activities</h4><p>Reapply every 2 hours of direct sun. Blot T-zone first with Clean & Clear Oil Control Film, then spray Bening's generously from 15–20 cm in a slow sweep. Press lightly with fingertips. Top with translucent powder to mattify T-zone.</p></div>
     <div class="midday-card reveal"><h4>💦 After Sweating</h4><p>Pat skin dry gently then reapply sunscreen spray — the spray format is far less disruptive to makeup than cream formulas. Follow with translucent powder for a fresh, set finish.</p></div>
     <div class="midday-card reveal"><h4>🎨 Over Full Makeup</h4><p>Spray Bening's at arm's length, let settle 30 seconds, press gently with a beauty sponge — never rub. Finish with translucent powder and setting mist to lock everything back in.</p></div>
   </div>
   <h2 class="section-title">Step-by-Step Midday Protocol</h2><div class="divider"></div>
   <div class="routine-steps">
-    <div class="step"><div class="step-line"><div class="step-num">1</div><div class="step-connector"></div></div><div class="step-content reveal"><span class="step-time">Optional</span><div class="step-title">🧻 Blot Excess Oil</div><div class="step-tip">Gently blot the T-zone before adding anything. Prevents sunscreen from mixing with oil and looking cakey. Press — never rub — blotting paper on forehead, nose, and chin.</div></div></div>
+    <div class="step"><div class="step-line"><div class="step-num">1</div><div class="step-connector"></div></div><div class="step-content reveal"><span class="step-time">Optional</span><div class="step-title">🧻 Blot Excess Oil</div><div class="step-product">Johnson & Johnson Clean & Clear Oil Control Film</div><div class="step-tip">Press — never rub — one sheet gently onto T-zone: forehead, then nose, then chin. Hold 2–3 seconds and lift cleanly. Use a fresh sheet per zone if very oily. The translucent blue film absorbs sebum without disturbing makeup or leaving residue, far more effectively than tissue. Do this before SPF reapplication so sunscreen doesn't mix with excess oil.</div></div></div>
     <div class="step"><div class="step-line"><div class="step-num">2</div><div class="step-connector"></div></div><div class="step-content reveal"><span class="step-time">Core Step</span><div class="step-title">🌞 Reapply Sunscreen</div><div class="step-product">Bening's Sunscreen Spray by Dr. Oky Pratama</div><div class="step-tip">Hold 15–20 cm from face. Spray in sweeping motion across forehead, nose, cheeks, chin. Let settle 30 seconds. Press with clean fingertips or beauty puff. Give extra coverage to nose and forehead — they receive the most direct UV exposure throughout the day.</div></div></div>
     <div class="step"><div class="step-line"><div class="step-num">3</div><div class="step-connector"></div></div><div class="step-content reveal"><span class="step-time">Optional</span><div class="step-title">🌸 Set & Refresh</div><div class="step-product">Second Date Loose Powder (Translucent) + LOREAL Infallible or PIXY Aqua-Beauty Mist</div><div class="step-tip">After sunscreen settles, dust translucent powder over T-zone to mattify. Then 2–3 pumps of setting mist at 20 cm. Revives makeup, locks it in, and gives a fresh "just-applied" finish for the rest of the day.</div></div></div>
     <div class="step"><div class="step-line"><div class="step-num">4</div><div class="step-connector"></div></div><div class="step-content reveal"><span class="step-time">Optional</span><div class="step-title">💋 Lip Refresh</div><div class="step-product">SOMETHINC Ceraplump Tinted Lip Balm SPF 25 PA++++</div><div class="step-tip">Blot lips, reapply Ceraplump. SPF 25 PA++++ shields delicate lip skin. Keeps lips plump and hydrated through the afternoon. The tint refreshes natural lip color without looking overdone at midday.</div></div></div>
@@ -1171,6 +1282,331 @@ a{color:inherit;text-decoration:none;}
     <div class="step"><div class="step-line"><div class="step-num">5</div><div class="step-connector"></div></div><div class="step-content reveal"><div class="step-title">Lips</div><div class="step-product">Nivea Rich Care & Color — Smoky Rose</div><div class="step-tip">Sophisticated, muted rose-pink that reads as professional and polished. The balm format is comfortable for long hours and can be easily touched up throughout the day.</div></div></div>
     <div class="step"><div class="step-line"><div class="step-num">6</div><div class="step-connector"></div></div><div class="step-content reveal"><div class="step-title">Lock with Matte Mist</div><div class="step-product">PIXY Aqua-Beauty Protecting Mist Matte-Finish</div><div class="step-tip">Matte-finish mist locks everything for long hours in an office environment. Controls T-zone shine through afternoon meetings. Reapply Bening's SPF spray at midday.</div></div></div>
   </div>
+</section>
+
+<!-- ═══════ BRUSHES ═══════ -->
+<section class="section" id="brushes">
+  <h2 class="section-title">🖌️ Makeup Brushes</h2><div class="divider"></div>
+  <p class="section-sub">Every brush you need for your routine — what it does, how to use it, how to clean it, and which products it pairs with from your collection.</p>
+
+  <div class="tip-box"><span class="tip-icon">💡</span><div class="tip-text"><strong>Brush Philosophy:</strong> The right brush makes the difference between makeup that looks applied and makeup that looks like skin. Each brush shape is engineered for a specific task — using the wrong one is the most common reason products don't blend the way they do in tutorials. You don't need every brush at once — start with the essentials and build up.</div></div>
+
+  <div class="filter-bar" id="br-filter">
+    <button class="filter-pill active" data-filter="all" data-section="br">✦ All</button>
+    <button class="filter-pill" data-filter="br-face" data-section="br">🎨 Face</button>
+    <button class="filter-pill" data-filter="br-eye" data-section="br">👁️ Eyes</button>
+    <button class="filter-pill" data-filter="br-brow" data-section="br">✏️ Brows</button>
+    <button class="filter-pill" data-filter="br-lip" data-section="br">💋 Lips</button>
+    <button class="filter-pill" data-filter="br-tools" data-section="br">🧽 Sponges & Tools</button>
+  </div>
+
+  <!-- FACE BRUSHES -->
+  <div class="cat-group" data-group="br-face">
+  <div class="cat-header"><span class="cat-badge">Face Brushes</span><div class="cat-line"></div></div>
+  <div class="products-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Face Brush · Essential</div>
+        <div class="prod-name">Powder / Foundation Brush</div>
+        <div class="prod-brand">Fluffy Flat or Kabuki · Synthetic or Natural</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ Must-Have</span><span class="tag tag-skin">Face Base</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Large, densely packed dome or flat-top bristles. Either round kabuki or paddle-shaped. Synthetic fibres work best for liquid/cream; natural or mixed for powder.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Applies and blends foundation, powder, or cushion product across the whole face for an even, streak-free base. The dense bristles buff product into the skin rather than sitting on top, giving a more natural finish than fingers alone for full-coverage looks.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>For liquid/cushion:</strong> Dot product across cheeks, forehead, nose, and chin first, then blend outward using circular or stippling motions. <strong>For loose powder:</strong> Tap off excess, then press and swirl over T-zone. Always start from the centre of the face and work outward. Use light pressure for a skin-like finish, more pressure for fuller coverage.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">SKINTIFIC Cover Glow Cushion · TIRTIR Red Cushion · ESQA Skin Tint · TIMEPHORIA Matte Cushion · Second Date Loose Powder (N00 Translucent)</div></div>
+        <div class="info-block"><div class="info-label">How to Clean</div><div class="info-text">Swirl in brush cleanser or mild shampoo with lukewarm water. Rinse until water runs clear. Reshape bristles and lay flat or hang bristles-down to dry — never upright or bristles will retain water and loosen the ferrule.</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Face Brush · Essential</div>
+        <div class="prod-name">Fluffy Setting Powder Brush</div>
+        <div class="prod-brand">Large Dome · Soft Natural or Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ Must-Have</span><span class="tag tag-skin">Setting & Baking</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Large, very fluffy, loosely packed dome. The biggest brush in most kits. Soft enough to not disturb foundation underneath.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Lightly dusts translucent or setting powder over the entire face to lock in foundation without adding heavy coverage. The fluffy, airy bristles deposit a sheer, diffused layer that blurs pores and reduces shine — especially on the T-zone.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">Tap the brush lightly into Second Date Loose Powder, tap off all excess on the back of your hand, then sweep in large circular motions across forehead, nose, and chin. For baking the T-zone (extra oil control): press and hold the brush firmly on the area for 5 seconds before sweeping off. Use a fan brush after to dust away excess.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">Second Date Loose Powder N00 Translucent · All cushion foundations to set and extend wear</div></div>
+        <div class="info-block"><div class="info-label">How to Clean</div><div class="info-text">Swirl gently in lukewarm water with brush soap. These large brushes take longer to dry — wash the night before use and lay flat overnight.</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Face Brush · Recommended</div>
+        <div class="prod-name">Contour / Blush Brush</div>
+        <div class="prod-brand">Angled or Tapered · Medium Size</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Sculpting & Colour</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Medium-sized angled or tapered fluffy brush. Smaller than a powder brush but bigger than an eye brush. The angle allows precise placement on cheekbones, temples, and nose bridge.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Deposits and blends blush, bronzer, or contour powder along the cheekbones and temples for definition and colour. The angled shape hugs facial contours naturally — the most efficient brush for sculpting the cheeks.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>Blush:</strong> Smile lightly, sweep upward from the apples of cheeks toward the temples. <strong>Contour:</strong> Hollow cheek area (just below cheekbone), temples, and sides of nose. <strong>Bronzer:</strong> "3" shape — forehead, cheek, jaw. Always blend edges thoroughly — there should be no visible edges or harsh lines.</div></div>
+        <div class="info-block"><div class="info-label">Tip for Combination Skin</div><div class="info-text">Use a light hand on the T-zone when applying bronzer — the natural oiliness of combination skin can make bronzer look muddy if over-applied on the nose area. Focus warmth on the cheeks and temples only.</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Face Brush · Recommended</div>
+        <div class="prod-name">Fan Brush</div>
+        <div class="prod-brand">Thin Fan Shape · Soft Bristles</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Finishing & Highlight</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Spread-out fan of thin, widely spaced bristles. Looks like a small hand fan. Picks up very little product at a time — designed for the lightest possible application.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Two main uses: (1) dusts away excess setting powder without disturbing makeup underneath, and (2) applies highlighter to cheekbones, brow bone, and cupid's bow with a very diffused, natural glow — not chunky or glittery.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>Powder removal:</strong> After baking, sweep lightly across the T-zone to remove excess product. <strong>Highlight:</strong> Tap lightly into highlighter, swipe once on the back of your hand to remove excess, then feather across the highest point of cheekbones with a gentle sweeping motion.</div></div>
+        <div class="info-block"><div class="info-label">How to Clean</div><div class="info-text">Rinse under lukewarm water with mild soap. The sparse bristles dry very quickly — 30 minutes flat is usually enough.</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Face Brush · Recommended</div>
+        <div class="prod-name">Concealer Brush</div>
+        <div class="prod-brand">Small Flat Tapered · Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Targeted Coverage</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Small, flat, slightly tapered brush with a narrow tip. Synthetic fibres that don't absorb product. Precise enough for small areas but not so tiny it takes forever.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Precisely places and blends concealer on targeted areas like blemishes, dark circles, redness, and hyperpigmentation. The controlled tip ensures product only goes exactly where needed, avoiding wasting product on surrounding already-covered skin.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">Pick up a small amount of product and pat — never drag — onto the target area. Use a dabbing motion to blend edges into the surrounding foundation. For under-eye concealer, use a gentle tapping motion with the flat face of the brush. Follow with a light press from a clean fingertip for the most seamless blend.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">ONLYOU Concealer Brightening & Isolating BB Cream · All cushion foundations for touch-up work</div></div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- end br-face -->
+
+  <!-- EYE BRUSHES -->
+  <div class="cat-group" data-group="br-eye">
+  <div class="cat-header"><span class="cat-badge">Eye Brushes</span><div class="cat-line"></div></div>
+  <div class="products-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Eye Brush · Essential</div>
+        <div class="prod-name">Flat Shader Brush</div>
+        <div class="prod-brand">Small Flat Paddle · Synthetic or Natural</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ Must-Have</span><span class="tag tag-skin">Lid Colour Packing</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Small, densely packed flat paddle brush. Stiff enough to press product firmly onto the lid but not scratchy. The most common eye brush included in starter kits.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Packs eyeshadow intensely onto the lid with maximum pigment payoff. Because the bristles are dense and flat, they press colour firmly onto the surface rather than diffusing it — ideal for the JADED palette's shimmers and mattes on the eyelid.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">Press the flat face of the brush directly onto the lid. Pat in small dabbing motions — <strong>never swipe</strong> for this brush, as swiping diffuses the pigment before it sticks. Work from the centre of the lid outward. Build colour in thin layers rather than one heavy application for a cleaner result.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">JADED Palette — P2 Champagne Shimmer, P4 Bronze, P3 Warm Satin, P8 Dusty Rose on the lid</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Eye Brush · Essential</div>
+        <div class="prod-name">Fluffy Blending Brush</div>
+        <div class="prod-brand">Dome-Shaped Fluffy · Soft Natural or Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ Must-Have</span><span class="tag tag-skin">Crease Blending</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Medium-small fluffy dome, loosely packed. The most important eye brush to own. If you only buy one eye brush, make it this one.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Blends eyeshadow in the crease and outer corner for seamless, diffused transitions between colours. No harsh edges — this brush is the reason professional eye looks look blended rather than patchy. Also used to buff out any over-blended areas and apply transition shades.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">Use a windshield-wiper motion back and forth in the crease — the key is <strong>speed and a light hand</strong>, not pressure. Let the brush do the work. Apply a transition matte shade (P1 Ivory or P5 Terracotta from JADED palette) first with this brush before adding deeper shades, so there's already a blended base for darker colours to sit into.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">JADED Palette — P5 Terracotta, P6 Brick Rose, P7 Deep Brown for crease definition · P1 Ivory as an all-over transition base</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Eye Brush · Recommended</div>
+        <div class="prod-name">Small Pencil / Detail Brush</div>
+        <div class="prod-brand">Tapered Pointed · Firm Bristles</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Detail & Inner Corner</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Very small, pointed or pencil-thin tapered tip. Firm enough to be precise. One of the smallest brushes in the eye brush family.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Places shimmer precisely in the inner corner of the eye for the brightening effect that opens up the eyes dramatically. Also used for detailed lower lash line work, tightlining, and packing dark shadow in a small outer-corner V shape for cut-crease looks.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>Inner corner highlight:</strong> Pick up P2 Champagne shimmer from the JADED palette and tap precisely onto the inner corners — this instantly makes the eyes look larger and more awake. <strong>Lower lash line:</strong> Use the tip to trace a thin line of matte or shimmer just below the lower lashes for added definition without liner.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">JADED Palette — P2 Champagne (inner corner) · P9 Smoky Noir (lower lash line) · P4 Bronze (detailed lid work)</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Eye Brush · Recommended</div>
+        <div class="prod-name">Angled Liner Brush</div>
+        <div class="prod-brand">Firm Angled Tip · Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Liner & Definition</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Small brush with bristles cut at a 45° angle. Stiff enough to draw controlled lines. One of the most versatile brushes — doubles as a brow filler too.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Creates precise eyeliner using dark eyeshadow (a more forgiving alternative to liquid liner). Also defines the brow tail and draws crisp edges for cut-crease eye looks. The angled edge gives full control over line thickness.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>Shadow liner:</strong> Pick up P9 Smoky Noir from the JADED palette wet (spritz brush with setting mist first) and draw along the upper lash line — wet application makes the pigment as intense as gel liner. <strong>Cut crease edge:</strong> Use the sharp angle to draw the precise crease line then blend above it with the fluffy brush. <strong>Brow tail:</strong> Fill in sparse areas and extend the tail for a defined, polished brow.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">JADED Palette P9 Smoky Noir (liner) · Luxcrime / Azarine / Hanasui brow pencils (blending and filling)</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Eye Brush · Recommended</div>
+        <div class="prod-name">Flat Contour / Cut-Crease Brush</div>
+        <div class="prod-brand">Small Flat Stiff · Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Cut Crease & Definition</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">Small, stiff flat brush — similar to the shader brush but with a wider, more squared-off edge. Some are slightly tapered. Firm bristles that hold their shape.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Creates the sharp, defined crease line in cut-crease eye looks. Deposits concealer or a light shade precisely above the crease line to create that crisp contrast. Also useful for packing deep shade tightly into the outer corner without diffusing it too early.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">Pack ONLYOU BB Cream or a light concealer above the crease line using the flat edge of the brush to create the clean cut. Then use the fluffy blending brush above to soften only the very top edge. Below the line, pack darker JADED shades with a shader brush for maximum contrast.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">ONLYOU BB Cream (as cut-crease base) · JADED Palette P7 Deep Brown + P9 Smoky Noir (outer corner depth)</div></div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- end br-eye -->
+
+  <!-- BROW BRUSHES -->
+  <div class="cat-group" data-group="br-brow">
+  <div class="cat-header"><span class="cat-badge">Brow Brushes & Tools</span><div class="cat-line"></div></div>
+  <div class="products-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Brow Tool · Essential</div>
+        <div class="prod-name">Spoolie Brush</div>
+        <div class="prod-brand">Spiral Bristle Wand · Clean or Tinted</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ Must-Have</span><span class="tag tag-skin">Brow Grooming</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">A mascara wand-shaped spiral brush — but for brows. Usually included on the other end of brow pencils like the Hanasui Eyebrowtiful. Can also be purchased as a standalone tool.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Brushes brow hairs into the desired shape before product application and blends product after drawing. Transforms drawn-on brows from looking "pencilled" to natural-looking in seconds. Also used to soften any harsh lines or over-applied product.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>Before:</strong> Brush brow hairs upward and outward to reveal their natural shape — this helps you draw product exactly where it's needed. <strong>After:</strong> Brush through filled brows with light strokes from the front of the brow toward the tail to soften, distribute product, and blend hair strokes together for the most natural result possible. Always end your brow routine with the spoolie.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">All three brow pencils — Luxcrime Dark Brown · Azarine 01 Eyeppuccino · Hanasui Brown (has built-in spoolie)</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Brow Tool · Recommended</div>
+        <div class="prod-name">Angled Brow Brush</div>
+        <div class="prod-brand">Firm Angled Flat · Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Brow Filling & Shaping</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">A firm, flat brush cut at a sharp angle — the same brush as the angled liner brush. A single angled brush covers both eye liner and brow filling duties, making it a very efficient investment.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Fills and shapes brows using powder or pressed eyeshadow. Allows more control over density and placement than pencils alone. Excellent for creating the illusion of fuller brow tails or thickening sparse areas without the harsh line a pencil can sometimes leave.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">Pick up a tiny amount of a matte brow-matching shade (P7 Deep Brown from JADED palette works as a brow powder in a pinch). Use the tip of the angled brush to draw short hair-like strokes following natural growth direction. Build gradually — start lighter than you think you need and add more. Use the sharp edge of the brush to define the brow tail. Blend with spoolie.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">JADED Palette P7 Deep Brown (as brow powder) · All brow pencils for blending and definition work</div></div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- end br-brow -->
+
+  <!-- LIP BRUSHES -->
+  <div class="cat-group" data-group="br-lip">
+  <div class="cat-header"><span class="cat-badge">Lip Brushes</span><div class="cat-line"></div></div>
+  <div class="products-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Lip Brush · Recommended</div>
+        <div class="prod-name">Lip Liner / Detail Brush</div>
+        <div class="prod-brand">Small Tapered Pointed · Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Lip Definition</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">A very small, tapered pointed brush — similar to the eye detail brush but used on lips. Thin enough to trace the lip line with precision. Can also be a retractable travel brush.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Applies lip product with precision — defining the cupid's bow, tracing the lip border cleanly, and placing stain or colour exactly where needed. Elevates lip looks from casual to polished, especially for bold shades like Time Phoria 04 Cherrion where a clean edge is crucial.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>For stain / bold colour:</strong> Outline the lip border first with the tip of the brush before filling in. Start at the cupid's bow, define the peaks, then trace to each corner. <strong>For gradient lips:</strong> Use the brush to dab colour only to the centre of the lips, then blend outward with a fingertip. <strong>For gloss / oil:</strong> Use the flat side of the brush to precisely layer NPure Marigold Peach Oil on the centre of lips only for a plumping gloss effect.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">Time Phoria Stellar Dust Lip Stain 04 Cherrion · NPure Glow Up Oil Marigold Peach · SOMETHINC Ceraplump Tinted Lip Balm 06 Valentine</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Lip Brush · Optional</div>
+        <div class="prod-name">Flat Lip Brush</div>
+        <div class="prod-brand">Small Flat Paddle · Synthetic</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-skin">Optional</span><span class="tag tag-skin">Full Lip Application</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">A flat, wide paddle-shaped brush — like a tiny version of a foundation brush. Some are tapered slightly. Usually comes in brush sets.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Applies lip colour evenly across the entire lip surface in a single pass. More efficient than the detail brush for filling in after the outline is done. Gives more control over colour density than applying directly from the product, especially for balms and serums.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text">After outlining with the detail brush, use the flat brush to fill in the entire lip. Press — don't swipe — onto the lips for the most even pigment distribution. Apply a second layer in the centre only for a dimensional gradient effect. Use a clean version to blend the edges of the gradient for seamless results.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">Glad2Glow Brightening Lip Serum Pumpkin Frost · Nivea Rich Care & Color Smoky Rose · All lip balm and tinted products</div></div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- end br-lip -->
+
+  <!-- SPONGES & TOOLS -->
+  <div class="cat-group" data-group="br-tools">
+  <div class="cat-header"><span class="cat-badge">Sponges & Tools</span><div class="cat-line"></div></div>
+  <div class="products-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Sponge · Essential</div>
+        <div class="prod-name">Beauty Blender / Teardrop Sponge</div>
+        <div class="prod-brand">Latex-Free Foam · Egg or Teardrop Shape</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ Must-Have</span><span class="tag tag-skin">Blending & Reapplication</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">An egg-shaped foam sponge — the pointed tip for precise areas (under eyes, around nose), the rounded base for larger areas (cheeks, forehead). Use damp for a skin-like finish, dry for more coverage.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Blends liquid and cream makeup into the skin for the most natural, skin-like finish possible — better than fingers for most foundations and far better than brushes for cushions. The bouncing application motion presses product into skin rather than dragging it, preventing streaks and patchiness on dry cheek areas.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>Always dampen first:</strong> Wet the sponge, squeeze out all excess water so it's damp but not dripping. This expands the foam so it absorbs less product. <strong>Bounce, never drag:</strong> Use a rapid stippling / bouncing motion — press firmly for more coverage, lightly for a sheerer finish. <strong>Pointed tip:</strong> Blend concealer under eyes, around nose and mouth. <strong>Midday reapplication:</strong> After Bening's sunscreen spray settles, press gently with the sponge to help the SPF absorb without disturbing makeup.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">SKINTIFIC Cover Glow Cushion · TIRTIR Red Cushion · ESQA Skin Tint · ONLYOU BB Cream · Bening's Sunscreen Spray (for midday press-in)</div></div>
+        <div class="info-block"><div class="info-label">How to Clean</div><div class="info-text">Wash daily or every use with gentle soap and warm water — squeeze and rotate under running water until it runs clear. Sponges harbour bacteria quickly; replace every 1–3 months. Never microwave to "clean" — this damages the foam and can cause burns.</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Tool · Essential</div>
+        <div class="prod-name">Oil Blotting Film</div>
+        <div class="prod-brand">Johnson & Johnson Clean & Clear</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-good">✓ In Your Collection</span><span class="tag tag-skin">T-Zone Oil Control</span></div>
+        <div class="info-block"><div class="info-label">How to Use as a Tool</div><div class="info-text">Press — never rub — one sheet against the T-zone. Hold for 2–3 seconds and lift cleanly. Use before SPF reapplication, before touching up powder, and whenever the forehead, nose, or chin looks shiny between applications. The film turns translucent as it absorbs oil, showing exactly how much sebum was removed.</div></div>
+        <div class="info-block"><div class="info-label">When to Use</div><div class="info-text"><strong>Mid-morning:</strong> ~2 hours after applying makeup if T-zone is already shining. <strong>Before reapplication:</strong> Always blot before Bening's sunscreen spray — SPF over oily skin looks cakey. <strong>Before touch-up powder:</strong> Blotting first means powder goes on top of clean skin, not oily skin — lasts much longer. <strong>After exercise or heat:</strong> Removes sweat-mixed sebum that would otherwise smear makeup.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">Bening's Sunscreen Spray · Second Date Loose Powder N00 Translucent · PIXY Aqua-Beauty Setting Mist</div></div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-header">
+        <div class="prod-category">Tool · Recommended</div>
+        <div class="prod-name">Powder Puff</div>
+        <div class="prod-brand">Velour or Cotton · Round Flat</div>
+      </div>
+      <div class="prod-body">
+        <div class="tag-row"><span class="tag tag-okay">Recommended</span><span class="tag tag-skin">Baking & Setting</span></div>
+        <div class="info-block"><div class="info-label">What It Looks Like</div><div class="info-text">A flat, round velour or cotton puff. Usually included inside compact or cushion packaging. Also sold separately. Much more compact than a setting brush — perfect for carrying in a bag.</div></div>
+        <div class="info-block"><div class="info-label">What It Does</div><div class="info-text">Presses setting powder firmly into the skin — the pressing action locks foundation more effectively than a brush sweep. Ideal for baking: pressing excess powder onto the T-zone and leaving it to "cook" for 5 minutes before dusting off, which gives hours of oil control that sweeping with a brush can't match.</div></div>
+        <div class="info-block"><div class="info-label">How to Use</div><div class="info-text"><strong>Baking technique:</strong> Press the puff into Second Date Translucent Powder. Press firmly onto T-zone (forehead, nose, chin) and hold. Do not move the puff — hold it still for 5 minutes while finishing other makeup steps. Then sweep away excess with the fluffy brush or fan brush. <strong>For cheeks:</strong> Use lighter pressure with the puff to set without over-powdering dry areas.</div></div>
+        <div class="info-block"><div class="info-label">Pairs With</div><div class="info-text">Second Date Loose Powder N00 Translucent · All cushion foundations (the puff included in the cushion case can be used directly)</div></div>
+        <div class="info-block"><div class="info-label">How to Clean</div><div class="info-text">Hand-wash with mild soap and warm water. Squeeze gently — never wring. Air dry flat. Replace every 1–2 months or when the texture becomes rough or discoloured.</div></div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- end br-tools -->
+
+  <div class="tip-box reveal"><span class="tip-icon">🧼</span><div class="tip-text"><strong>General Brush Care Rules:</strong><br><br>
+  🔹 <strong>Wash eye brushes</strong> at least once a week — bacteria and oils from the eye area transfer quickly.<br>
+  🔹 <strong>Wash face brushes</strong> every 2–3 uses for liquid products, once a week for powder.<br>
+  🔹 <strong>Never soak</strong> the ferrule (the metal band) — water loosens the glue and bristles fall out.<br>
+  🔹 <strong>Reshape while wet</strong> — pinch bristles back into shape before drying.<br>
+  🔹 <strong>Dry flat or bristles-down</strong> — never upright in a cup, as water runs into the ferrule.<br>
+  🔹 <strong>Dedicated brushes per product</strong> — avoid using the same brush for both light and dark shades without cleaning first, as residue transfers and muddies new colours.<br>
+  🔹 <strong>Spot clean between uses</strong> with a dry brush cleaner spray for quick colour switching during a full makeup session.</div></div>
+
 </section>
 
 <!-- ═══════ SHADES ═══════ -->
@@ -1372,6 +1808,35 @@ document.querySelectorAll('.tab-btn').forEach(tab => {
     tab.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
     window.scrollTo({ top:0, behavior:'smooth' });
     setTimeout(triggerReveal, 60);
+  });
+});
+
+// Category filter pills
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const filter = pill.dataset.filter;
+    const sec = pill.dataset.section;
+
+    // Update active pill within this filter bar only
+    document.querySelectorAll(`.filter-pill[data-section="${sec}"]`).forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+
+    // Scroll tapped pill into view (great for mobile)
+    pill.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+
+    // Determine which groups belong to this section
+    const prefix = sec === 'sc' ? 'sc-' : sec === 'mk' ? 'mk-' : 'br-';
+    const groups = document.querySelectorAll(`.cat-group[data-group^="${prefix}"]`);
+
+    groups.forEach(group => {
+      if (filter === 'all' || group.dataset.group === filter) {
+        group.classList.remove('hidden');
+        // Re-trigger reveal animations for newly shown cards
+        group.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+      } else {
+        group.classList.add('hidden');
+      }
+    });
   });
 });
 
